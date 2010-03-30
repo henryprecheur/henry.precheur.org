@@ -69,8 +69,8 @@ for p in others:
                 title=p.title, content=p.html(), top_dir='/')
 
 
-weblog.publish.copy_files(pages, 'output')
-weblog.publish.copy_files(['common.css', 'archives.css', 'print.css',
+weblog.copy_files(pages, 'output')
+weblog.copy_files(['common.css', 'archives.css', 'print.css',
                            'favicon.ico', 'robots.txt', 'sitemap.xml'],
                           'output')
 
