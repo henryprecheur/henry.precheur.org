@@ -1,0 +1,42 @@
+title: Weblog 1.0 released
+date: 2008-09-05 19:17:47
+
+<p>Weblog 1.0 is out! After more than 1 year of development Weblog, a minimalist
+"blog publisher", is <em>feature complete</em>. All the stuffs I wanted to have are
+here.</p>
+
+<p>Weblog is designed for people tired of all these crappy Database driven
+blogs (Wordpress and all his clones). It just reads a set of files and output
+static HTML files. Just upload these files on a server serving HTML files
+&mdash;pretty much everywhere&mdash; and you're done.</p>
+
+<p>I used Weblog for 1 year, posted 32 articles with it. This project is used for
+real and has some <a href="index.html">documentation</a>.</p>
+
+<p>There are few changes in this version:</p>
+
+<ul>
+<li><code>style.rst</code> is now part of the distribution</li>
+<li>The blog title now links to the base URL</li>
+<li>Fixed a bug with renderstring when None or an empty string was passed</li>
+<li>Use Jinja 2 instead of Jinja 1 if both versions are present</li>
+</ul>
+
+<p>Download <a href="weblog-1.0.tar.gz">Weblog 1.0</a> or <a href="weblog+jinja-1.0.tar.gz">Weblog 1.0 + Jinja
+2</a> (standalone version).</p>
+
+<p>More informations and docs on <a href="index.html">Weblog's page</a>. If you have
+any problems using it, don't hesitate to ask me: 
+<a href="mailto:henry@precheur.org">henry@precheur</a>.</p>
+
+<p>Even if Weblog has reached 1.0, the development is not over. Version 1.1 will
+include:</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a> markup support, composing
+posts using raw HTML is not so fun in practice, and I really like Markdown's
+syntax.</li>
+<li><a href="http://en.wikipedia.org/wiki/Atom_%28standard%29">Atom</a> feed</li>
+<li>Removal of the RSS feed. After a quick look at both standards, I think Atom
+is better than RSS. There is no need to have 2 different feeds format; 1 is enough.</li>
+</ul>

@@ -1,0 +1,21 @@
+title: Weblog 2.4
+date: 2010-2-7
+
+Weblog 2.4 was released. It’s probably the last release of the 2.x series. I’m
+currently working on version 3, a major redesign of how Weblog works.
+
+This new version fixes 2 bugs:
+
+- Crash when a post contains a `/` or `\\` character in its title
+- Dates in the Atom feed now use the correct timezone
+
+This version also improves speed. Weblog 2.4 only generate targets if their
+sources change.
+
+Get it on the [download page](install.html#download).
+
+Don’t hesitate to ask questions or request support in the [mailing list][ML].
+Report any bugs and problems on the [bugs & issues tracker][BT].
+
+[ML]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[BT]: http://bitbucket.org/henry/weblog/issues/ "Weblog’s issue tracker"

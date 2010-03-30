@@ -1,0 +1,21 @@
+title: Weblog 2.5
+date: 2010-2-17
+
+Weblog 2.5 was relesed. It fixes bugs and add support for reStructuredText:
+
+- Correct Atom feed id (regression from 2.3)
+- Don’t rewrite anchors (Fix [#11][])
+- Add support for reStructuredText, contributed by [Sridhar Ratnakumar][] (Fix
+  [#12][])
+- markdown2 is now an optional dependency
+
+Get it on the [download page](install.html#download).
+
+Don’t hesitate to ask questions or request support in the [mailing list][ML].
+Report any bugs and problems on the [bugs & issues tracker][BT].
+
+[#11]: http://bitbucket.org/henry/weblog/issue/11/page-anchors-are-incorrectly-converted-to-absolute "Page anchors are incorrectly converted to absolute urls"
+[#12]: http://bitbucket.org/henry/weblog/issue/12/support-for-restructuredtext "Support for reStructuredText"
+[Sridhar Ratnakumar]: http://nearfar.org/
+[ML]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[BT]: http://bitbucket.org/henry/weblog/issues/ "Weblog’s issue tracker"

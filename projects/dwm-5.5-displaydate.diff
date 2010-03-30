@@ -1,0 +1,80 @@
+diff -r f5ab86b27b47 dwm.c
+--- a/dwm.c	Thu May 21 11:41:47 2009 -0700
++++ b/dwm.c	Fri May 22 08:52:53 2009 -0700
+@@ -28,8 +28,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <sys/select.h>
+ #include <X11/cursorfont.h>
+ #include <X11/keysym.h>
+ #include <X11/Xatom.h>
+@@ -1185,13 +1187,32 @@
+ 
+ void
+ run(void) {
+-	XEvent ev;
++	int xfd = ConnectionNumber(dpy);
+ 
+-	/* main event loop */
+-	XSync(dpy, False);
+-	while(running && !XNextEvent(dpy, &ev)) {
+-		if(handler[ev.type])
+-			(handler[ev.type])(&ev); /* call handler */
++	while(running)
++	{
++		struct timeval timeout = {.tv_sec = 1, .tv_usec = 0};
++		fd_set readfds;
++
++		FD_ZERO(&readfds);
++		FD_SET(xfd, &readfds);
++		/* Wait for the next XEvent or 1 second */
++		if(select(xfd + 1, &readfds, NULL, NULL, &timeout) == -1) {
++			if(errno == EINTR)
++				continue;
++			die("select failed\n");
++		}
++
++		/* Process all X events */
++		while(XPending(dpy)) {
++			XEvent ev;
++
++			XNextEvent(dpy, &ev);
++			if(handler[ev.type])
++				(handler[ev.type])(&ev); /* call handler */
++		}
++
++		updatestatus();
+ 	}
+ }
+ 
+@@ -1610,8 +1631,24 @@
+ void
+ updatestatus() {
+ 	if(!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
+-		strcpy(stext, "dwm-"VERSION);
+-	drawbar();
++	{
++		static time_t prev_time = 0;
++		time_t  t = time(NULL);
++
++		if (t > prev_time)
++		{
++			prev_time = t;
++			strftime(stext, sizeof stext - 1, "%c", localtime(&t));
++			/* Depending on the implementation of strftime, status_text might not be
++			 * null terminated. */
++			stext[sizeof stext - 1] = '\0';
++			drawbar();
++		}
++	}
++	else
++	{
++		drawbar();
++	}
+ }
+ 
+ void

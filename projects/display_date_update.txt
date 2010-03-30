@@ -1,0 +1,14 @@
+title: dwm, display date patch updated
+date: 2009-5-20
+files: dwm-5.5-displaydate.diff
+
+[A while ago](2008/8/25/Switching_to_dwm.html), I posted a patch to display the
+date in [dwm](http://dwm.suckless.org/)'s status bar without reading it from the
+standard input. It doesn’t work with newer versions of dwm.
+
+[This patch](files/dwm-5.5-displaydate.diff) works with version 5.5. To apply
+it:
+
+    $ cd path/to/dwm
+
+    $ patch -p 1 < dwm-5.5-displaydate.diff

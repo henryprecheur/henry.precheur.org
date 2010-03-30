@@ -1,0 +1,25 @@
+title: Weblog 1.1
+date: 2008-09-13 13:42:34
+
+Weblog now supports Markdown's syntax and Atom feed generation. Many things had
+to be reworked internally in oder to support correctly Atom. This release is to
+be considered *beta*, some functionalities are not documented yet.
+
+Jinja 1 is not supported anymore and I dropped RSS feed generation. Atom eats
+RSS for breakfast and maintaining 2 feed formats doesn't make sense, since both
+formats are widely supported.
+
+The next release will focus on documentation and polishing. I want to make
+Weblog easy to use for newcomers, I will write a better tutorial and maybe add
+some more examples.
+
+For now Weblog includes
+[markdown2.py](http://code.google.com/p/python-markdown2/) since markdown2 does
+not install correctly from [pypi.python.org](http://pypi.python.org).
+
+Download [Weblog 1.1](weblog-1.1.tar.gz) or [Weblog 1.1 + Jinja
+2](weblog+jinja-1.1.tar.gz) (standalone version).
+
+More informations and docs on [Weblog's page](index.html). If you have
+any problems using it, don't hesitate to ask on
+[weblog-users@googlegroups.com](mailto:weblog-users@googlegroups.com).

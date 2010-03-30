@@ -1,0 +1,103 @@
+title: RFC 3339 date formatting
+
+<h1>rfc3339.py</h1>
+<p>
+<a href='http://bitbucket.org/henry/weblog/raw/tip/weblog/rfc3339.py'>rfc3339.py</a>
+is a small Python library to format dates to rfc 3339 strings. Useful
+if you want to add an Atom feed to you site / project. Grab the file,
+drop it in your python source code, that's it! Licensed under the term
+of the <a href='http://en.wikipedia.org/wiki/ISC_licence'>ISC License</a>
+a simple, permissive, BSD-like license.</p>
+
+<p>How to use it:</p>
+<pre>
+&gt;&gt;&gt; import time
+&gt;&gt;&gt; timestamp = time.time()
+&gt;&gt;&gt; print timestamp
+1220939251.89
+&gt;&gt;&gt; import datetime
+&gt;&gt;&gt; d = datetime.datetime.fromtimestamp(timestamp)
+&gt;&gt;&gt; print d
+2008-09-08 22:47:31.893205
+
+&gt;&gt;&gt; from rfc3339 import rfc3339
+
+&gt;&gt;&gt; rfc3339(timestamp) # Works with timestamps
+'2008-09-08T22:47:31-07:00'
+
+&gt;&gt;&gt; rfc3339(d) # And datetime &amp; date objects
+'2008-09-08T22:47:31-07:00'
+
+&gt;&gt;&gt; rfc3339(d, utc=True) # Normalize time to UTC
+'2008-09-08T15:47:31Z'
+&gt;&gt;&gt; rfc3339(d, utc=True, use_system_timezone=False)
+'2008-09-08T22:47:31Z'
+</pre>
+<p><strong>2010-2-5</strong>: Handle system timezone correctly. Instead of using the current daylight saving, use the the daylight saving at the time of the datetime object.</p>
+<p><strong>2009-12-21</strong>: Fixed a bug with daylight savings. Reported by Gary Bishop.</p>
+<p><strong>2010-1-26</strong>:
+I've changed the license from &ldquo;Public domain&rdquo; to the
+<a href='http://en.wikipedia.org/wiki/ISC_licence'>ISC License</a>.
+</p>
+
+
+<h2>Documentation</h2>
+<p>Wow! I also made some docs! Generated via <code>pydoc
+    rfc3339</code></p>
+        <pre>
+Help on module rfc3339:
+
+NAME
+    rfc3339
+
+DESCRIPTION
+    The function `rfc3339` formats dates according to the :RFC:`3339`. `rfc3339`
+    tries to have as much as possible sensible defaults.
+
+FUNCTIONS
+    rfc3339(date, utc=False, use_system_timezone=True)
+        Return a string formatted according to the :RFC:`3339`. If called with
+        `utc=True`, it normalizes `date` to the UTC date. If `date` does not have
+        any timezone information, uses the local timezone::
+        
+            &gt;&gt;&gt; date = datetime.datetime(2008, 4, 2, 20)
+            &gt;&gt;&gt; rfc3339(date, utc=True, use_system_timezone=False)
+            '2008-04-02T20:00:00Z'
+            &gt;&gt;&gt; rfc3339(date) # doctest: +ELLIPSIS
+            '2008-04-02T20:00:00...'
+        
+        If called with `user_system_time=False` don't use the local timezone if
+        `date` does not have timezone informations and consider the offset to UTC
+        to be zero::
+        
+            &gt;&gt;&gt; rfc3339(date, use_system_timezone=False)
+            '2008-04-02T20:00:00+00:00'
+        
+        `date` must be a `datetime.datetime`, `datetime.date` or a timestamp as
+        returned by `time.time()`::
+        
+            &gt;&gt;&gt; rfc3339(0, utc=True, use_system_timezone=False)
+            '1970-01-01T00:00:00Z'
+            &gt;&gt;&gt; rfc3339(datetime.date(2008, 9, 6), utc=True,
+            ...         use_system_timezone=False)
+            '2008-09-06T00:00:00Z'
+            &gt;&gt;&gt; rfc3339(datetime.date(2008, 9, 6),
+            ...         use_system_timezone=False)
+            '2008-09-06T00:00:00+00:00'
+            &gt;&gt;&gt; rfc3339('foo bar')
+            Traceback (most recent call last):
+            ...
+            TypeError: excepted datetime, got str instead
+
+DATA
+    __all__ = ('rfc3339',)
+    __author__ = 'Henry Precheur &lt;henry@precheur.org&gt;'
+    __license__ = 'ISCL'
+    __version__ = '3'
+
+VERSION
+    3
+
+AUTHOR
+    Henry Precheur &lt;henry@precheur.org&gt;
+</pre>
