@@ -1,6 +1,6 @@
 #!/home/henry/env/weblog/bin/python
 
-from os import path, mkdir, listdir
+from os import path, mkdir
 import sys
 
 sys.path.append(path.expanduser('~/weblog'))
@@ -70,14 +70,12 @@ for p in others:
 
 
 weblog.copy_files(pages, 'output')
-weblog.copy_files(['common.css', 'archives.css', 'print.css',
-                           'favicon.ico', 'robots.txt', 'sitemap.xml'],
-                          'output')
+weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
+                   'robots.txt', 'sitemap.xml'], 'output')
 
 f = open('./output/redirect.conf', 'w')
 for p in posts:
-    directories = '/'.join((str(p.date.year),
-                            str(p.date.month),
+    directories = '/'.join((str(p.date.year), str(p.date.month),
                             str(p.date.day)))
     from urllib import quote
     from re import escape
