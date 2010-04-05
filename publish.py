@@ -66,7 +66,7 @@ for p in others:
     o = path.join('output', p.output_filename())
     if weblog.newer_than(p.filename, o):
         w.write('page.html.tmpl', o,
-                title=p.title, content=p.html(), top_dir='/')
+                title=p.title, content=p.html(), top_dir=top_dir(p))
 
 
 weblog.copy_files(pages, 'output')
@@ -77,13 +77,12 @@ f = open('./output/redirect.conf', 'w')
 for p in posts:
     directories = '/'.join((str(p.date.year), str(p.date.month),
                             str(p.date.day)))
-    from urllib import quote
     from re import escape
     title = p.title.encode('ascii', 'replace')
     old_old_url = '^/' + escape(directories + '/' + title + '.html') + '$'
     for x in '/\\ ':
         title = title.replace(x, '_')
-    old_url = '^/' + escape(directories + '/' + quote(title) + '.html') + '$'
+    old_url = '^/' + escape(directories + '/' + title + '.html') + '$'
     f.write('rewrite "%s" /%s permanent;\n' % (old_url, p.url()))
     if p.date.year < 2009 and old_url != old_old_url:
         f.write('rewrite "%s" /%s permanent;\n' % (old_old_url, p.url()))
@@ -91,4 +90,5 @@ for p in posts:
 f.write('rewrite "^/archives.html$" /archives permanent;\n')
 f.write('rewrite "^/about.html$" /about permanent;\n')
 f.write('rewrite "^/readings.html$" /books permanent;\n')
+f.write('rewrite "^/rss.xml$" /feed.atom permanent;\n')
 f.close()
