@@ -5,7 +5,7 @@ HOST=bitoku.koalabs.org
 all: publish
 
 publish:
-	./publish.py
+	${HOME}/env/weblog/bin/python ./publish.py
 
 clean:
 	-rm -rf ${OUTPUT_DIR}
