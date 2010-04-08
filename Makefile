@@ -1,6 +1,6 @@
 OUTPUT_DIR=./output/
 RSYNC=rsync -vz --checksum --recursive
-HOST=bitoku.koalabs.org
+HOST=henry@bitoku.koalabs.org
 
 all: publish
 
