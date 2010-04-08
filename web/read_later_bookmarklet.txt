@@ -1,0 +1,18 @@
+title: Read later bookmarklet
+
+[Original blog post](back_to_delicious)
+
+<fieldset>
+    <legend><em>Read later</em> bookmarklet for Delicious</legend>
+    <label for='user' style='float: left; clear: left; width: 5.5em;'>Username</label>
+    <input name='user' id='user' style='float: left'/>
+    <label for='tags' style='float: left; clear: left; width: 5.5em;'>Tags</label>
+    <input name='tags' id='tags' style='float: left' value='unread'/>
+    <button type='submit' style='float: left; clear: left; margin-left: 7em;' onclick='return generate();'>Generate bookmarklet</button>
+    <div style='clear: left; padding: 1em 0 0 5.5em'>
+        &nbsp;<a id='bm-link'></a><span id='bm-comment'></span>
+    </div>
+</fieldset>
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+<script src='/web/read_later_bookmarklet.js'></script>
