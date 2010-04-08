@@ -2,6 +2,7 @@
 
 from os import path, mkdir
 import sys
+from datetime import date
 
 sys.path.append(path.expanduser('~/weblog'))
 
@@ -75,6 +76,8 @@ weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
 
 f = open('./output/redirect.conf', 'w')
 for p in posts:
+    if p.date > date(2009, 4, 1):
+        continue
     directories = '/'.join((str(p.date.year), str(p.date.month),
                             str(p.date.day)))
     from re import escape
