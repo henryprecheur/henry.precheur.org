@@ -1,9 +1,11 @@
 title: Back to Delicious
+date: 2010-4-7
+files: read_later_bookmarklet.js
 
 I’ve switched from [Delicious][] to [Pinboard][] a few weeks ago. Pinboard is a
-simple Delicious clone. It requires a small payment when signing up. It's a
-clever way to keep spammers out and to finance the site. I switched mainly
-because Pinboard features notes and has a bookmarklet ‘Read later’.
+simple Delicious clone. It requires a small payment when signing up, a clever
+way to keep spammers out and to finance the site. I switched mainly because
+Pinboard features notes and has a bookmarklet ‘Read later’.
 
 After 3 weeks of using it. I'm going back to Delicious.
 
@@ -21,7 +23,7 @@ avoid tag duplication. I don’t have to worry if my tag for books is ‘book’
 
 So far the only advantage that Pinboard has over Delicious is the ‘Read later’
 [Bookmarklet][]. I tried to make the same bookmarklet for Delicious. I wasn’t
-entirely sucessful, but I managed to do something that is close enough to what I
+entirely successful, but I managed to do something that is close enough to what I
 wanted.
 
 You can use the following form to generate a similar bookmarklet. Javascript is
@@ -39,49 +41,11 @@ needed.
     </div>
 </fieldset>
 
-
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-<script type='text/javascript'>
-    function required(user_input) {
-        var req = $('<label id="required" for="user" ' +
-                'style="color: red; float: left"> &#8592; Required</label>');
-        req.insertAfter(user_input);
-    }
+<script src='/web/read_later_bookmarklet.js'></script>
 
-    function generate() {
-        var user_input = $('input#user');
-        var label_required = $('label#required');
-        var user = encodeURIComponent(user_input.val());
-
-        if (!user) {
-            if (!label_required.length) {
-                required(user_input);
-            }
-            user_input.focus();
-            return false;
-        } else {
-            label_required.remove();
-        }
-
-        var tags = $('#tags').val();
-        if (tags) {
-            tags_param = 'tags=' + encodeURIComponent(tags);
-        } else {
-            tags_param = '';
-        }
-
-        var url = ('javascript:' +
-                   'var a=encodeURIComponent,b="http://delicious.com/save?' +
-                   'user=' + user +
-                   '&url="+a(location.href)+"&title="+a(document.title)+"&' +
-                   tags_param +
-                   '&share=no&jump=yes",c=window.getSelection().toString();' +
-                   'if(c)b+="&notes="+a(c);location.href=b;');
-        $('#bm-link').attr('href', url).text('Read later');
-        $('#bm-comment').html(" &#8592; Drag this link into your bookmark toolbar");
-        return false;
-    }
-</script>
+For those viewing this post from a Feed Reader, you can access the form
+[here](/web/read_later_bookmarklet).
 
 [Delicious]: http://delicious.com/ "Delicious"
 [Pinboard]: http://pinboard.in/ "Pinboard - antisocial bookmarking"
