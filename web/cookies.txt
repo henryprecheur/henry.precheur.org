@@ -1,0 +1,128 @@
+title: How cookies work
+
+HTTP is a stateless protocol. Every HTTP request is an independent transaction,
+unrelated to the previous one.
+
+But the web used by the public today is far from stateless. You don’t have to
+enter you login/password each time you want to view a page on Google, Yahoo, or
+Facebook. You type it once when you login and the web site “remembers” you. How
+does it remember? It uses HTTP Cookies. Cookies were first standardized in
+February 1997 by the [RFC 2109][] as the HTTP State Management Mechanism. It was
+updated in October 2000 by the [RFC 2965][]. Today most websites still use the
+old mechanism of the first version.
+
+Cookies are not part of the HTTP protocol: it’s an extension. Not all HTTP
+clients support cookies, but all modern web browsers do.
+
+What is a cookie?
+=================
+
+A cookie is a little chunk of data stored by the client. Each time the client
+connects to the server it sends it to the server. Cookies are created by the
+server. Most of the time it is a *token* to identify you. When you connect to
+`mybank.com`, you send the to server your login/password. If the
+authentification is succesful, the server returns a page with a Cookie attached
+to it. Your client stores this cookie, and send it to `mybank.com` with each
+request.
+
+The cookie is only accessible to `mybank.com`. When your client connects to
+`evilguy.com`, it doesn’t send the cookie created by `mybank.com`. This is an
+important property. If an attacker gets a copy of the cookie, he can use it to
+impersonate you as long as the cookie is valid.
+
+What does it looks like?
+========================
+
+A cookie is a set of name-value pairs.
+
+    first_name=Boddy
+
+Here the entry `first_name` contains `Bobby`.
+
+Here’s another cookie with 2 name-value pairs.
+
+    first_name=Boddy
+    last_name=Orr
+
+Cookies are a tiny database stored by the client. The size of this database is
+limited. The limit depends of the client used. The most restrictive ones:
+Un-patched versions of Internet Explorer 6 & 7 support only 20 cookies per
+domain, and the total size is limited to 4KB per domain. It might sound limited,
+but you can still do plenty of useful things with cookies.
+
+Creating cookies
+================
+
+HTTP transactions consist of 2 phases: request, & response. The client sends a
+request to the server. The server returns a response. The cookie is created by
+the server’s response.
+
+Client request (Client &rarr; Server):
+
+    GET /lucky_number HTTP/1.1
+    Host: lucky-number.org
+
+Server response (Server &rarr; Client):
+
+    HTTP/1.1 200 OK
+    Set-Cookie: lucky_number=42
+
+The `Set-Cookie` header tells the client to create an entry called
+`lucky_number` containing the string `42`. The cookie is associated with the
+domain lucky-number.org.
+
+Reading cookies
+===============
+
+Only the domain `lucky-number.org` can see the cookie. Even if the server of
+`lucky-number.org` also hosts `evil-number.org`, a request to `evil-number.org`
+will not contain the cookies set by `lucky-number.org`.
+
+How does the server read the cookie it just created? The cookie is simply
+transfered by the client in the request headers:
+
+    GET / HTTP/1.1
+    Host: www.lucky-number.org
+    Cookie: lucky_number=42
+
+Modifying cookies
+=================
+
+Modifying a cookie is like creating it. If a cookie already exists it is
+overwritten, if it doesn’t exist it is created.
+
+Client request (Client &rarr; Server):
+
+    GET /lucky_number HTTP/1.1
+    Host: www.lucky-number.org
+    Cookie: lucky_number=42
+
+Server response (Server &rarr; Client):
+
+    HTTP/1.1 200 OK
+    Set-Cookie: lucky_number=12345
+
+`lucky_number` now contains `12345`.
+
+Cookie attributes
+=================
+
+Cookies are not just a set of key / value. Each entry has attributes associated
+to it. This way you can control the expiration date, the domain, the path of
+each individual cookies.
+
+Attributes help improve the security of the cookie. For example let's say you
+are a family friendly internet service provider with a web site and webmail. The
+web site is www.isp.com and the webmail is mail.isp.com.
+
+
+
+Expiration and deletion
+-----------------------
+
+By default cookies expire at the end of the *user session*. *User sessions*
+should not be confused with *Cookie sessions*. A *user session* starts when
+you open the web browser and ends when you close it.
+
+[RFC 2109]: http://tools.ietf.org/html/rfc2109
+[RFC 2965]: http://tools.ietf.org/html/rfc2965
