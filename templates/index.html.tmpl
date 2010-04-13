@@ -12,7 +12,7 @@
 <p class='page-header'><span class='date'>{{ page.date.strftime('%B %e %Y') }}</span></p>
 {% endif %}
 <div class='page-content'>
-{{ page.html()|decode }}</div>
+{{ page.html(curdir='.')|decode }}</div>
 
 <hr>
 
