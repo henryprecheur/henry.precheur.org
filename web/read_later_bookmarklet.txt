@@ -15,4 +15,4 @@ title: Read later bookmarklet
 </fieldset>
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-<script src='/web/read_later_bookmarklet.js'></script>
+<script src='read_later_bookmarklet.js'></script>

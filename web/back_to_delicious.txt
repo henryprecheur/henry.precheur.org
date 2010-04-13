@@ -4,7 +4,7 @@ files: read_later_bookmarklet.js
 
 I’ve switched from [Delicious][] to [Pinboard][] a few weeks ago. Pinboard is a
 simple Delicious clone. It requires a small payment when signing up, a clever
-way to keep spammers out and to finance the site. I switched mainly because
+way to keep spammers out and finance the site. I switched mainly because
 Pinboard features notes and has a bookmarklet ‘Read later’.
 
 After 3 weeks of using it. I'm going back to Delicious.
@@ -42,10 +42,10 @@ needed.
 </fieldset>
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-<script src='/web/read_later_bookmarklet.js'></script>
+<script src='read_later_bookmarklet.js'></script>
 
 For those viewing this post from a Feed Reader, you can access the form
-[here](/web/read_later_bookmarklet).
+[here](read_later_bookmarklet).
 
 [Delicious]: http://delicious.com/ "Delicious"
 [Pinboard]: http://pinboard.in/ "Pinboard - antisocial bookmarking"
