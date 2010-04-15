@@ -5,7 +5,7 @@ I've updated my OpenBSD port of [Python 3][] to version 3.1.2.
 
 You can get the latest tarball here:
 
-> [http://bitbucket.org/henry/python-31-openbsd-port/get/tip.gz]()
+> <http://bitbucket.org/henry/python-31-openbsd-port/get/tip.gz>
 
 Extract the tarball and rename the directory python-31-openbsd-port to 3.1 and
 move it to /usr/ports/lang/python. You'll also have to patch
