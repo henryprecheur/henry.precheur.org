@@ -66,9 +66,12 @@ for p in posts:
 for p in others:
     o = path.join('output', p.output_filename())
     if weblog.newer_than(p.filename, o):
-        w.write('page.html.tmpl', o,
-                title=p.title, content=p.html(), top_dir=top_dir(p))
-
+        if o.endswith('/404'):
+            t = '/'
+        else:
+            t = top_dir(p)
+        w.write('page.html.tmpl', o, title=p.title, content=p.html(),
+                top_dir=t)
 
 weblog.copy_files(pages, 'output')
 weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
