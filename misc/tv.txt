@@ -1,0 +1,30 @@
+title: Fooled and aware of it
+
+We are easily fooled by fiction. Even when we *know* something is fiction, we
+tend to believe it. After reading [this article from The Economist] [1], I was
+reminded how much influence TV have on people’s world view.
+
+The [article] [1] is about the Television drama “CSI: Crime Scene
+Investigation”. People watching the show think they understand how forensic
+science works, when they don’t. CSI is partially based on “real science”, for
+example they use DNA to identify suspect. But the parallel with reality stops
+here. How those methods are depicted is complete fiction.
+
+In 2005, I’ve worked on an Automated Fingerprint Identification System. It is
+used by police forces around the world. It works very differently from what’s
+showed on television. Identifying people by their fingerprints is a slow and
+labour intensive process. Technology helps, but most of the work it still done
+by humans. It takes weeks to look for a matching suspect in the database, and
+that’s if the suspect is in the database. Most of the time he’s not.
+
+In the excellent book [Influence: The Psychology of Persuasion] [2] there’s a
+paragraph explaining how XXX —an actor playing a doctor in the TV series XXX—
+appeared in an adverts for drugs. People knew he was an actor, and yet the
+viewers were fooled. They associated this guy with his role.
+
+We’re fooled, and we know it. Our brain simply hasn’t made the link. Just by
+stepping back a little bit and think about things we could act much more
+rationally. Some people are very at it, but most just don’t bother.
+
+[1]: http://www.economist.com/science-technology/displaystory.cfm?story_id=15949089 "The “CSI effect”"
+[2]: http://www.amazon.com/Influence-Psychology-Persuasion-Robert-Cialdini/dp/0688128165
