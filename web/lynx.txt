@@ -1,5 +1,5 @@
 title: Text only web
-date: 2010-5-5
+date: 2010-5-7
 
 I increasingly rely on [Lynx] [1] to surf the web. Lynx is a text web browser,
 no graphic, just text. I also uses [Readability] [2], a Firefox extension that
