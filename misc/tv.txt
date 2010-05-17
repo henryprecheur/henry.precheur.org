@@ -19,17 +19,17 @@ humans. It takes weeks to look for a matching suspect in the database, and
 that’s if the suspect is in the database. Most of the time he’s not.
 
 In the excellent book [Influence: The Psychology of Persuasion] [2] there’s a
-paragraph explaining how XXX —an actor playing a doctor in the TV series XXX—
-appeared in an adverts for drugs. People knew he was an actor, and yet the
-viewers were fooled. They believed that he had some authority on the subject,
-they associated this guy with his role.
+paragraph explaining how an actor playing a doctor in the TV series appeared in
+a drug adverts. People knew he was an actor, and yet the viewers were fooled.
+They believed that he had some authority on the subject, they associated the guy
+with his role.
 
-You can’t really blame TV and the medias for that. Shows have to be entertaining.
+You can’t really blame TV and the medias for that. They have to be entertaining.
 Waiting 2 weeks to get a result from the lab is not exactly fun. When things are
 fast, it’s fun, it’s engaging.
 
-We’re fooled, and we know it. Our brain simply hasn’t made the link. Just by
-stepping back a little bit and think about things we could act much more
+We’re fooled by fiction, and we know it. Our brain simply hasn’t made the link.
+Just by stepping back a little bit and think about things we could act much more
 rationally.
 
 [1]: http://www.economist.com/science-technology/displaystory.cfm?story_id=15949089 "The “CSI effect”"
