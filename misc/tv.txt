@@ -1,4 +1,5 @@
 title: Fooled and aware of it
+date: 2010-5-17
 
 We are easily fooled by fiction. Even when we *know* something is fiction, we
 tend to think it also applies to real life. After reading [this article from The
@@ -21,8 +22,8 @@ that’s if the suspect is in the database. Most of the time he’s not.
 In the excellent book [Influence: The Psychology of Persuasion] [2] there’s a
 paragraph explaining how an actor playing a doctor in the TV series appeared in
 a drug adverts. People knew he was an actor, and yet the viewers were fooled.
-They believed that he had some authority on the subject, they associated the guy
-with his role.
+They believed that he had some authority on the subject, like a real doctor.
+They associated the guy with his role.
 
 You can’t really blame TV and the medias for that. They have to be entertaining.
 Waiting 2 weeks to get a result from the lab is not exactly fun. When things are
