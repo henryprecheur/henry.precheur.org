@@ -2,45 +2,39 @@ title: Sent from my
 date: 2010-5-21
 
 When you get a message from someone using a free email service like Hotmail or
-Yahoo mail, you might get ads at the end of the message. I find it irritating,
-but since those are Free it’s understandable.
+Yahoo mail, you might get irritating ads at the end of the message. Apparently
+gadget makers think this is a pretty neat idea. The so-called smart phones also
+have this “feature”. Here’s what I sometime get at the end of my Emails:
 
-Apparently gadget makers think this is a pretty neat idea. The so-called smart
-phones also have this “feature”. Here’s what I sometime get at the end of my
-Emails:
-
->  **Sent from my BlackBerry**
+>  Sent from my BlackBerry
 >
->  **Sent from my iPhone**
+>  Sent from my iPhone
 >
->  **Sent from my iPad**
+>  Sent from my iPad
 >
->  **Sent from my Nexus One**
+>  Sent from my Nexus One
 
 And worst of all:
 
-> **Sent from my Verizon Wireless Blackberry**
+> Sent from my Verizon Wireless Blackberry
 
-If I had one of those devices I would try to delete this junk right away. When
-sending an Email nobody in his right mind would write at the end:
-
-> Sent from my PC while eating Nachos
-
-It turns out that some people are already doing this. On hardware forums you
-will see signatures like this:
+If I had one of those devices I would try to delete this junk right away. Nobody
+sane would write “Sent from my PC while eating Nachos” at the end of every
+single mails, right? Well no ... It turns out that some people are already doing
+this kind of thing. On hardware forums you will see signatures like this:
 
 >  Intel Core i7 920 @ 3.2GHz, Sapphire HD5850 Toxic Edition, Intel X-25M 80GB
 >  SSD, ASUS P6TD Deluxe, Corsair TX850, Corsair XMS3 DDR3-1600 RAM, Corsair H50
 >  Hydro Series
 
 The fellas posting this kind of information on Internet aren’t trying to get
-help to make sure all their components are compatible. They are bragging about
-how great their computer is. I think this is the same with smart-phones, people
-don’t delete these signatures because it makes them feel good. What’s the point
-of owning a Ferrari if you can’t show it to the world?
+help to make sure all their computer’s components are compatible. They are
+bragging about how great their computer is. I think this is the same with
+smart-phones, people don’t delete these signatures because it makes them feel
+good. What’s the point of owning a Ferrari if you can’t show it to the world?
+“Man, I have an iPhone 3G; aren’t you impressed?”
 
-> **Man I have an iPhone 3G, aren’t you impressed?**
-
-Also there’re headers like 'User-Agent' or 'X-Mailer' which are supposed to
-contain this information. But none of those devices add these headers to the
-messages. Not visible enough I guess.
+Side note: the headers `User-Agent` or `X-Mailer` are supposed to contain
+information about the Mail User Agent. It looks like the right place to put
+something like ‘Sent from my’, but none of those devices add these headers. Not
+visible enough I guess.
