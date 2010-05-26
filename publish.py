@@ -3,6 +3,7 @@
 from os import path, mkdir
 import sys
 from datetime import date
+from re import escape
 
 sys.path.append(path.expanduser('~/weblog'))
 
@@ -78,23 +79,28 @@ weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
                    'robots.txt', 'sitemap.xml'], 'output')
 
 f = open('./output/redirect.conf', 'w')
+
+def r(old, new):
+    f.write('rewrite "^/%s$" /%s permanent;\n' % (old, new))
+
 for p in posts:
     if p.date > date(2009, 4, 1):
         continue
     directories = '/'.join((str(p.date.year), str(p.date.month),
                             str(p.date.day)))
-    from re import escape
     title = p.title.encode('ascii', 'replace')
-    old_old_url = '^/' + escape(directories + '/' + title + '.html') + '$'
+    old_old_url = escape(directories + '/' + title + '.html')
     for x in '/\\ ':
         title = title.replace(x, '_')
-    old_url = '^/' + escape(directories + '/' + title + '.html') + '$'
-    f.write('rewrite "%s" /%s permanent;\n' % (old_url, p.url()))
+    old_url = escape(directories + '/' + title + '.html')
+    r(old_url, p.url())
     if p.date.year < 2009 and old_url != old_old_url:
-        f.write('rewrite "%s" /%s permanent;\n' % (old_old_url, p.url()))
+        r(old_old_url, p.url())
 
-f.write('rewrite "^/archives.html$" /archives permanent;\n')
-f.write('rewrite "^/about.html$" /about permanent;\n')
-f.write('rewrite "^/readings.html$" /books permanent;\n')
-f.write('rewrite "^/rss.xml$" /feed.atom permanent;\n')
+r('archives.html', 'archives')
+r('about.html', 'about')
+r('readings.html', 'books')
+r('rss.xml', 'feed.atom')
+r('python/projects/rfc3339.html', 'projects/rfc3339')
+
 f.close()
