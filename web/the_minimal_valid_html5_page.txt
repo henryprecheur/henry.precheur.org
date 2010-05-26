@@ -8,9 +8,9 @@ Like [HTML 4](2008/11/25/The_minimal_valid_html_page.html), but now it’s [HTML
     <title></title>
     <p>
 
-Thanks to the finally-easy-to-remember Doctype, it’s shorter. <del>HTML 5 looks like
-pure-awesomeness turned into a markup language.</del> (I was young and ignorant
-about HTML 5, HTML 5 is a piece of shit.)
+Thanks to the finally-easy-to-remember Doctype, it’s shorter. <del>HTML 5 looks
+like pure-awesomeness turned into a markup language.</del> So far HTML 5 turns
+out to be a big pile of crap.
 
 [validator.nu](http://validator.nu/) validates it elegantly, it is much
 better than the w3 validator.
