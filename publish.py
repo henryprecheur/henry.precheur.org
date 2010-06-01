@@ -84,7 +84,7 @@ def r(old, new):
     f.write('rewrite "^/%s$" /%s permanent;\n' % (old, new))
 
 for p in posts:
-    if p.date > date(2009, 4, 1):
+    if p.date > date(2010, 3, 8):
         continue
     directories = '/'.join((str(p.date.year), str(p.date.month),
                             str(p.date.day)))
