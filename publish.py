@@ -24,7 +24,8 @@ class Page(weblog.Page):
             return path.splitext(self.filename)[0]
 
 def ignore(path):
-    for x in ('output', 'templates', 'robots.txt', 'weblog/doc', 'nginx'):
+    for x in ('output', 'templates', 'robots.txt', 'weblog/doc', 'nginx',
+              'vanpy/test'):
         if path.startswith(x):
             return True
     return False
@@ -77,6 +78,7 @@ for p in others:
 weblog.copy_files(pages, 'output')
 weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
                    'robots.txt', 'sitemap.xml'], 'output')
+weblog.link_tree('vanpy/test', 'output/vanpy/test')
 
 f = open('./output/redirect.conf', 'w')
 
@@ -102,5 +104,6 @@ r('about.html', 'about')
 r('readings.html', 'books')
 r('rss.xml', 'feed.atom')
 r('python/projects/rfc3339.html', 'projects/rfc3339')
+r('vanpyz_test/.*', 'vanpy/test')
 
 f.close()
