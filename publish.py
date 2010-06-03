@@ -1,8 +1,8 @@
 #!/home/henry/env/weblog/bin/python
 
-from os import path, mkdir
 import sys
 from datetime import date
+from os import path, mkdir
 from re import escape
 
 sys.path.append(path.expanduser('~/weblog'))
@@ -88,13 +88,12 @@ def r(old, new):
 for p in posts:
     if p.date > date(2010, 3, 8):
         continue
-    directories = '/'.join((str(p.date.year), str(p.date.month),
-                            str(p.date.day)))
+    dirs = '/'.join((str(p.date.year), str(p.date.month), str(p.date.day)))
     title = p.title.encode('ascii', 'replace')
-    old_old_url = escape(directories + '/' + title + '.html')
+    old_old_url = escape(dirs + '/' + title + '.html')
     for x in '/\\ ':
         title = title.replace(x, '_')
-    old_url = escape(directories + '/' + title + '.html')
+    old_url = escape(dirs + '/' + title + '.html')
     r(old_url, p.url())
     if p.date.year < 2009 and old_url != old_old_url:
         r(old_old_url, p.url())
