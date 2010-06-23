@@ -4,6 +4,7 @@ import sys
 from datetime import date
 from os import path, mkdir
 from re import escape
+from glob import iglob
 
 sys.path.append(path.expanduser('~/weblog'))
 
@@ -14,7 +15,8 @@ if not path.isdir('./output'):
     mkdir('output/weblog')
 
 # Copy weblog/doc first
-weblog.link_tree('weblog/doc', 'output/weblog')
+weblog.copy(iglob('weblog/doc/*'), 'output/weblog')
+weblog.copy(iglob('weblog/files/*'), 'output/weblog')
 
 class Page(weblog.Page):
     def output_filename(self):
@@ -24,8 +26,8 @@ class Page(weblog.Page):
             return path.splitext(self.filename)[0]
 
 def ignore(path):
-    for x in ('output', 'templates', 'robots.txt', 'weblog/doc', 'nginx',
-              'vanpy/test'):
+    for x in ('output', 'templates', 'robots.txt', 'weblog/doc',
+              'weblog/files', 'nginx', 'vanpy/test', '.hg/'):
         if path.startswith(x):
             return True
     return False
@@ -75,10 +77,10 @@ for p in others:
         w.write('page.html.tmpl', o, title=p.title, content=p.html(),
                 top_dir=t)
 
-weblog.copy_files(pages, 'output')
-weblog.copy_files(['common.css', 'archives.css', 'print.css', 'favicon.ico',
-                   'robots.txt', 'sitemap.xml'], 'output')
-weblog.link_tree('vanpy/test', 'output/vanpy/test')
+weblog.copy(pages, 'output')
+weblog.copy(['common.css', 'archives.css', 'print.css', 'favicon.ico',
+             'robots.txt', 'sitemap.xml'], 'output')
+weblog.copy(iglob('vanpy/test/*'), 'output/vanpy/test')
 
 f = open('./output/redirect.conf', 'w')
 
