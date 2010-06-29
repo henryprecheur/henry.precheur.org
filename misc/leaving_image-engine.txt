@@ -1,0 +1,23 @@
+title: Leaving Image-Engine
+date: 2010-6-23
+
+Last week I’ve left [Image-Engine] [1], the visual effect company where I’ve
+worked for almost 2 years. It was a great experience, I worked with the teams
+behind the aliens of [District 9] [2], the explosions and crashes of [The
+Losers] [3], and the werewolves of the upcoming [Twilight Eclipse] [4].
+
+As much as I liked it, I wanted to be my own boss for a long time. After 3 years
+in Canada, I now have enough savings to start building something on my own. It’s
+exciting and scary, even if I have a strong technical knowledge, I have zero
+business and marketing experience. That’s a great occasion to learn.
+
+My plans are still fuzzy. I’m hoping I’ll be able to find a viable idea for a
+bootstrapped company this summer and start working on it. Success would be good,
+but failure wouldn’t be dramatic: all I’d lose would be 3 years of savings, for
+2 years of hand-on experience in the world of business. Given how much an MBA or
+an engineering school cost, I think I can hardly find a better deal.
+
+[1]: http://www.image-engine.com/
+[2]: http://www.imdb.com/title/tt1136608/
+[3]: http://www.imdb.com/title/tt0480255/
+[4]: http://www.imdb.com/title/tt1325004/
