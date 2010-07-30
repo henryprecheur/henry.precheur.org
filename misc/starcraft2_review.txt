@@ -24,10 +24,10 @@ seconds or more to switch to the other application. Switching back to StarCraft
 2 is even longer. I don’t know if that’s because I don’t have enough memory or
 if it’s the game.
 
-**Update**: Lowering the Textures detail or/and the Graphic settings decreased
-loading time a lot. The problem might be that I only have 2GB of memory. With
-textures at medium and graphic details at low the game loads very quickly, but
-it’s not pretty to look at.
+> **Update**: Lowering the Textures detail or/and the Graphic settings decreased
+> loading time a lot. The problem might be that I only have 2GB of memory. With
+> textures at medium and graphic details at low the game loads very quickly, but
+> it’s not pretty to look at.
 
 I played 15 hours, and experienced 3 crashes. That’s a crash every 5 hours. This
 is disappointing; especially from Blizzard, which usually releases high-quality
