@@ -91,10 +91,6 @@ while and so forth. Most problems with the default Vim indentation are solved.
 </p>
 
 <h4>An additional tip about comments</h4>
-<p><strong>Update</strong>, Clay Gerrard noted that the solution previously
-described here doesn’t work on Vim 7. To get it to work, remove the <code>set
-smartindent</code> from your Vim configuration file.</p>
-
 <p>
 <del>
 The way comments are indented is still tedious; even when using the indent
@@ -147,6 +143,12 @@ With this modification, when pressing the # key, comments are indented
 correctly.
 </del>
 </p>
+
+<p><strong>Update</strong>, Clay Gerrard noted that the solution previously
+described here doesn’t work on Vim 7. To get it to work, remove the
+<code>set smartindent</code> from your Vim configuration file, or better add
+<code>set nosmartindent</code> in your
+<code>~/.vim/ftplugin/python.vim</code>.</p>
 
 <h3>A final note</h3>
 <p>
