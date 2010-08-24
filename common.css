@@ -131,8 +131,12 @@ hr
     margin: 2em 0;
 }
 
-img
-{
+div.picture {
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
     display: block;
     margin: 0 auto;
     border: none;
