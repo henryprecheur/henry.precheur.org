@@ -5,7 +5,7 @@ files: ../images/johnny_automatic_a_small_tea_party.png
 <div class='picture'>
   <img src='../images/johnny_automatic_a_small_tea_party.png' width='250' height='124'>
   <small>
-    “I’m worried Margareth, Leo Laporte hasn’t tweeted in weeks!”<br>
+    “I’m worried Margaret, Leo Laporte hasn’t tweeted in weeks!”<br>
     “George, who gives a fuck anyway? Social networks are for peasants.”
   </small>
 </div>
