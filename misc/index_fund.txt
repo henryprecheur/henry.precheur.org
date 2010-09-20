@@ -1,28 +1,28 @@
 title: Index fund
 date: 2010-9-21
 
-Last year I put some money into an [Index fund] [1]. Leaving all your money in a
-savings account is not the best way to invest it. Especially now, because of the
-financial crisis central banks rates are at rock bottom. This means that the
-rates you’ll get from a saving account will be low too.
+Exactly one year ago I put some money into an [Index fund] [1]. Leaving all your
+money in a savings account is not the best way to invest it. Especially now
+because of the financial crisis: central banks rates are low. This means that
+the rates you’ll get from a savings account will be low too.
 
 Index funds are a good way to increase the return on your money if you’re
 willing to accept the risk. It’s almost guaranteed to be a good move if you are
-planning to leave the money there for a long time —5 years or more.
+planning to leave the money there for a long time —10 years or more.
 
 2009 was a good year to invest in stocks. Because the world stock markets were
 in turmoil: prices were low. But I was like most people: scared. I didn’t want
-to invest my money while prices were still falling. I wanted to be sure that
+to invest my money while prices were still falling; I wanted to be sure that
 stocks were well on their way up. I opened my account in September 2009, when
-stock prices had already recovered a good chunk of their value. I bough in
-September 2009 when the [S&P TSX] [2] —the most well known Canadian index— was
-at 11400, up from a low of less than 8000 in early 2009.
+stock prices had already recovered a good chunk of their value. In September
+2009 when the [S&P TSX Composite] [2] was at 11400, up from less than 8000 in
+early 2009.
 
 Overall I think this has been a good decision. Today, the TSX is up by about 6%
 to 12100. That’s below average by historical standard, but still much more than
-1-2% I could have had if I had left everything in a saving account. The fund
-feeds and dividends from the stocks more or less compensate each other, so the
-index is a good indicator of how well your money is doing.
+1-2% I would have had if I had left everything in a savings account. The fund
+fees and dividends from the stocks more or less compensate each other, so the
+index is a good indicator of how well the money is doing.
 
 The biggest downside is that I check Google Finance all the time to see how the
 index is doing. Another distraction I don’t need...
