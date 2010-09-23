@@ -1,0 +1,31 @@
+title: MuPDF
+date: 2010-9-23
+
+I need to read a [PDF] [1] document from time to time. Over the last 12 years,
+I’ve tried many PDF viewers and they all disappointed somehow:
+
+<dl>
+  <dt>acroread</dt>
+  <dd>Proprietary software, buggy, slow</dd>
+  <dt>xpdf</dt>
+  <dd>Ugly fonts, awkward to use, slowish, and no-longer maintained</dd>
+  <dt>ghostscript + gv</dt>
+  <dd>Ugly fonts, awkward to use, feels old</dd>
+  <dt>ePdfViewer</dt>
+  <dd>awkward to use and slow</dd>
+  <dt>evince</dt>
+  <dd>I don’t want to install Gnome for a PDF viewer, and it’s slow</dd>
+</dl>
+
+About a month ago I tried [MuPDF] [2]. According to its website:
+
+> *[MuPDF] [2] is a lightweight PDF viewer and toolkit written in portable C.*
+
+And that’s exactly what it is! MuPDF is a lightweight PDF viewer that’s really
+lightweight and fast. It uses the keyboard, and it’s intuitive to use. I would
+like to be able to copy/paste some text out of a document, but that’s not
+implemented yet. Except that I love MuPDF. I still growl when I see a PDF, but
+at least it eases the pain.
+
+[1]: http://www.useit.com/alertbox/20030714.html
+[2]: http://mupdf.com/
