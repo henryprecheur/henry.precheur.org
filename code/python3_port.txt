@@ -1,0 +1,16 @@
+title: Port of Python 3.1.2
+date: 2010-4-13
+
+I've updated my OpenBSD port of [Python 3][] to version 3.1.2.
+
+You can get the latest tarball here:
+
+> <http://bitbucket.org/henry/python-31-openbsd-port/get/tip.gz>
+
+Extract the tarball and rename the directory python-31-openbsd-port to 3.1 and
+move it to /usr/ports/lang/python. You'll also have to patch
+/usr/ports/lang/python/Makefile.inc. Go into /usr/ports/lang/python and type:
+
+    patch -p 0 < 3.1/Makefile.inc.diff
+
+[Python 3]: http://docs.python.org/3.1/

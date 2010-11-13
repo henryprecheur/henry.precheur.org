@@ -1,0 +1,39 @@
+title: Double or single quotes?
+date: 2009-8-8
+
+In Python, string literals can be enclosed in single quotes (`'`) or double
+quotes (`"`). Which one is better? Most people chose to use double quotes, it is
+tempting to stick to what the majority is doing and use double quotes. Not me, I
+mix two styles of quoting to increase readability. I apply one of [Edward
+Tufte](http://www.edwardtufte.com/) principles:
+
+> **Maximize the data-to-ink ratio**
+
+When quoting I maximize the data-to-pixel ratio. The best style of quoting is
+the one which minimize the number of pixels:
+
+    'Hello World'
+
+    "Hello World"
+
+Here the single quote is better. We should always use single quotes? No.
+Consider the following case:
+
+    'O\'Neil'
+
+    "O'Neil"
+
+Here double quotes are better, it removes the backslash, it’s more readable.
+That’s what the Python interpreter is doing when printing string representation:
+If the string doesn’t contain quotes, it will enclose this string with single
+quotes. If the string contains single quotes but no double quotes, it will
+enclose the string with double quotes. And if the string contains both single
+and double quotes, it will use single quotes.
+
+This simple algorithm does not always produce the nicest string:
+
+    '\'"\''
+
+    "'\"'"
+
+The Python interpreter will use the first one, even if the second is better.

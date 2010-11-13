@@ -1,0 +1,8 @@
+syntax: glob
+
+*.pyc
+*~
+.*.swp
+output*
+weblog/doc/.buildinfo
+weblog/doc/.doctrees/*

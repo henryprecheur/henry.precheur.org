@@ -1,0 +1,16 @@
+title: The minimal valid HTML5 page
+date: 2009-03-27 18:50
+
+Like [HTML 4](2008/11/25/The_minimal_valid_html_page.html), but now it’s [HTML
+5](http://dev.w3.org/html5/spec/Overview.html).
+
+    <!DOCTYPE html>
+    <title></title>
+    <p>
+
+Thanks to the finally-easy-to-remember Doctype, it’s shorter. <del>HTML 5 looks
+like pure-awesomeness turned into a markup language.</del> So far HTML 5 turns
+out to be a big pile of crap.
+
+[validator.nu](http://validator.nu/) validates it elegantly, it is much
+better than the w3 validator.

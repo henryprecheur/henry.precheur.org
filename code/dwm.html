@@ -1,0 +1,27 @@
+title: Switching to dwm
+date: 2008-08-25 22:30:44
+files: dwm-5.1-displaydate.diff
+
+<p>I just switched from <a href="http://www.suckless.org/wmii/">wmii</a> to
+<a href="http://www.suckless.org/dwm/">dwm</a> a light and hackable window
+manager.</p>
+
+<p>dwm is really nice and simple, but I did not like that it reads its status
+bar text from stdin. Mainly because it took me a while to figure out how to
+make it work properly:</p>
+
+<pre><code>while true; do echo `date`; done | dwm
+</code></pre>
+
+<p>And displaying the date is simple enough to be done directly inside the dwm
+executable. I created a patch to make dwm displays the local date without
+reading the standard input.</p>
+
+<p>It also saves a few lines of code ;)</p>
+
+<p><del>Download the patch <a
+        href="dwm-5.1-displaydate.diff">here</a>.</del> This version
+works with dwm 5.1, but <strong>doesn’t work with version 5.5+</strong>.</p>
+
+<p>You can find an updated version of the patch <a
+    href='2009/5/20/dwm%2C_display_date_patch_updated.html'>here</a>.</p>

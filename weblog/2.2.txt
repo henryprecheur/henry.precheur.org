@@ -1,0 +1,16 @@
+title: Weblog 2.2
+date: 2009-8-1
+
+This release fixes a bug and add a feature:
+
+> sub-directories of the source directory are now visited and their content is
+> automatically loaded. This way you can organize your blog posts like you want:
+> like regrouping posts on the same subject in a directory.
+
+Get it on the [download page](install.html#download).
+
+Don’t hesitate to ask questions or request support in the [mailing list][].
+Report any bugs and problems on the [bugs & issues tracker][].
+
+[mailing list]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[bugs & issues tracker]: http://bitbucket.org/henry/weblog/issues/ "Weblog’s issue tracker"

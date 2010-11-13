@@ -1,0 +1,56 @@
+title: Dynamically create a type with Python
+date: 2009-06-17
+
+Python is a dynamic language, it means you can create new types at runtime. I
+had a case where I needed to create a new class depending of what a remote
+server could do.
+
+The use case was:
+
+  - Ask the server what class / methods are available, for example:
+
+        ('/cat/meow',
+         '/cat/eat',
+         '/cat/sleep',
+         '/dog/bark',
+         '/dog/eat',
+         '/dog/sleep')
+
+  - Create dynamically the class with the associated methods to call the
+    corresponding remote methods.
+
+This means I couldn’t use the well known syntax:
+
+    class A(object):
+        ...
+
+    class B(A):
+        ...
+
+I could have by-passed the problem by using
+[`exec`](http://docs.python.org/reference/simple_stmts.html#exec):
+
+    exec('class %s(object): pass' % 'Cat')
+
+But that’s not the right way to do it. Code generation is prone to breakage and
+easy to get wrong. Using
+[`type()`](http://docs.python.org/library/functions.html#type) is a better
+option, it is simpler to use and faster to execute: no need to parse a string.
+
+    new_class = type('Cat', (object,), {'meow': remote_call('meow'),
+                                        'eat': remote_call('eat'),
+                                        'sleep': remove_call('sleep')})
+
+`new_class` is a regular class:
+
+    >>> type(object)
+    <type 'type'>
+    >>> type(new_class)
+    <type 'type'>
+    >>> new_class.__name__
+    'Cat'
+    >>> new_class.__bases__
+    (<type 'object'>,)
+
+It’s useful when you have to build a class from *something external* like a
+database schema, or a web-service.

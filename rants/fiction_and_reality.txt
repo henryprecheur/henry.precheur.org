@@ -1,0 +1,23 @@
+title: Fiction and reality
+date: 2010-6-1
+
+Another [article from the Economist] [1] talking about how TV influence real
+life. In the show “24”, the hero —Jack Bauer— tortures terrorists to extract
+information. Most people watching the show believe that torture is a efficient
+way of getting information. If it works for Jack Bauer, it must work in real
+life, right?
+
+The medias affect our view of the world events as well as every day life.
+Romantic movies, series, and books make us expect to have a very agitated
+sentimental life, when in fact, our sentimental life is mostly boring. Kurt
+Vonnegut explained that beautifully in [his talks] [2]:
+
+> “[...] Because we grew up surrounded by big dramatic story arcs in books and
+> movies, we think our lives are supposed to be filled with huge ups and downs! So
+> people pretend there is drama where there is none.”
+
+People want life to be like TV, and books. Fortunately real life is boring and
+predictable.
+
+[1]: http://www.economist.com/world/united-states/displaystory.cfm?story_id=16219301
+[2]: http://sivers.org/drama

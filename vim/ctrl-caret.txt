@@ -1,0 +1,9 @@
+title: CTRL-^ in Vim
+date: 2010-08-20
+
+Today I learned about [CTRL-^] [1] in Vim via this [blog post] [2]. It allows
+you to quickly jump to the previously edited buffer. Useful if you are editing 2
+files at the same time. For example an HTML file and a CSS file.
+
+[1]: http://vimdoc.sourceforge.net/htmldoc/editing.html#CTRL-^ "Vim documentation"
+[2]: http://weblog.jamisbuck.org/2008/10/10/coming-home-to-vim "Coming home to Vim"

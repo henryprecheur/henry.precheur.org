@@ -1,0 +1,62 @@
+title: StarCraft 2 after a few days
+date: 2010-7-29
+
+On July 26th right before midnight, I went to my local EB Games store to get my
+copy of [StarCraft 2: Wings Of Liberty] [1]. After waiting an hour to get it, I
+got back home and launched the installation right away. It took another hour to
+copy the 12GB required.
+
+I was a bit anxious that the game wouldn’t run smoothly on my modest computer.
+But it was perfectly playable in high settings. The only slowdown I experienced
+was during a huge battle with many units on the screen. The game looks good. As
+usual Blizzard relies the skill of its artists and designers to make a beautiful
+game; unlike others that rely on fancy visual effects and raw processing power.
+
+Loading...
+==========
+
+StarCraft 2 takes a lot of time to load. Each level, and each cut scene loads
+for 10 seconds or more. It would be fine if this was just once in a while, but
+it happens quite often when playing the campaign. This spoils what would
+otherwise be a great single-player experience. The loading screen is not Alt-Tab
+friendly. Each time you switch from the game to another application it takes 10
+seconds or more to switch to the other application. Switching back to StarCraft
+2 is even longer. I don’t know if that’s because I don’t have enough memory or
+if it’s the game.
+
+> **Update**: Lowering the Textures detail or/and the Graphic settings decreased
+> loading time a lot. The problem might be that I only have 2GB of memory. With
+> textures at medium and graphic details at low the game loads very quickly, but
+> it’s not pretty to look at.
+
+I played 15 hours, and experienced 3 crashes. That’s a crash every 5 hours. This
+is disappointing; especially from Blizzard, which usually releases high-quality
+products. I think they could have spend more time polishing the code and getting
+the last bugs out instead of working on all those fancy cut-scenes during the
+campaign. Those crashes and bugs should be fixed by future patches, but it’s
+still annoying when you have to reload the game after a lengthy loading screen.
+
+The campaign
+============
+
+I played the campaign with the normal level of difficulty. It was a bit too
+easy: I didn’t fail any mission. I’ll probably replay the campaign in hard soon.
+
+Overall the campaign is much better than what was in the original StarCraft and
+WarCraft 3. Blizzard must have spent a lots of time and resources on it. The
+story is good, there are no “filler” mission, and the cut-scenes are gorgeous.
+Even if you don’t play online, the game is well worth it.
+
+There are a few bonuses, like challenges that will help you improve game. The
+first set of challenges explains you which unit to use to counter other units.
+It’s a good way to get ready for the online game.
+
+I have yet to play online. Blizzard now have a new system where players are
+divided into leagues. This way if you’re a beginner you are very unlikely to
+play against somebody much stronger than you.
+
+Overall I am a bit mixed about StarCraft 2. That’s mostly because I had such
+high expectations for it. The game is great, but the glitches are hard to
+ignore.
+
+[1]: http://starcraft2.com/

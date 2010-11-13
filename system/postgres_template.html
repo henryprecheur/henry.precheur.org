@@ -1,0 +1,40 @@
+title: The day PostgreSQL saved my butt from Django and TSearch2
+date: 2008-05-18 13:44:46
+
+<p>
+<a href='http://www.lingq.com/'>LingQ</a> recently integrated
+<a href='http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/'>TSearch2</a>
+a full text engine for
+<a href='http://www.postgresql.org/'>PostgreSQL</a>. TSearch2 improves the
+search accuracy and speed it up. LingQ is built with <a
+    href='http://www.djangoproject.com/'>Django</a>, and we ran into a major
+issue regarding Django and TSearch2 integration: the <q>test</q> command which
+runs unit tests was broken.
+</p>
+<p>
+When unit tests are run; Django creates an empty database. Thus the operations
+performed during the tests don't overwrite the data on the working database.
+TSearch2 needs to be installed on the newly created database; it needs to
+install a new SQL type: <code>tsvector</code> and some other stuffs. Without it
+the table creation failed.
+</p>
+<p>
+Unfortunately Django does not provide any means of running SQL code immediately
+after the database creation.
+</p>
+<h3>The solution: Template Databases</h3>
+<p>
+PostgresSQL provide a mechanism called
+<a href='http://www.postgresql.org/docs/8.3/static/manage-ag-templatedbs.html'>Template
+Databases</a>. The database creation works by copying an existing database:
+<code>template1</code>. Installing TSearch2 on the database
+<code>template1</code> solves the problem:
+</p>
+<div class='code'>
+sudo -u postgres psql template1 &lt; /path/to/tsearch2.sql
+</div>
+<p>
+Everything runs smoothly now. Thanks to PostgreSQL we did not have to throw away
+all our unit tests to use TSearch2!
+</p>
+<!-- vim:set tw=80: -->

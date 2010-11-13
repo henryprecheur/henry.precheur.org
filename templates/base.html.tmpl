@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
+{% block feed %}
+<link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
+{% endblock %}
+<meta http-equiv="Content-Type" content="text/html;charset=US-ASCII">
+<meta name='generator' content='weblog'>
+{% block head %}
+<link rel='stylesheet' type='text/css' href='{{ top_dir }}common.css'>
+{% endblock %}
+</head>
+<body>
+{% block header %}
+<div id='search'>
+    <form method='GET' action="http://www.google.com/search">
+    <p>
+    <input type="text" name="q" maxlength="255" value="">
+    <input type="hidden" name="domains" value="henry.precheur.org">
+    <input type="hidden" name="sitesearch" value="henry.precheur.org">
+    <input type="submit" name="submit" value="Search">
+    </p>
+    </form>
+</div>
+{% endblock %}
+<div id='main'>
+{% block content %}{% endblock %}
+</div>
+{% block footer %}
+<div id='menu'>
+<p><a href='{{ top_dir }}about'>About</a></p>
+<p>
+<a href='{{ top_dir }}index.html'>Blog</a><br>
+<a href='{{ top_dir }}archives'>Archives</a>
+</p>
+</div>
+<div id='footer'>
+<p id='weblog-ad'>
+Published using <a href='http://henry.precheur.org/weblog/'>Weblog</a>
+</p>
+</div>
+{% endblock %}
+</body>
+</html>
+{# vim:set ft=htmljinja: #}

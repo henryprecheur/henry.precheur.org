@@ -1,0 +1,25 @@
+title: Weblog 1.2
+date: 2008-11-22
+
+Weblog 1.2 is released. It features a [brand new
+documentation](index.html) powered by [Sphinx](http://sphinx.pocoo.org/),
+including a rewritten tutorial and a more detailed reference manual. Thanks to
+Bastien Simondi for reviewing the documentation!
+
+This new version also comes with a few bug fixes:
+
+- Headers handled correctly with markdown
+- Added more elements in Atom feed
+- Display nothing instead of “unknown author” when there is no author
+- Fixed date parsing and formatting
+- Fixed escaping of UTF-8 entities
+
+Get Weblog 1.2 on the [download page](install.html#download).
+
+Don't hesitate to ask questions about Weblog:
+
+[http://groups.google.com/group/weblog-users][] or
+[weblog-users@googlegroups.com][].
+
+[http://groups.google.com/group/weblog-users]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[weblog-users@googlegroups.com]: mailto:weblog-users@googlegroups.com

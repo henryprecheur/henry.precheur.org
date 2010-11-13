@@ -1,0 +1,11 @@
+div.post-content
+{
+    width: 100%;
+    text-align: left;
+}
+
+/* Don't display useless crap when printing */
+div#search, div#menu, div.paginator
+{
+    display: none;
+}

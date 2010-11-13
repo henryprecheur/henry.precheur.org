@@ -1,0 +1,41 @@
+title: Increasing the signal/noise ratio in public discussions
+date: 2009-12-22
+
+Mailing lists, and forums work well with few participants. As the number of
+participants go up: noise increases, and it becomes harder to follow
+conversations. Some people post lengthy unedited texts, which are hard to read
+and to understand. Others reply without even reading the original post, adding
+nothing to the conversation and creating confusion.
+
+As far as I know, the only reliable way to keep the noise level low is
+moderation. A few moderators accept, edit, or reject posts from other members.
+It works well, but require lots of effort from the moderators.
+
+Automatic means of limiting the noise are increasingly popular today. Many
+public websites use voting systems. Different algorithms were developed, some
+limit the noise up to a certain point. But those systems are vulnerable to the
+[tyranny of the majority](http://en.wikipedia.org/wiki/Tyranny_of_the_majority).
+Overall voting systems don’t work as well as classic moderation.
+
+Limiting the noise by limiting the source of the noise
+------------------------------------------------------
+
+Another solution would be to limit the number of characters participants can
+use. For example everybody could be limited to 1000 characters a day on a high
+traffic mailing list. People would be clearer, as they try to make their point
+in fewer words.
+
+Of course the most prolific contributors would also be *impeded* by this system.
+But it could turn a good contributors into a great contributor. Shortening a
+text usually makes it clearer.
+
+I think limiting the number of characters subscribers can use each day, week, or
+month would have the following effect:
+
+- Good contributors would be more concise
+- Trolls and clueless subscribers would not be able to generate as much noise
+- Part of the noise would turn into useful information as some people start to
+  think or read other’s posts before posting
+
+I’ve never seen such system in action. I’d like to see how it turns out in
+practice.

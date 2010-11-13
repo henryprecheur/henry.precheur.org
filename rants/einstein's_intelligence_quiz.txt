@@ -1,0 +1,95 @@
+title: Einstein’s Intelligence Quiz: Bogus number and Phony statistic
+date: 2008-11-21
+
+Somebody posted [this link](http://www.business.uiuc.edu/broker/iq.htm) on
+[reddit](http://www.reddit.com/r/reddit.com/comments/7eowl/a_redditors_wet_dream_einstein_wrote_a_quiz_he/).
+It’s a logical quiz called “Einstein’s Intelligence Quiz”, it’s challenging, I
+had fun solving it. Try it; it should keep you busy 20 minutes or more.
+
+This test is also known as the [Zebra
+Puzzle](http://en.wikipedia.org/wiki/Zebra_Puzzle). And there is no prof that
+Einstein wrote it.
+
+At the top of the page and you can read:
+
+> **[Einstein] said that 98% of the people in the world cannot solve the quiz.**
+
+I guess this sentence was added to challenge the reader, being in the top 2% of
+the world population is something most would proud of. Oh … this is also a
+typical example of doubtful statistic.
+
+Prefixing a statement with “Einstein said …” makes it true
+==========================================================
+
+Attributing this sentence to Einstein is a deceptive way of making it
+authoritative.
+
+> “Einstein was soooo smart, this is certainly true!”
+
+Sorry but **Einstein was a physicist; not a statistician or a psychologist**. He
+was not qualified to give such number. One could argue that the
+statistical background to calculate reliably such a number is basic, and that
+Einstein could have mastered it very easily. That may be true, but to support
+this number, a representative sample of the world population is needed. And you
+can’t give such a precise number with only 10 or 20 people.
+
+For example when giving the test to 10 people the maximum failure rate you can
+have is 90%. If all 10 fail, then the failure rate is 100%, which is too high.
+If only 9 fail it’s 90%.
+
+**The get a rate of 98% you need at least 50 participants**: 1 who succeeds and
+49 who fail. Einstein was a loner, it’s unlikely he would have carried such an
+experiment.
+
+I don’t believe Einstein pulled this number out of his ass either. He was a
+scientist, he knew that such number would be bogus without a proper evaluation.
+He would probably have said “Most people” instead of “98% of the people”.
+
+Phony statistic
+===============
+
+> “OK, maybe Einstein did not say such thing. That does not necessarily make
+> this number bogus.”
+
+The number is bogus no matter who is behind it. There is no context, which
+raises several objections about its validity:
+
+  - **There is no time limit to the test**. I am not aware of any test measuring
+    intelligence which does not have a time limit. This alone makes this number
+    irrelevant.
+
+  - The world population’s intelligence tends to raise. Access to a better
+    education system makes a big difference. So when was this sentence supposed
+    to be true? If this test was “validated” in the 50’s, it’s clear that this
+    number does not hold anymore. IQ test are “normed” every 20 years or so. To
+    be relevant today this quiz should certainly be changed to make sure 98% of
+    today’s world population fails it; or the number itself should be changed.
+
+  - The sample “98% of the people in the world” is dubious. **Did the sampling
+    really included a significant amount of people from poor regions of India,
+    China, or Africa?** Even now reaching these people is difficult. A sample
+    composed mainly of Europeans and Americas is much more likely If anything
+    was done to validate this “98%”.
+
+  - Of course there is no statistical details about the number. What was the
+    [margin of error](http://en.wikipedia.org/wiki/Margin_of_error) or the
+    number of participants for example? Today’s world is very found of numbers
+    without context, such details are usually omitted. They are nonetheless
+    important, **each omission of those statistical details should raise
+    suspicion**.
+
+My guess is: this number was invented to stimulate readers to do the quiz and
+was not supported by any actual data. I wonder how many people successfully
+completed the quiz are proudly claimed to be in the top 2% of the world
+population.
+
+Statistics are more and more important in today’s world. Lots of decisions are
+based on them. It’s still difficult to make good decisions based on good
+statistics, let alone those based on bad ones…
+
+I am not a statistician, and my knowledge is limited. But aberrant numbers like
+this one are easy to spot. I recommend you to read [How to Lie with
+Statistics](http://en.wikipedia.org/wiki/How_to_lie_with_statistics), an
+excellent introduction to statistics for the layman. If you are a programmer I
+also the recommend Zed Shaw’s article [Programmers Need To Learn Statistics Or I
+Will Kill Them All](http://www.zedshaw.com/rants/programmer_stats.html).

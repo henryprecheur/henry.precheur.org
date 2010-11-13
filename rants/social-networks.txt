@@ -1,0 +1,30 @@
+title: Everybody speaks, nobody listens
+date: 2010-8-22
+files: ../images/johnny_automatic_a_small_tea_party.png
+
+<div class='picture'>
+  <img src='../images/johnny_automatic_a_small_tea_party.png' width='250' height='124'>
+  <small>
+    “I’m worried Margaret, Leo Laporte hasn’t tweeted in weeks!”<br>
+    “George, who gives a fuck anyway? Social networks are for peasants.”
+  </small>
+</div>
+
+Leo Laporte —a technology journalist and an Internet celebrity— wrote about a
+[problem] [1] he had with Buzz, a micro-blogging service from Google. For a
+couple of weeks his posts on Buzz, Twitter, and Facebook weren’t visible to the
+public, and nobody noticed.
+
+Leo is an important personality on Internet. Many people care about what he’s
+saying, but nobody noticed that he didn’t post anything on social networks for 2
+weeks. This made him realize he should spent more time updating his Blog instead
+of creating content that nobody reads on social networks.
+
+I’ve always felt there was something wrong with social networks. I don’t have a
+Facebook account, I feel that it would be a waste of time. Nothing gets done on
+Facebook, it looks like a way to maximize gossip. But after reading the post by
+Leo, I think I was wrong. Social networks don’t even make gossip more efficient;
+nobody listens, nobody cares. It’s like playing a single player game: You might
+enjoy it, but don’t expect to get laid because you use it.
+
+[1]: http://leoville.com/buzz-kill

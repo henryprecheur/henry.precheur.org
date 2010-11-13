@@ -1,0 +1,69 @@
+title: Great documentation, great software
+date: 2009-10-27
+
+I have never seen bad software with great documentation: If the software was
+bad, the documentation was also bad. But good software don’t always have good
+documentation. It’s common to hear that a component or a library is great, but
+the documentation is too limited, confusing, outdated, or doesn’t even exist.
+
+Documentation like testing, Quality Assurance, and validation, is at the end of
+the process of creating software. It’s easy to cut, most people don’t enjoy
+doing it, and justify this:
+
+> “We can release the software without a proper manual. People don’t read
+> manuals anyway.”
+
+That’s confusing the symptom and the disease. If people don’t read
+documentation, it’s because manuals are usually bad and unhelpful.
+
+I run OpenBSD on my home computer. When I want to know something about a
+function, I don’t use Google, I use OpenBSD’s manual pages. Because they are
+well-written, and helpful. They are written so you learn how things work. They
+explain why things work this way. What to do, what to avoid.
+
+Let's compare OpenBSD’s manual for
+[`strncpy(3)`](http://www.openbsd.org/cgi-bin/man.cgi?query=strncpy) to other
+manuals and documentation. `strcpy` and `strncpy` have some well-known security
+problems. OpenBSD’s manual explain why they are insecure, how to use them
+properly, and point to
+[`strlcpy(3)`](http://www.openbsd.org/cgi-bin/man.cgi?query=strlcpy), a safer
+and easier version of `strncpy(3)`.
+
+Microsoft’s own [`strcpy`
+documentation](http://msdn.microsoft.com/en-us/library/kk6xf663(VS.80\).aspx) is
+not very helpful, there are a few code listings without much explanations. And
+this warning:
+
+    These functions are deprecated because more secure versions are available;
+    see strcpy_s, wcscpy_s, _mbscpy_s.
+
+Why are they insecure? What should I do if I really have to use `strncpy`
+because I need portable code? Microsoft a multi-billion dollars company doesn’t
+seem to care very much.
+
+The Glibc is the C library used by most Linux distribution. Its [`strncpy(3)`
+manual](http://manpages.debian.net/cgi-bin/man.cgi?query=strncpy) has more
+details than Microsoft’s one. There’s a single 3 lines example. And it also
+contains a minimal implementation of `strncpy`, which could have been replaced
+by more examples: I want to know of to properly use `strncpy`, not how to
+implement it. The manual could be made shorter and clearer if it was better
+edited.
+
+There’s also a notice about security:
+
+    If the destination string of a strcpy() is not large enough  (that  is, if
+    the  programmer  was  stupid  or lazy, and failed to check the size before
+    copying) then anything might happen.  Overflowing  fixed  length strings is
+    a favorite cracker technique.
+
+If somebody was stupid and lazy, that’s not “the programmer” but the author of
+the manual who is unhelpful and insulting. What about treating readers as
+adults? What about explaining the problem? And what about suggesting solutions?
+
+This was removed in newer version of the manual, but it was there for years
+before somebody bothered removing it.
+
+
+Good documentation is a clear sign of quality. When you have to decide between
+multiple software, read the documentation. It will give you more insight about
+its quality than any sale pitch or any fancy demo.

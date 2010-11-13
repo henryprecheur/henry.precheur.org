@@ -1,0 +1,26 @@
+title: The Pragmatic Programmer: a bad classic
+date: 2009-04-17 22:05
+
+Some books seem to enjoy a bible-like status in the programming world.
+[The Pragmatic Programmer][] is one of them. It is usually well ranked among
+*Top 10 Programming books* posts scattered all over tech blogs.
+
+The writing is fine, it is entertaining to read. But you won’t learn much with
+“The Pragmatic Programmer”, it is too shallow to make a significant impact. It
+introduces a concept, sometime gives a quick example, and move on to something
+else. It is a programmer’s self-help book, and like most self-help books, works
+this way:
+
+- Read the book
+- Feel good
+- Don’t change anything
+
+Many examples and exercises are confusing or badly explained. Some are just
+plain wrong like one example page 189.
+
+Overall I was disappointed. The book is not particularly bad, but it’s overrated.
+Don’t waste your time reading it if you really want to be a better programmer.
+I recommend [Code Complete 2ed][], it is detailled and clear.
+
+[The Pragmatic Programmer]: http://www.pragprog.com/the-pragmatic-programmer
+[Code Complete 2ed]: http://www.cc2e.com/

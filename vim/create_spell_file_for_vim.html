@@ -1,0 +1,63 @@
+title: Create a spell file for VIM
+date: 2008-3-19
+
+<p>
+Since version 7, <a href='http://www.vim.org'>VIM</a> has the ability to spell
+check documents on the fly. By default VIM only contains an English dictionary.
+To add another dictionary:
+</p>
+<p>
+Open this URL:
+<a href='http://wiki.services.openoffice.org/wiki/Dictionaries'>
+http://wiki.services.openoffice.org/wiki/Dictionaries</a>
+</p>
+<p>
+Select the dictionary you want to use. For this example I will use the French
+dictionary: <a
+href='http://dico.savant.free.fr/telechargement.php'>French (France)
+R&eacute;forme 1990</a>.
+</p>
+<p>
+Download the dictionary and unpack it:
+</p>
+<pre>
+$ unzip fr_FR_1-2-0.zip
+Archive:  fr_FR_1-2-0.zip
+  inflating: fr_FR.aff
+  inflating: fr_FR.dic
+  inflating: README_fr_FR.txt
+</pre>
+<p>
+Then launch VIM and <em>compile</em> the dictionary:
+<pre>
+:mkspell fr fr_FR
+</pre>
+<p>
+<q>fr</q> is the locale of the dictionary and <q>fr_FR</q> the file-names
+of the dictionary (without the .aff &amp; .dic extension). If the dictionary
+files were named <code>foo.dic foo.aff</code> you would type:
+</p>
+<pre>
+:mkspell fr foo
+</pre>
+<p>
+VIM will generate a file named <code>fr.utf-8.spl</code> (the <code>utf-8</code>
+string might change depending on your locale).
+</p>
+<p>
+Copy the generated dictionary to <code>/usr/share/vim/vim71/spell</code> or
+even better to <code>$HOME/.vim/spell/</code>.
+</p>
+<p>
+Then launch VIM, open the document to spell check and type:
+<pre>
+:set spell spelllang=fr
+</pre>
+<p>
+And you have on the fly French spell checking directly in VIM!
+</p>
+<p>
+More details in the <a
+href='http://vimdoc.sourceforge.net/htmldoc/spell.html#spell-mkspell'>VIM
+documentation</a>.
+</p>

@@ -1,0 +1,169 @@
+html {
+    font-size: 100.01%;
+}
+
+body
+{
+    font-family: sans-serif;
+    text-align: center; /* for IE 4+ */
+}
+
+div#main
+{
+    margin: 0 auto;
+    text-align: left; /* counter the body center */
+    width: 44em;
+    max-width: 90%;
+}
+
+h1#title {
+    margin-bottom: 0.1em;
+}
+
+h1#title a, h2 a
+{
+    color: #222;
+}
+
+h2 {
+    font-size: xx-large;
+    margin-bottom: 0.3em;
+}
+
+p.page-header {
+    margin-top: 0.3em;
+}
+
+h3, h4, h5 {
+    border-bottom: silver solid 1px;
+}
+
+p#description {
+    font-size: small;
+    margin: 0.1em;
+    margin-left: 6em;
+}
+
+dt
+{
+    font-weight: bold;
+}
+
+p, ul, ol
+{
+    line-height: 150%;
+}
+
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table caption, table td, table th
+{
+    padding: 0.2em;
+}
+
+table td, table th
+{
+    border: 1px solid gray;
+}
+
+table td
+{
+    text-align: center;
+}
+
+table .dark
+{
+    background-color: silver;
+}
+
+.code {
+    font-family: monospace;
+}
+
+pre, .code
+{
+    border: gray solid 1px;
+    background-color: silver;
+    padding: 1em;
+}
+
+div.page-content, p.page-header
+{
+    margin-left: 1em;
+    width: 42em;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+}
+
+div#menu
+{
+    text-align: right;
+    position: absolute;
+    right: 2em;
+    top: 4em;
+}
+
+div#menu a#archives {
+    font-size: small;
+}
+
+div#search
+{
+    float: right;
+}
+
+hr
+{
+    border: 0;
+    background-color: black;
+    height: 1px;
+    margin: 2em 0;
+}
+
+div.picture {
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+
+img.lang-icon {
+    display: inline;
+    border: none;
+}
+
+p#back_link {
+    margin-top: 2em;
+}
+
+img.right{
+    float: right;
+    margin: 1em;
+}
+
+@media print {
+    div.page-content {
+        width: 100%;
+    }
+
+    /* Don't display useless crap when printing */
+    div#search, div#menu, div.paginator {
+        display: none;
+    }
+}
+/* vim:set sw=4 ts=4: */

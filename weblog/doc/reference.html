@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Weblog’s reference manual &mdash; Weblog v2.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '2.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Weblog v2.5 documentation" href="index.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="weblog-s-reference-manual">
+<span id="reference-manual"></span><h1>Weblog&#8217;s reference manual<a class="headerlink" href="#weblog-s-reference-manual" title="Permalink to this headline">¶</a></h1>
+<p>In this document <em>Weblog</em> is the name of the software. The <em>web log</em> concept is
+referred as the more common term <em>blog</em>.</p>
+<p>According to <a class="reference external" href="http://en.wikipedia.org/wiki/Blog">Wikipedia</a>:</p>
+<blockquote>
+A <em>blog</em> (a portmanteau of <em>web log</em>) is a website where entries are written
+in chronological order and commonly displayed in reverse chronological order.</blockquote>
+<div class="section" id="setting-the-publication-date">
+<h2>Setting the publication date<a class="headerlink" href="#setting-the-publication-date" title="Permalink to this headline">¶</a></h2>
+<p>A good practice is to set the date when the post gets published. By doing
+so the date won&#8217;t get changed if the file gets copied or modified. To set the
+date of a post, use the command <tt class="docutils literal"><span class="pre">date</span></tt>:</p>
+<div class="highlight-python"><pre>$ date
+Mon Apr 14 00:10:44 PDT 2008
+
+$ cat my_blog_post.html
+title: My blog post
+
+Some random content.
+
+$ weblog date my_blog_post.html
+Setting date to 2008-04-14 00:12:22 in file my_blog_post.html
+
+$ cat my_blog_post.html
+title: My blog post
+date: 2008-04-14 00:12:22
+
+Some random content.
+
+$ weblog date my_blog_post 2008-5-15
+Setting date to 2008-05-15 in file my_blog_post.html
+
+$ cat my_blog_post.html
+title: My blog post
+date: 2008-05-15
+
+This is a blog post without any date.</pre>
+</div>
+<p>Without any argument the date is set the local time. Most of the time, you will
+only need this command:</p>
+<div class="highlight-python"><pre>$ weblog date path/to/my/post.txt</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">date</span></tt> command accepts 3 formats as optional argument:</p>
+<blockquote>
+<ul class="simple">
+<li>YEAR-MONTH-DAY (2008-01-31)</li>
+<li>YEAR-MONTH-DAY HOUR:MINUTE (2008-01-31 16:45)</li>
+<li>YEAR-MONTH-DAY HOUR:MINUTE:SECONDS (2008-01-31 16:45:14)</li>
+</ul>
+</blockquote>
+<p>This way you can set a specific publication date for a post.</p>
+</div>
+<div class="section" id="writing-a-post">
+<h2>Writing a Post<a class="headerlink" href="#writing-a-post" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="headers">
+<h3>Headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h3>
+<p>Headers define everything that is not part of the post content:
+They are standard <span class="target" id="index-0"></span><a class="reference external" href="http://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a> headers (the headers used in Emails). Only
+<tt class="docutils literal"><span class="pre">title</span></tt> is mandatory.</p>
+<blockquote>
+<ul class="simple">
+<li>Title: <tt class="docutils literal"><span class="pre">title</span></tt></li>
+<li>Author: <tt class="docutils literal"><span class="pre">author</span></tt></li>
+<li>File&#8217;s encoding: <tt class="docutils literal"><span class="pre">encoding</span></tt> (see <a class="reference internal" href="#encoding">Encoding</a>)</li>
+<li>Files attached to the post: <tt class="docutils literal"><span class="pre">files</span></tt> (see <a class="reference internal" href="#attaching-a-file-to-a-post">Attaching a file to a post</a>)</li>
+<li>Slug: <tt class="docutils literal"><span class="pre">slug</span></tt> (See <a class="reference internal" href="#post-s-url">Post&#8217;s URL</a>)</li>
+</ul>
+</blockquote>
+<p>A blank line must follow headers.</p>
+</div>
+<div class="section" id="content">
+<h3>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h3>
+<p>After the headers comes the content of post. You can write posts using 2 syntaxes:</p>
+<blockquote>
+<ul class="simple">
+<li>Raw HTML syntax</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Markdown">Markdown</a></li>
+</ul>
+</blockquote>
+<p>The type of the post is determined by the post&#8217;s file extension.</p>
+<blockquote>
+<ul class="simple">
+<li><cite>.html</cite> for HTML</li>
+<li><cite>.txt</cite> for Markdown</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="post-s-url">
+<h3>Post&#8217;s URL<a class="headerlink" href="#post-s-url" title="Permalink to this headline">¶</a></h3>
+<p>The URL of a post is determined by its date and its <a class="reference external" href="http://en.wikipedia.org/wiki/Slug_%28production%29">Slug</a>. For example:</p>
+<div class="highlight-python"><pre>title: test
+date: 2009-11-5
+
+Example</pre>
+</div>
+<p>The URL will be <a class="reference external" href="http://.../2009/11/5/test.html">http://.../2009/11/5/test.html</a>. It is constructed this way:</p>
+<div class="highlight-python"><pre>&lt;Year&gt;/&lt;Month&gt;/&lt;Day&gt;/&lt;Slug&gt;.html</pre>
+</div>
+<p><cite>&lt;Slug&gt;</cite> is a label given to the post. By default, it is determined from the
+post&#8217;s title, by replacing spaces with underscores. If the title is &#8220;Hello
+World&#8221;, the slug will be Hello_World. You can change a post&#8217;s <a class="reference external" href="http://en.wikipedia.org/wiki/Slug_%28production%29">Slug</a> via the
+header <cite>slug</cite>:</p>
+<div class="highlight-python"><pre>title: My fancy blog post
+date: 2009-11-1
+slug: fancy
+
+Example</pre>
+</div>
+<p>Here the URL will be <a class="reference external" href="http://.../2009/11/1/fancy.html">http://.../2009/11/1/fancy.html</a>.</p>
+</div>
+</div>
+<div class="section" id="encoding-and-escaping">
+<h2>Encoding and escaping<a class="headerlink" href="#encoding-and-escaping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="encoding">
+<h3>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h3>
+<p>Weblog applies <a class="reference external" href="http://en.wikipedia.org/wiki/Postel's_law">Postel&#8217;s law</a>:</p>
+<blockquote>
+Be conservative in what you do; be liberal in what you accept from others.</blockquote>
+<p>It accepts files with different encoding as input but always output HTML
+files using ASCII encoding, non-ASCII characters being converted to HTML
+entities.</p>
+<p>The Atom feed is always encoded in UTF-8.</p>
+<p>You have 3 ways of specifying the input encoding:</p>
+<blockquote>
+<ul>
+<li><p class="first">The operation system&#8217;s locale or system&#8217;s encoding.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">config.py</span></tt>, via the field <tt class="docutils literal"><span class="pre">encoding</span></tt>. This encoding becomes the
+default encoding for the post files and the configuration file
+<tt class="docutils literal"><span class="pre">config.py</span></tt>. It overrides the system&#8217;s encoding.</p>
+</li>
+<li><p class="first">The post&#8217;s header <tt class="docutils literal"><span class="pre">encoding</span></tt>, example for UTF-8:</p>
+<div class="highlight-python"><pre>encoding: UTF-8</pre>
+</div>
+<p>or latin-1:</p>
+<div class="highlight-python"><pre>encoding: latin-1</pre>
+</div>
+<p>This override the encoding specified in <tt class="docutils literal"><span class="pre">config.py</span></tt>.</p>
+</li>
+</ul>
+</blockquote>
+<p>To get a list of supported encodings check <a class="reference external" href="http://docs.python.org/library/codecs.html#id3">Python&#8217;s documentation</a></p>
+</div>
+<div class="section" id="escaping">
+<h3>Escaping<a class="headerlink" href="#escaping" title="Permalink to this headline">¶</a></h3>
+<p>Weblog escapes strings to make sure everything displays smoothly. If you don&#8217;t
+know what escaping is, you can probably skip this section.</p>
+<p>Everything is escaped except:</p>
+<blockquote>
+<ul class="simple">
+<li>The content of a post if its syntax is HTML</li>
+<li>HTML head, header, and footer</li>
+</ul>
+</blockquote>
+<p>Which means the title <tt class="docutils literal"><span class="pre">Me</span> <span class="pre">&amp;</span> <span class="pre">You</span></tt> is converted to <tt class="docutils literal"><span class="pre">Me</span> <span class="pre">&amp;amp;</span> <span class="pre">you</span></tt> in HTML
+and Atom files.</p>
+</div>
+</div>
+<div class="section" id="attaching-a-file-to-a-post">
+<span id="attach-file"></span><h2>Attaching a file to a post<a class="headerlink" href="#attaching-a-file-to-a-post" title="Permalink to this headline">¶</a></h2>
+<p>To attach files like images to a blog post, use the field <tt class="docutils literal"><span class="pre">files</span></tt>:</p>
+<div class="highlight-python"><pre>title: Attach a file
+files: picture.png directory/file
+
+&lt;img src='picture.png' alt='a picture'&gt;
+&lt;a href='directory/file'&gt;a file&lt;/a&gt;</pre>
+</div>
+<p>It will copy <tt class="docutils literal"><span class="pre">picture.png</span></tt> and <tt class="docutils literal"><span class="pre">directory/file</span></tt>. If <tt class="docutils literal"><span class="pre">directory</span></tt> does not
+exist, it will be created.</p>
+<p>You can specify multiple files like this:</p>
+<div class="highlight-python"><pre>files: image1.png image2.png</pre>
+</div>
+<p>Space characters act as the separators. This means that filenames cannot
+contain spaces.</p>
+</div>
+<div class="section" id="how-url-s-in-content-are-handled">
+<h2>How URL&#8217;s in content are handled<a class="headerlink" href="#how-url-s-in-content-are-handled" title="Permalink to this headline">¶</a></h2>
+<p>Sometime, URL&#8217;s have to be changed to make sure they point to the correct
+location.</p>
+<p>Relative links (<tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href='test.html'&gt;</span></tt>) are rewritten in HTML files to make
+sure it always point to the root of the output directory.</p>
+<p>Absolute links (<tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href='http://example.com'&gt;</span></tt>) are not rewritten. It always
+point to the correct location regardless of the context.</p>
+<p>Note that Weblog considers <tt class="docutils literal"><span class="pre">/</span></tt> as the root directory. If <tt class="docutils literal"><span class="pre">base_url</span></tt> is
+<tt class="docutils literal"><span class="pre">http://example.com/</span></tt>; <tt class="docutils literal"><span class="pre">test.html</span></tt> and <tt class="docutils literal"><span class="pre">/test.html</span></tt> are both rewritten to
+<tt class="docutils literal"><span class="pre">http://example.com/test.html</span></tt>.</p>
+</div>
+<div class="section" id="customizing-weblog-s-appearance">
+<span id="style"></span><h2>Customizing Weblog&#8217;s appearance<a class="headerlink" href="#customizing-weblog-s-appearance" title="Permalink to this headline">¶</a></h2>
+<p>To customize Weblog&#8217;s appearance you need to change the templates used to
+generate the pages. To learn how to modify the templates, check <a class="reference external" href="http://jinja.pocoo.org/2/documentation/">Jinja 2</a>
+documentation, also a basic knowledge of HTML and CSS is needed.</p>
+<p>You can find the templates in <tt class="docutils literal"><span class="pre">weblog/templates</span></tt> in your Weblog&#8217;s
+installation directory. Copy the files you want to modify into the
+<tt class="docutils literal"><span class="pre">templates</span></tt> directory inside of your source directory:</p>
+<div class="highlight-python"><pre>$ mkdir source/directory/templates
+
+$ cp /path/to/weblog/templates/base.html source/directory/templates</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">base.html</span></tt> is probably the file you want to modify to customize Weblog&#8217;s
+global appearance. All other templates extend it.</p>
+<p><tt class="docutils literal"><span class="pre">index.html</span></tt> is the main page and <tt class="docutils literal"><span class="pre">archives.html</span></tt> is the archive page,
+listing all the posts on your blog.</p>
+<p><tt class="docutils literal"><span class="pre">post.html</span></tt> is used to generate individual post&#8217;s page.</p>
+<p>There is also a template named <tt class="docutils literal"><span class="pre">feed.atom</span></tt> you should not modify this one. It
+is used to generate the Atom feed.</p>
+<div class="section" id="css-and-html-resources">
+<h3>CSS and HTML resources<a class="headerlink" href="#css-and-html-resources" title="Permalink to this headline">¶</a></h3>
+<p>CSS is hard. The CSS syntax tend to be confusing for beginners. The numerous
+browser incompatibilities makes the designer&#8217;s work even more complicated. Here
+is a list of useful resources regarding this subject:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://reference.sitepoint.com/css">SitePoint</a> CSS Reference is very helpful. It lists all CSS properties and
+document how well they are supported by the different browsers.</li>
+<li><a class="reference external" href="http://htmlhelp.com/reference/html40/">HtmlHelp</a> contains a complete HTML 4 reference.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="command-line-parameters">
+<h2>Command line parameters<a class="headerlink" href="#command-line-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Usage: weblog [option] command</p>
+<dl class="docutils">
+<dt>Commands:</dt>
+<dd>publish
+date</dd>
+<dt>Options:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></td>
+<td>show this help message and exit</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s <var>DIR</var></span>, <span class="option">--source_dir=<var>DIR</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>The source directory where the blog posts are located.
+[default: &#8216;.&#8217;]</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-o <var>DIR</var></span>, <span class="option">--output_dir=<var>DIR</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>The directory where all the generated files are
+written. If it does not exist it is created.[default:
+&#8216;output&#8217;]</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-c <var>FILE</var></span>, <span class="option">--conf=<var>FILE</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>The configuration file to use. If the file is not
+present in the current directory, the source directory
+is searched. [default: &#8216;config.py&#8217;]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-q</span>, <span class="option">--quiet</span></kbd></td>
+<td>Do not output anything except critical error messages</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="section" id="configuration-file">
+<h2>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>Weblog&#8217;s configuration file is a Python script. If you don&#8217;t know Python, don&#8217;t
+worry, the syntax is straightforward and you need very little knowledge to get
+started with Weblog.</p>
+<p>Example <tt class="docutils literal"><span class="pre">config.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Blog&#39;s title&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://example.com&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;A sample blog&quot;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s">&quot;Me &lt;me@example.org&gt;&quot;</span>
+<span class="n">encoding</span> <span class="o">=</span> <span class="s">&quot;latin-1&quot;</span>
+<span class="n">post_per_page</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">source_dir</span> <span class="o">=</span> <span class="s">&quot;path/to/my/posts&quot;</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s">&quot;path/to/output/directory&quot;</span>
+</pre></div>
+</div>
+<p>To learn more about Python&#8217;s syntax read the <a class="reference external" href="http://docs.python.org/tutorial/index.html">Python tutorial</a>.</p>
+<p>All fields are optionals except <cite>url</cite> which is needed to generate Atom feed
+correctly. If the field is not present, you will just get a warning. This way
+you can start using Weblog without even having a configuration file.</p>
+<dl class="docutils">
+<dt>title</dt>
+<dd>The blog&#8217;s title. It appears at the top of the homepage and in the page&#8217;s
+title.</dd>
+<dt>url</dt>
+<dd><p class="first">The base URL of your blog. For example <tt class="docutils literal"><span class="pre">http://my-host.com/my-weblog/</span></tt>. It
+is used to generate the absolute URL&#8217;s to your blog.</p>
+<p class="last">It should be present, otherwise Atom feed wont work correctly.</p>
+</dd>
+<dt>description</dt>
+<dd>A short description of your blog. Like My &#8220;favorite books reviews&#8221;, or &#8220;Dr.
+Spock, publications about electronics&#8221;.</dd>
+<dt>source_dir</dt>
+<dd><p class="first">The directory containing the post files and the <tt class="docutils literal"><span class="pre">templates</span></tt> directory. You
+can organize the files by creating subfolders in the source directory. Weblog
+visits and load files in all the subdirectories of <tt class="docutils literal"><span class="pre">source_dir</span></tt>, execpt the
+one listed by <tt class="docutils literal"><span class="pre">ignore_dirs</span></tt>.</p>
+<p class="last">By default the current directory.</p>
+</dd>
+<dt>ignore_dirs</dt>
+<dd><p class="first">A list of directories to ignore when visiting <tt class="docutils literal"><span class="pre">source_dir</span></tt>. The directory
+<cite>templates</cite> is always ignored and therefor you don&#8217;t need to add it to
+<tt class="docutils literal"><span class="pre">ignore_dirs</span></tt>.</p>
+<p class="last">By default empty.</p>
+</dd>
+<dt>output_dir</dt>
+<dd>The output directory. Generated files are put there. By default <tt class="docutils literal"><span class="pre">output</span></tt>.</dd>
+<dt>encoding</dt>
+<dd><p class="first">The default post file&#8217;s encoding. It is overridden by the <tt class="docutils literal"><span class="pre">encoding</span></tt> field
+in the post file.</p>
+<p class="last">By default it is the operating system&#8217;s encoding.</p>
+</dd>
+<dt>filesystem_encoding</dt>
+<dd><p class="first">If you are using Microsoft or Mac OS X, you don&#8217;t need to use this. If you
+are using an Unix based system, you might need to specify the filesystem&#8217;s
+encoding to have proper filenames, for example if your operating system
+encoding is not the same as your filesystem.</p>
+<p class="last">By default it is the operating system&#8217;s encoding.</p>
+</dd>
+<dt>author</dt>
+<dd><p class="first">The default author. It is overridden by the <tt class="docutils literal"><span class="pre">author</span></tt> field in the post file.
+It can contain an Email address:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">author</span> <span class="o">=</span> <span class="s">&quot;An Example &lt;an@example.org&gt;&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt>post_per_page</dt>
+<dd><p class="first">The number of post displayed on the listing page:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">post_per_page</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p class="last">Default is 10.</p>
+</dd>
+<dt>feed_limit</dt>
+<dd><p class="first">The maximum number of posts to be included in the Feed file. Default is 10.</p>
+<p class="last">Note: rss_limit has been renamed to feed_limit.</p>
+</dd>
+<dt>extra_files</dt>
+<dd><p class="first">Additional files to be copied. Typically used to copy CSS style sheets and/or
+pictures. It is a list of string:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">extra_files</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;style.css&quot;</span><span class="p">,</span> <span class="s">&quot;logo.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">Files are copied into <tt class="docutils literal"><span class="pre">output_dir</span></tt>. The path is not preserved:
+<tt class="docutils literal"><span class="pre">style/weblog.css</span></tt> gets copied into <tt class="docutils literal"><span class="pre">output_dir/weblog.css</span></tt>; not into
+<tt class="docutils literal"><span class="pre">output_dir/style/weblog.css</span></tt>. This behavior is likely to change in the
+future.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="tips-on-uploading">
+<h2>Tips on Uploading<a class="headerlink" href="#tips-on-uploading" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://samba.anu.edu.au/rsync/">rsync</a> is a useful tool to upload files generated by Weblog.</p>
+<p>To make sure rsync does not change the last modification time of the files that
+did not change, use the following:</p>
+<div class="highlight-python"><pre>rsync --compress --checksum --recursive path/to/blog remote_host:public/dir/</pre>
+</div>
+<p>Accurate modification time makes efficient caching possible.</p>
+</div>
+<div class="section" id="need-more-help">
+<h2>Need more help?<a class="headerlink" href="#need-more-help" title="Permalink to this headline">¶</a></h2>
+<p>Don&#8217;t hesitate to ask questions about Weblog:</p>
+<blockquote>
+<a class="reference external" href="http://groups.google.com/group/weblog-users">http://groups.google.com/group/weblog-users</a> or <a class="reference external" href="mailto:weblog-users&#37;&#52;&#48;googlegroups&#46;com">weblog-users<span>&#64;</span>googlegroups<span>&#46;</span>com</a></blockquote>
+<p>To report a bug, request a feature:</p>
+<blockquote>
+<a class="reference external" href="http://bitbucket.org/henry/weblog/issues/">http://bitbucket.org/henry/weblog/issues/</a></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Weblog&#8217;s reference manual</a><ul>
+<li><a class="reference external" href="#setting-the-publication-date">Setting the publication date</a></li>
+<li><a class="reference external" href="#writing-a-post">Writing a Post</a><ul>
+<li><a class="reference external" href="#headers">Headers</a></li>
+<li><a class="reference external" href="#content">Content</a></li>
+<li><a class="reference external" href="#post-s-url">Post&#8217;s URL</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#encoding-and-escaping">Encoding and escaping</a><ul>
+<li><a class="reference external" href="#encoding">Encoding</a></li>
+<li><a class="reference external" href="#escaping">Escaping</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#attaching-a-file-to-a-post">Attaching a file to a post</a></li>
+<li><a class="reference external" href="#how-url-s-in-content-are-handled">How URL&#8217;s in content are handled</a></li>
+<li><a class="reference external" href="#customizing-weblog-s-appearance">Customizing Weblog&#8217;s appearance</a><ul>
+<li><a class="reference external" href="#css-and-html-resources">CSS and HTML resources</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#command-line-parameters">Command line parameters</a></li>
+<li><a class="reference external" href="#configuration-file">Configuration file</a></li>
+<li><a class="reference external" href="#tips-on-uploading">Tips on Uploading</a></li>
+<li><a class="reference external" href="#need-more-help">Need more help?</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="tutorial.html"
+                                  title="previous chapter">Tutorial</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/reference.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2007-2009, Henry Prêcheur &lt;henry@precheur.org&gt;.
+      Last updated on Mar 15, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

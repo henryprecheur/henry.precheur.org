@@ -1,0 +1,26 @@
+{% extends 'base.html.tmpl' %}
+
+{% block head %}
+{{ super() }}
+<link rel='stylesheet' type='text/css' href='{{ top_dir }}archives.css'>
+{% endblock %}
+
+{% block content %}
+{% set page = pages[0] %}
+<h1 id='title'><a href='{{ page.url(url) }}'>{{ page.title|escape|decode }}</a></h1>
+{% if page.date %}
+<p class='page-header'><span class='date'>{{ page.date.strftime('%B %e %Y') }}</span></p>
+{% endif %}
+<div class='page-content'>
+{{ page.html(curdir='.')|decode }}</div>
+
+<hr>
+
+{% set pages = pages[1:] %}
+{% include 'pages_summary.html.tmpl' %}
+
+<p><a href='archives'>More ...</a></p>
+
+{% endblock %}
+
+{# vim:set ft=htmljinja: #}
