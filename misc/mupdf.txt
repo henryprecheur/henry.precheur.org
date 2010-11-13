@@ -22,10 +22,11 @@ About a month ago I tried [MuPDF] [2]. According to its website:
 > *[MuPDF] [2] is a lightweight PDF viewer and toolkit written in portable C.*
 
 And that’s exactly what it is! MuPDF is a lightweight PDF viewer that’s really
-lightweight and fast. It uses the keyboard, and it’s intuitive to use. I would
-like to be able to copy/paste some text out of a document, but that’s not
-implemented yet. Except that I love MuPDF. I still growl when I see a PDF, but
-at least it eases the pain.
+lightweight and fast. It uses the keyboard, and it’s intuitive to use. <del>I
+would like to be able to copy/paste some text out of a document, but that’s not
+implemented yet</del> **Update:** It turns out that mupdf can copy text out of a
+document, just right-click on a chunk of, box it, and press enter. I love MuPDF.
+I still growl when I see a PDF, but at least it eases the pain.
 
 [1]: http://www.useit.com/alertbox/20030714.html
 [2]: http://mupdf.com/
