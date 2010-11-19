@@ -1,4 +1,4 @@
-title: Measure to make good decisions
+title: Benchmarking Redis
 date: 2010-11-18
 
 2 months ago I started working on an ORM for [Redis][redis] a key-value
