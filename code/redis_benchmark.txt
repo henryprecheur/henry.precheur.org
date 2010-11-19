@@ -1,0 +1,138 @@
+title: Measure to make good decisions
+date: 2010-11-18
+
+2 months ago I started working on an ORM for [Redis][redis] a key-value
+database. Now I am about to rewrite parts of it because I didn't test and
+measure everything beforehand.
+
+This time I decided to measure the performance of the different Redis commands.
+I want to be sure that any *optimizations* I might implement really helps.
+
+A Redis database is a big mapping. Its keys are strings and the values can be
+strings, lists, sets, ordered sets, and hashes. Here I’ll just consider strings
+and hashes. The 2 types of commands I'm interested in are:
+
+- Set commands: SET, MSET, HMSET, and HSET.
+- Get commands: GET, MGET, HMGET, and HGET.
+
+The command prefixed by H are for hashes, the ones without prefix are for
+regular strings. Commands with an M are the ones that can set or get multiple
+values. To learn more about how Redis works check out the [documentation][doc].
+
+I wrote a little script to test how fast the different commands are depending on
+the number of items to write or read for each operation. I configured Redis to
+use the Append-only-file like this:
+
+    appendonly yes
+    appendfsync always
+
+Write operations will surely be faster without it. but that's how I use Redis. I
+do this because I don’t want to lose data, ever!
+
+Here are the results:
+
+<table>
+<caption>Times are in micro-seconds per items</caption>
+
+<tr><th colspan='5'>Read</th></tr>
+<tr>
+  <th>Elements</th>
+  <th>GET</th>
+  <th>HGET</th>
+  <th>MGET</th>
+  <th>HMGET</th>
+</tr>
+<tr>
+  <th>1</th>
+  <td>167.25</td>
+  <td>163.04</td>
+  <td>216.26</td>
+  <td>203.46</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>164.99</td>
+  <td>161.72</td>
+  <td>112.71</td>
+  <td>109.85</td>
+</tr>
+<tr>
+  <th>10</th>
+  <td>156.37</td>
+  <td>157.34</td>
+  <td>35.41</td>
+  <td>33.73</td>
+</tr>
+<tr>
+  <th>100</th>
+  <td>156.26</td>
+  <td>164.23</td>
+  <td>22.31</td>
+  <td>19.31</td>
+</tr>
+<tr>
+  <th>1000</th>
+  <td>175.82</td>
+  <td>161.74</td>
+  <td>31.10</td>
+  <td>29.56</td>
+</tr>
+<tr><th colspan='5'>Write</th></tr>
+<tr>
+  <th>Elements</th>
+  <th>SET</th>
+  <th>HSET</th>
+  <th>MSET</th>
+  <th>HMSET</th>
+</tr>
+<tr>
+  <th>1</th>
+  <td>816.10</td>
+  <td>851.05</td>
+  <td>887.86</td>
+  <td>902.71</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>908.21</td>
+  <td>939.67</td>
+  <td>560.31</td>
+  <td>587.40</td>
+</tr>
+<tr>
+  <th>10</th>
+  <td>965.12</td>
+  <td>983.00</td>
+  <td>218.81</td>
+  <td>227.05</td>
+</tr>
+<tr>
+  <th>100</th>
+  <td>945.03</td>
+  <td>1037.13</td>
+  <td>120.09</td>
+  <td>110.63</td>
+</tr>
+<tr>
+  <th>1000</th>
+  <td>897.69</td>
+  <td>901.27</td>
+  <td>106.49</td>
+  <td>101.37</td>
+</tr>
+
+</table>
+
+Hash operations are a little bit faster than the ones on strings, probably
+because there are fewer keys in a hash than in the full Redis mapping. The
+difference is not too significant though.
+
+\*SET operations are faster than \*MSET operations for a single element, and for
+2 elements or more \*MSET operations are faster. No surprise here. But something
+worth noting is that **\*MSET operations are MUCH faster than \*SET operations
+with 2 or more elements.** They can be as much as 5 times faster when reading
+and 9 times faster when writing. Something to keep in mind when you have to
+update 5000 keys in a single batch.
+
+[redis]: http://code.google.com/p/redis/ "A persistent key-value database with built-in net interface written in ANSI-C for Posix systems"
+[doc]: http://code.google.com/p/redis/wiki/index
