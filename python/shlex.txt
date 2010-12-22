@@ -1,0 +1,45 @@
+title: Quick and easy lexer
+date: 2010-12-22
+
+I like writing small parsers. As soon as I see a solution that could use
+parsing, I’ll write a small parser. My least favorite thing when writing a
+parser is the [lexer][1]. The lexer splits the input into small [tokens][2],
+it’s fairly straightforward to do, but I have to do it everytime.
+
+I’ve just discovered the module [shlex][3] in the Python standard library. shlex
+is a ready-to-use lexer for a shell-like syntax. It’s easy to use, consider the
+following code:
+
+    # A first comment
+    x = 10
+
+    # Another comment
+    function f(x, y) {
+        blah = 'foo bar 123'
+        var foo = 0x12345
+    }
+
+To “lex” it just do something like this:
+
+    from shlex import shlex
+
+    print list(shlex(open('sample.txt')))
+
+The result will be:
+
+    ['x', '=', '10',
+     'function', 'f', '(', 'x', ',', 'y', ')',
+     '{',
+     'blah', '=', "'foo bar 123'",
+     'var', 'foo', '=', '0x12345',
+     '}']
+
+Now that the lexing is done, you just have to deal with the fun part: the
+grammar and the parsing. To learn more about how to use shlex, read the [chapter
+about shlex][4] in the excellent [Python Module of the Week][5].
+
+[1]: http://en.wikipedia.org/wiki/Lexical_analysis
+[2]: http://en.wikipedia.org/wiki/Lexical_analysis#Token
+[3]: http://docs.python.org/library/shlex.html
+[4]: http://www.doughellmann.com/PyMOTW/shlex/
+[5]: http://www.doughellmann.com/PyMOTW/
