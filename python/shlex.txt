@@ -35,8 +35,8 @@ The result will be:
      '}']
 
 Now that the lexing is done, you just have to deal with the fun part: the
-grammar and the parsing. To learn more about how to use shlex, read the [chapter
-about shlex][4] in the excellent [Python Module of the Week][5].
+grammar and the parsing. To learn how to use shlex, read the [chapter about
+shlex][4] in the excellent [Python Module of the Week][5].
 
 [1]: http://en.wikipedia.org/wiki/Lexical_analysis
 [2]: http://en.wikipedia.org/wiki/Lexical_analysis#Token
