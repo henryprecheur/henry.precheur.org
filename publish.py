@@ -39,7 +39,7 @@ TITLE = u'Henry\u2019s Weblog'
 URL = 'http://henry.precheur.org/'
 
 posts = list(p for p in pages if hasattr(p, 'date'))
-others = list(p for p in pages if p not in posts)
+others = list(p for p in pages if p not in posts and not hasattr(p, 'ignore'))
 
 def cmp_page(self, other):
     return cmp(str(self.date), str(other.date))
