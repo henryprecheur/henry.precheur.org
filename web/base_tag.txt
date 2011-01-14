@@ -1,0 +1,30 @@
+title: Tag archeology
+date: 2011-1-14
+
+Today I learned about the [`<base>`][1] tag:
+
+> Defines the base location for links on a page.
+
+To get all the relative links at `http://site1.com/my_page.html` to point to
+`http://site2.com/stuff/`, the `<base>` tag is a way to do that:
+
+    <head>
+      <base href='http://site2.com/stuff/'>
+    </head>
+    ...
+    <body>
+      ...
+      <a href='page.html'>This link</a> points to http://site2.com/stuff/page.html
+      and not http://site1.com/page.html.
+      ...
+    </body>
+
+This tag wasn’t part of the [first informal HTML specification][2], but it’s in
+the [HTML 2.0 specification][3]. This means that between 1991 and 1995 somebody
+found a valid use-case for this tag and got it included ... It probably seemed
+like a good idea at the time. The `<base>` tag might be one of the least used
+tag on the web, it certainly is one of the least useful.
+
+[1]: http://htmldog.com/reference/htmltags/base/ "HTML Tag: base"
+[2]: http://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/Tags.html "Tags used in HTML"
+[3]: http://tools.ietf.org/html/rfc1866 "Hypertext Markup Language - 2.0"
