@@ -34,10 +34,6 @@ p.page-header {
     margin-top: 0.3em;
 }
 
-h3, h4, h5 {
-    border-bottom: silver solid 1px;
-}
-
 p#description {
     font-size: small;
     margin: 0.1em;
