@@ -37,7 +37,7 @@ In October I realized that SQLAlchemy wasn’t really the problem. I just wanted
 to ditch SQL with all its limitations and weirdness. Using SQL based databases
 is a frustrating exercise, and it was really time to get out of this hell. I
 knew about alternative “NoSQL” databases like [MongoDB][mongodb], [Tokyo & Kyoto
-cabinet], and [CouchDB][couchdb] but none of them really clicked. The one I
+cabinet][cabinet], and [CouchDB][couchdb] but none of them really clicked. The one I
 liked most was [Redis][redis], but at the time it didn’t guarantee persistence.
 If Redis crashed, you could lose data. When I checked again, Redis had a “Append
 Only File”, it’s a log that guarantees that data wont get lost.
@@ -69,6 +69,10 @@ month or so.
 [redis]: http://code.google.com/p/redis/
 [gunicorn]: http://gunicorn.org/
 [nginx]: http://wiki.nginx.org/
+
+[mongodb]: http://www.mongodb.org/
+[cabinet]: http://fallabs.com/
+[couchdb]: http://couchdb.apache.org/
 
 [sa]: http://www.sqlalchemy.org/
 [postgres]: http://www.postgresql.org/
