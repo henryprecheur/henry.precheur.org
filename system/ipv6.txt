@@ -1,6 +1,12 @@
 title: Will IPv6 ever be a reality?
 date: 2010-2-19
 
+**Update**: 6:40am pst Feb. 3, 2011 — [The central pool of IPv4 addresses is
+depleted!](http://www.tndh.net/~tony/ietf/ipv4-pool.htm) We’re not really out
+of addresses though, not all IPv4 are used, but we’re getting close.
+
+----
+
 I’ve recently re-read [The IPv6 mess][ipv6mess] by [D. J. Bernstein][DJB]. The
 essay was probably written in 2002 or 2003. It predicted remarkably well the
 current state of IPv6. IPv6 can’t access an IPv4 network. Because all the good
