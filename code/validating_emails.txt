@@ -9,7 +9,7 @@ a regular expression to validate Emails, it’s probably wrong too.
 A validator should never rejects a valid Email address. It’s the [Robustness
 principle][1]: Be conservative in what you send; be liberal in what you accept.
 It's okay to accept invalid addresses, but rejecting a single valid one is
-wrong: it frustrates legitimate users and clients.
+wrong: it frustrates legitimate users.
 
 I tried to write an Email validator a few weeks ago. After 4 hours of fiddling
 with it, here’s what I have:
