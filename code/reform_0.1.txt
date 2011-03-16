@@ -1,0 +1,24 @@
+title: Reform 0.1
+date: 2011-3-17
+
+I've just release an initial version of [Reform][1], a Python library to
+validate and use HTML forms. Here's a short example of how it works:
+
+    from reform import Form, field
+
+    class LoginForm(Form):
+        email = field.Email(required=True)
+        password = field.String(required=True)
+
+    form = LoginForm()
+
+    if form.validate({'email': 'test@example.com', 'password': 'secret'}):
+        print 'Valid form'
+    else:
+        print 'Invalid form'
+
+I'm using it for [clan.cx, my StarCraft 2 clan site builder][clan.cx]. I plan to
+add more features and documentation within the next few months.
+
+[1]: http://packages.python.org/reform/
+[clan.cx]: http://clan.cx/
