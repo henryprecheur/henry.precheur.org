@@ -78,8 +78,12 @@ for p in others:
                 top_dir=t)
 
 weblog.copy(pages, 'output')
-weblog.copy(['common.css', 'archives.css', 'print.css', 'favicon.ico',
-             'robots.txt', 'sitemap.xml'], 'output')
+
+images = (path.join('images', x)
+          for x in ('background.png',))
+weblog.copy(images, 'output/images')
+weblog.copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'],
+            'output')
 weblog.copy(iglob('vanpy/test/*'), 'output/vanpy/test')
 
 f = open('./output/redirect.conf', 'w')

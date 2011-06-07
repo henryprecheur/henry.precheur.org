@@ -1,0 +1,192 @@
+$background-color: #eee;
+$foreground-color: #111;
+$link-color: #444;
+$visited-link-color: #222;
+$middle-color: gray;
+
+$main_width: 44em;
+
+@import 'reset.css';
+
+@mixin box {
+    border: 1px solid $middle-color;
+    padding: 0.5em 1em;
+    border-radius: 5px 5px;
+}
+
+@mixin centered {
+    margin: 0 auto;
+    padding: 0.5em 2em;
+    width: $main_width;
+    max-width: 90%;
+}
+
+html { font-size: 100.01%; }
+
+body, input, select, textarea, button {
+    font-family: sans-serif;
+    font-size: 100%;
+    background-color: $background-color;
+    color: $foreground-color;
+}
+
+body {
+    margin: 0;
+    background: url(../images/background.png) repeat;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    &:hover { border-bottom: 1px solid; }
+    &:active, &:visited { color: $visited-link-color; }
+}
+
+body > div {
+    @include box;
+}
+
+dt {
+    font-weight: bold;
+}
+
+p, ul, ol {
+    line-height: 150%;
+}
+
+h1 { font-size: x-large; }
+h2 { font-size: large; }
+h3 { font-size: normal; }
+h4 { font-size: normal; color: gray; }
+
+#main, nav, footer {
+    @include centered;
+}
+
+#main, nav {
+    @include box;
+
+    background-color: $background-color;
+}
+
+#main {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+}
+
+nav {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    & > form {
+        display: inline;
+        float: right;
+    }
+}
+
+#menu {
+    display: inline;
+    list-style: none;
+    & > li {
+        display: inline;
+        padding-right: 1em;
+    }
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    font-size: small;
+}
+
+#search {
+    @include box;
+
+    color: $middle-color;
+    padding: 0.5em;
+    width: 12em;
+    &:focus { color: $foreground-color; }
+}
+
+h1#title {
+    margin-top: 0;
+}
+
+p.date {
+    font-size: small;
+    font-weight: normal;
+    white-space: nowrap;
+
+    /* HEHEHE */
+    margin-top: -1em;
+    margin-left: 5em;
+    color: $middle-color;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    caption, td, th { padding: 0.2em; }
+    td, th { border: 1px solid gray; }
+    td { text-align: center; }
+    .dark { background-color: silver; }
+}
+
+.code {
+    font-family: monospace;
+}
+
+pre, .code {
+    border: gray solid 1px;
+    background-color: silver;
+    padding: 1em;
+}
+
+div.content {
+    width: $main_width;
+}
+
+.lined {
+    margin-top: 2em;
+    border-top: 1px solid;
+}
+
+hr {
+    border: 0;
+    background-color: white;
+    height: 1px;
+    margin: 2em 0;
+}
+
+div.picture {
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    &.lang-icon {
+        display: inline;
+        border: none;
+  }
+}
+
+img.right {
+    float: right;
+    margin: 1em;
+}
+
+/* Don't display useless crap when printing */
+@media print {
+    div {
+        &.content { width: 100%; }
+        &#search, &#menu, &.paginator { display: none; }
+    }
+}
+
+/* vim:set sw=4 ts=4: */

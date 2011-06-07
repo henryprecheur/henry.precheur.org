@@ -5,7 +5,9 @@ HOST=henry@bitoku.koalabs.org
 all: publish
 
 publish:
-	${HOME}/env/weblog/bin/python ./publish.py
+	${HOME}/weblog/env/bin/python ./publish.py
+	mkdir -p ${OUTPUT_DIR}stylesheets
+	sass stylesheets/style.scss:${OUTPUT_DIR}stylesheets/style.css
 
 clean:
 	-rm -rf ${OUTPUT_DIR}
