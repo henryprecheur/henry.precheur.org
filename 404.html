@@ -2,6 +2,17 @@ title: 404 - Page not found
 
 <h1>Page not found</h1>
 
-<p style='margin: 4em'>It looks like you made a typo, or I broke something. If
-you think there should be something here, please
-<a href='mailto:Henry Precheur <henry@precheur.org>'>Contact me</a>.</p>
+<p>The infamous error 404 is among us!</p>
+
+<p>It looks like you made a typo, or I broke something. If you think there
+should be something here, please <a href='mailto:Henry Precheur
+<henry@precheur.org>'>Contact me</a>.</p>
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    var d = document;
+    var page = escape(d.location.pathname + d.location.search);
+
+    _gaq.push('_trackPageview',
+              '/404?page=' + page + '&from=' + escape(d.referrer));
+</script>
