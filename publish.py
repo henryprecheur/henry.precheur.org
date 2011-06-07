@@ -80,7 +80,7 @@ for p in others:
 weblog.copy(pages, 'output')
 
 images = (path.join('images', x)
-          for x in ('background.png', 'avatar.png'))
+          for x in ('background.png',))
 weblog.copy(images, 'output/images')
 weblog.copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'],
             'output')
