@@ -8,10 +8,16 @@ $main_width: 44em;
 
 @import 'reset.css';
 
+@mixin border_radius($top, $bottom) {
+    -moz-border-radius: $top $top $bottom $bottom;
+    -webkit-border-radius: $top $top $bottom $bottom;
+    border-radius: $top $top $bottom $bottom;
+}
+
 @mixin box {
     border: 1px solid $middle-color;
     padding: 0.5em 1em;
-    border-radius: 5px 5px;
+    @include border_radius(5px, 5px);
 }
 
 @mixin centered {
@@ -19,6 +25,7 @@ $main_width: 44em;
     padding: 0.5em 2em;
     width: $main_width;
     max-width: 90%;
+    min-width: $main_width;
 }
 
 html { font-size: 100.01%; }
@@ -71,14 +78,13 @@ h4 { font-size: normal; color: gray; }
 }
 
 #main {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    @include border_radius(0, 5px);
+
     border-top: 0;
 }
 
 nav {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    @include border_radius(5px, 0);
 
     & > form {
         display: inline;
