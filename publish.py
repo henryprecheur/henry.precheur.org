@@ -1,6 +1,7 @@
-#!/home/henry/env/weblog/bin/python
+#!/home/henry/weblog/env/bin/python
 
 import sys
+from functools import partial
 from datetime import date
 from os import path, mkdir
 from re import escape
@@ -14,9 +15,11 @@ if not path.isdir('./output'):
     mkdir('./output')
     mkdir('output/weblog')
 
+copy = partial(weblog.copy, link=True)
+
 # Copy weblog/doc first
-weblog.copy(iglob('weblog/doc/*'), 'output/weblog')
-weblog.copy(iglob('weblog/files/*'), 'output/weblog')
+copy(iglob('weblog/doc/*'), 'output/weblog')
+copy(iglob('weblog/files/*'), 'output/weblog')
 
 class Page(weblog.Page):
     def output_filename(self):
@@ -77,14 +80,14 @@ for p in others:
         w.write('page.html.tmpl', o, title=p.title, content=p.html(),
                 top_dir=t)
 
-weblog.copy(pages, 'output')
+copy(pages, 'output')
 
-images = (path.join('images', x)
-          for x in ('background.png',))
-weblog.copy(images, 'output/images')
-weblog.copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'],
-            'output')
-weblog.copy(iglob('vanpy/test/*'), 'output/vanpy/test')
+images = (path.join('images', x) for x in ('background.png',))
+copy(images, 'output/images')
+
+copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'], 'output')
+copy(iglob('vanpy/test/*'), 'output/vanpy/test')
+copy(iglob('scripts/*.js'), 'output/scripts')
 
 f = open('./output/redirect.conf', 'w')
 
