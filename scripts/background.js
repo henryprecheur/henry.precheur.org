@@ -23,7 +23,6 @@ var random_background = (function() {
     return function(element) {
         var url = ('http://static.flickr.com/' +
                    _images[random()]);
-        console.debug(url);
 
         element.css({
                 'background': 'url(' + url + ') no-repeat center center fixed',
