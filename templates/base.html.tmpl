@@ -11,6 +11,7 @@
 <link rel='stylesheet' type='text/css' href='{{ top_dir }}stylesheets/style.css'>
 {% endblock %}
 </head>
+
 <body>
 {% block menu %}
 <nav>
@@ -26,9 +27,7 @@
 </nav>
 {% endblock %}
 
-<div id='main'>
 {% block content %}{% endblock %}
-</div>
 
 <footer><small>&copy; 2007-2011 Henry Pr&ecirc;cheur</small></footer>
 
@@ -43,6 +42,14 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+</script>
+
+<script src='http://code.jquery.com/jquery-1.6.1.min.js'></script>
+<script src='{{ top_dir }}scripts/background.js'></script>
+<script type='text/javascript'>
+jQuery(document).ready(function() {
+    random_background(jQuery('html'));
+});
 </script>
 
 </body>
