@@ -8,8 +8,6 @@ publish:
 	${HOME}/weblog/env/bin/python ./publish.py
 	mkdir -p ${OUTPUT_DIR}stylesheets
 	sass stylesheets/style.scss:${OUTPUT_DIR}stylesheets/style.css
-	# mkdir -p ${OUTPUT_DIR}scripts
-	# ln -f scripts/background.js ${OUTPUT_DIR}scripts/background.js
 
 clean:
 	-rm -rf ${OUTPUT_DIR}
