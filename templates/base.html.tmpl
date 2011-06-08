@@ -11,6 +11,9 @@
 {% block head %}
 <link rel='stylesheet' type='text/css' href='{{ top_dir }}stylesheets/style.css'>
 {% endblock %}
+<!--[if lt IE 9]>
+<script src='scripts/html5.js'></script>
+<![endif]-->
 </head>
 
 <body>
@@ -47,11 +50,6 @@
 
 <script src='http://code.jquery.com/jquery-1.6.1.min.js'></script>
 <script src='{{ top_dir }}scripts/background.js'></script>
-<script>
-jQuery(document).ready(function() {
-    random_background(jQuery('html'));
-});
-</script>
 
 </body>
 </html>
