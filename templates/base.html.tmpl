@@ -3,6 +3,7 @@
 <head>
 <title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html;charset=US-ASCII">
+<meta charset='ascii'>
 <meta name='generator' content='weblog'>
 {% block feed %}
 <link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
@@ -46,7 +47,7 @@
 
 <script src='http://code.jquery.com/jquery-1.6.1.min.js'></script>
 <script src='{{ top_dir }}scripts/background.js'></script>
-<script type='text/javascript'>
+<script>
 jQuery(document).ready(function() {
     random_background(jQuery('html'));
 });
