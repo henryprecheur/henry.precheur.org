@@ -20,11 +20,11 @@ var random_background = (function() {
 
     }
 
-    return function(element) {
+    jQuery(document).ready(function() {
         var url = ('http://static.flickr.com/' +
                    _images[random()]);
 
-        element.css({
+        jQuery('html').css({
                 'background': 'url(' + url + ') no-repeat center center fixed',
                 '-webkit-background-size': 'cover',
                 '-moz-background-size': 'cover',
@@ -32,5 +32,5 @@ var random_background = (function() {
                 '-o-background-size': 'cover',
                 'background-size': 'cover',
             });
-    }
+    });
 })();
