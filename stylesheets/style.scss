@@ -98,6 +98,7 @@ footer {
 #search {
     @include box;
 
+    background: $background-color url(../images/icons/search.png) no-repeat scroll 98% 50%;
     color: $middle-color;
     padding: 0.5em;
     &:focus { color: $foreground-color; }

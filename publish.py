@@ -84,6 +84,7 @@ copy(pages, 'output')
 
 images = (path.join('images', x) for x in ('background.png',))
 copy(images, 'output/images')
+copy('images/icons/search.png', 'output/images/icons')
 
 copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'], 'output')
 copy(iglob('vanpy/test/*'), 'output/vanpy/test')
