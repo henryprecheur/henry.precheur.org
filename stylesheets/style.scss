@@ -173,46 +173,7 @@ img.right {
     margin: 1em;
 }
 
-#archives {
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-
-        &.months, &.days, &.pages {
-            margin-top: -2em;
-        }
-
-        &.days {
-            margin-left: 7em;
-            > li > div { width: 2em; }
-        }
-
-        &.months {
-            margin-left: 4em;
-            padding: 0;
-            > li > div { width: 7em; }
-        }
-
-        &.years > li > div {
-            width: 4em;
-        }
-
-        &.pages {
-            margin-left: 2em;
-            > li {
-                margin-bottom: 0.5em;
-                margin-left: 1em;
-            }
-        }
-    }
-
-    div {
-        height: 2em;
-        font-weight: bold;
-        text-align: right;
-    }
-}
+@import 'archives';
 
 /* Don't display useless crap when printing */
 @media print {
