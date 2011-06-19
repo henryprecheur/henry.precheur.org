@@ -11,15 +11,18 @@ sys.path.append(path.expanduser('~/weblog'))
 
 import weblog
 
-if not path.isdir('./output'):
-    mkdir('./output')
-    mkdir('output/weblog')
+def output(*args):
+    return path.join('./output', *args)
+
+if not path.isdir(output()):
+    mkdir(output())
+    mkdir(output('weblog'))
 
 copy = partial(weblog.copy, link=True)
 
 # Copy weblog/doc first
-copy(iglob('weblog/doc/*'), 'output/weblog')
-copy(iglob('weblog/files/*'), 'output/weblog')
+copy(iglob('weblog/doc/*'), output('weblog'))
+copy(iglob('weblog/files/*'), output('weblog'))
 
 class Page(weblog.Page):
     def output_filename(self):
@@ -30,7 +33,7 @@ class Page(weblog.Page):
 
 def ignore(path):
     for x in ('output', 'templates', 'robots.txt', 'weblog/doc',
-              'weblog/files', 'nginx', 'vanpy/test', '.hg/'):
+              'weblog/files', 'nginx', 'vanpy/test', '.hg/', 'IDEAS.txt'):
         if path.startswith(x):
             return True
     return False
@@ -53,25 +56,22 @@ latest = posts[:10]
 
 w = weblog.template.Writer('./templates', encoding='utf8')
 
-weblog.publish.feed(path.join('output', 'feed.atom'), latest, URL, TITLE,
-                    writer=w)
-weblog.publish.index(path.join('output', 'index.html'), latest, TITLE,
-                     writer=w)
-
-weblog.publish.archives(path.join('output', 'archives'), posts, writer=w)
+weblog.publish.feed(output('feed.atom'), latest, URL, TITLE, writer=w)
+weblog.publish.index(output('index.html'), latest, TITLE, writer=w)
+weblog.publish.archives(output('archives'), posts, writer=w)
 
 def top_dir(p):
     return path.relpath('.', path.dirname(p.filename)) + '/'
 
 for p in posts:
-    o = path.join('output', p.output_filename())
+    o = output(p.output_filename())
     if weblog.newer_than(p.filename, o):
         w.write('post.html.tmpl', o,
                 title=p.title, date=p.date, content=p.html(),
                 top_dir=top_dir(p))
 
 for p in others:
-    o = path.join('output', p.output_filename())
+    o = output(p.output_filename())
     if weblog.newer_than(p.filename, o):
         if o.endswith('/404'):
             t = '/'
@@ -80,17 +80,17 @@ for p in others:
         w.write('page.html.tmpl', o, title=p.title, content=p.html(),
                 top_dir=t)
 
-copy(pages, 'output')
+copy(pages, output())
 
 images = (path.join('images', x) for x in ('background.png',))
-copy(images, 'output/images')
-copy('images/icons/search.png', 'output/images/icons')
+copy(images, output('images'))
+copy('images/icons/search.png', output('images', 'icons'))
 
-copy(['archives.css', 'favicon.ico', 'robots.txt', 'sitemap.xml'], 'output')
-copy(iglob('vanpy/test/*'), 'output/vanpy/test')
-copy(iglob('scripts/*.js'), 'output/scripts')
+copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
+copy(iglob('vanpy/test/*'), output('vanpy', 'test'))
+copy(iglob('scripts/*.js'), output('scripts'))
 
-f = open('./output/redirect.conf', 'w')
+f = open(output('redirect.conf'), 'w')
 
 def r(old, new):
     f.write('rewrite "^/%s$" /%s permanent;\n' % (old, new))
