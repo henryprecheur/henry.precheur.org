@@ -7,3 +7,4 @@ output*
 weblog/doc/.buildinfo
 weblog/doc/.doctrees/*
 .sass-cache/*
+.env*
