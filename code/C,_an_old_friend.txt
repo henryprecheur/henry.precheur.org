@@ -1,5 +1,5 @@
 title: C, old friend
-date: 2011-11-24
+date: 2011-12-05
 
 I've abandoned all the things I once used and liked. My editor, operating
 system, browser, database, API's, & development tools changed --often multiple
