@@ -33,7 +33,8 @@ class Page(weblog.Page):
 
 def ignore(path):
     for x in ('output', 'templates', 'robots.txt', 'weblog/doc',
-              'weblog/files', 'nginx', 'vanpy/test', '.hg/', 'IDEAS.txt'):
+              'weblog/files', 'nginx', 'vanpy/test', '.hg/', '.env',
+              'IDEAS.txt'):
         if path.startswith(x):
             return True
     return False
