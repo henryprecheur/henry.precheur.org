@@ -24,13 +24,6 @@ copy = partial(weblog.copy, link=True)
 copy(iglob('weblog/doc/*'), output('weblog'))
 copy(iglob('weblog/files/*'), output('weblog'))
 
-class Page(weblog.Page):
-    def output_filename(self):
-        if path.basename(self.filename) == 'index.html':
-            return self.filename
-        else:
-            return path.splitext(self.filename)[0]
-
 def ignore(path):
     for x in ('output', 'templates', 'robots.txt', 'weblog/doc',
               'weblog/files', 'nginx', 'vanpy/test', '.hg/', '.env',
@@ -40,7 +33,7 @@ def ignore(path):
     return False
 
 files = weblog.list_files('.', ignore=ignore)
-pages = list(Page(f, encoding='utf8') for f in files)
+pages = list(weblog.Page(f, encoding='utf8') for f in files)
 
 TITLE = u'Henry\u2019s Weblog'
 URL = 'http://henry.precheur.org/'
