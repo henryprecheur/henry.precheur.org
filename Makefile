@@ -1,13 +1,15 @@
 OUTPUT_DIR=./output/
 RSYNC=rsync -vz --checksum --recursive
 HOST=henry@bitoku.koalabs.org
+SASS=sass
+PYTHON=${HOME}/weblog/.env/bin/python
 
 all: publish
 
 publish:
-	${HOME}/weblog/.env/bin/python ./publish.py
+	$(PYTHON) ./publish.py
 	mkdir -p ${OUTPUT_DIR}stylesheets
-	sass stylesheets/style.scss:${OUTPUT_DIR}stylesheets/style.css
+	$(SASS) stylesheets/style.scss:${OUTPUT_DIR}stylesheets/style.css
 
 clean:
 	-rm -rf ${OUTPUT_DIR}
