@@ -46,13 +46,23 @@ def cmp_page(self, other):
 
 posts.sort(reverse=True, cmp=cmp_page)
 
-latest = posts[:10]
-
 w = weblog.template.Writer('./templates', encoding='utf8')
 
-weblog.publish.feed(output('feed.atom'), latest, URL, TITLE, writer=w)
-weblog.publish.index(output('index.html'), latest, TITLE, writer=w)
-weblog.publish.archives(output('archives'), posts, writer=w)
+weblog.publish.feed(output('feed.atom'), posts[:10], URL, TITLE, writer=w)
+
+popular = ('python/copy_list.txt',
+           'vim/python.html',
+           'python/Dynamically create a type with Python.txt',
+           'vim/create_spell_file_for_vim.html',
+           'python/rfc3339.html',
+           'python/how_to_server_cgi.txt',
+           'clan.cx/feedbackarmy.txt',
+           'system/ssh-copy-id.txt',
+           'system/ipv6')
+weblog.publish.index(output('index.html'), posts,
+                     u'{} \u2014 {}'.format(TITLE, posts[0].title),
+                     writer=w,
+                     popular=popular)
 
 def top_dir(p):
     return path.relpath('.', path.dirname(p.filename)) + '/'
@@ -82,7 +92,6 @@ copy('images/icons/search.png', output('images', 'icons'))
 
 copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
 copy(iglob('vanpy/test/*'), output('vanpy', 'test'))
-copy(iglob('scripts/*.js'), output('scripts'))
 
 f = open(output('redirect.conf'), 'w')
 
@@ -102,7 +111,8 @@ for p in posts:
     if p.date.year < 2009 and old_url != old_old_url:
         r(old_old_url, p.url())
 
-r('archives.html', 'archives')
+r('archives.html', '')
+r('archives', '')
 r('about.html', 'about')
 r('readings.html', 'books')
 r('rss.xml', 'feed.atom')

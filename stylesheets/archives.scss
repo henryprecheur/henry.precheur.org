@@ -1,34 +1,44 @@
 #archives {
-    ul {
-        list-style-type: none;
+    list-style-type: none;
+
+    > li > div {
+        width: 3em;
+    }
+
+    ul.months, ul.days, ul.pages {
+        margin-top: -2em;
+    }
+
+    ul.days {
+        margin-left: 7em;
+        > li > div { width: 2em; }
+    }
+
+    ul.months {
+        margin-left: 4em;
         padding: 0;
-        margin: 0;
-
-        &.months, &.days, &.pages {
-            margin-top: -2em;
+        > li > div {
+            width: 6em;
+            text-align: center;
         }
+    }
 
-        &.days {
-            margin-left: 7em;
-            > li > div { width: 2em; }
+    ul.pages > li.popular {
+        background-color: #ddb;
+        &:after {
+            float: right;
+            content: "Popular";
+            color: $middle-color;
+            font-size: smaller;
+            padding: 0 1em;
         }
+    }
 
-        &.months {
-            margin-left: 4em;
-            padding: 0;
-            > li > div { width: 7em; }
-        }
-
-        &.years > li > div {
-            width: 4em;
-        }
-
-        &.pages {
-            margin-left: 2em;
-            > li {
-                margin-bottom: 0.5em;
-                margin-left: 1em;
-            }
+    ul.pages {
+        margin-left: 2em;
+        > li {
+            margin-bottom: 0.5em;
+            margin-left: 1em;
         }
     }
 
@@ -38,4 +48,3 @@
         text-align: right;
     }
 }
-
