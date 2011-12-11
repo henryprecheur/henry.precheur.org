@@ -1,5 +1,4 @@
-<div id='archives'>
-<ul class='years'>
+<ul id='archives'>
 {% for year, pages in pages|groupby('date.year')|reverse %}
     <li>
     <div>{{ year }}</div>
@@ -13,7 +12,7 @@
             <div>{{ day }}</div>
             <ul class='pages'>
 {% for page in pages %}
-                <li><a href='{{ page.url() }}'>{{ page.title|e|decode }}</a></li>
+                <li{% if page.filename in popular %} class='popular'{% endif %}><a href='{{ page.url() }}'>{{ page.title|e|decode }}</a></li>
 {% endfor %}
             </ul>
 {% endfor %}
@@ -22,5 +21,4 @@
     </ul>
 {% endfor %}
 </ul>
-</div>
 {# vim:set ft=htmljinja: #}

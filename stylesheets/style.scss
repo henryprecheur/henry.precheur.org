@@ -1,50 +1,31 @@
-$background-color: #eee;
-$foreground-color: #111;
-$link-color: #444;
-$visited-link-color: #222;
-$middle-color: gray;
+$background-color: #eed;
+$foreground-color: #112;
+$link-color: #443;
+$visited-link-color: #221;
+$middle-color: #997;
 
 $main_width: 44em;
 
-@import 'reset.css';
-
-@mixin border_radius($top, $bottom) {
-    -moz-border-radius: $top $top $bottom $bottom;
-    -webkit-border-radius: $top $top $bottom $bottom;
-    border-radius: $top $top $bottom $bottom;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
 }
 
-@mixin box {
-    border: thin solid $middle-color;
-    padding: 0.5em 1em;
-    @include border_radius(5px, 5px);
-}
-
-@mixin centered {
-    margin: 0 auto;
-    padding: 0.5em 2em;
-    width: $main_width;
-    max-width: 90%;
-}
-
-html, body, input, select, textarea, button {
+html, body, nav, input, select, textarea, button {
     font: {
         size: 100%;
-        family: sans-serif;
+        family: serif;
     }
     background-color: $background-color;
     color: $foreground-color;
 }
 
-html {
-    background: url(../images/background.png) repeat;
-}
-
 body {
-    @include centered;
-    @include box;
-
-    border-width: medium;
+    margin: 0 auto;
+    padding: 0 4em 2em 4em;
+    width: $main_width;
+    max-width: 90%;
 }
 
 a {
@@ -63,59 +44,45 @@ p, ul, ol {
     line-height: 150%;
 }
 
-h1 { font-size: x-large; }
+h1, h2, h3, h4, time { text-align: center; }
+h1 {
+    font-size: x-large;
+    padding: 1em;
+    margin: 0;
+}
 h2 { font-size: large; }
 h3 { font-size: normal; }
 h4 { font-size: normal; color: gray; }
 
+time { display: block; font-size: 70%; color: $middle-color; }
+
 nav {
-    border-bottom: thin solid $middle-color;
-    padding-bottom: 0.3em;
-    margin-bottom: 0.7em;
+    border-top: thin solid #cca;
+    padding: 1em;
 
-    & > form {
-        display: inline;
-        float: right;
-    }
-}
-
-#menu {
-    display: inline;
-    list-style: none;
-    & > li {
-        display: inline;
-        padding-right: 1em;
+    input {
+        border: thin solid $middle-color;
+        background: $background-color url(../images/icons/search.png) no-repeat scroll 98% 50%;
+        color: $middle-color;
+        padding: 0.5em;
+        display: block;
+        margin: 0 auto;
+        &:focus { color: $foreground-color; }
     }
 
-    padding: 0;
+    ul {
+        display: block;
+        list-style: none;
+        padding: 0;
+        & > li {
+            text-align: center;
+        }
+    }
 }
 
 footer {
     text-align: center;
     font-size: small;
-}
-
-#search {
-    @include box;
-
-    background: $background-color url(../images/icons/search.png) no-repeat scroll 98% 50%;
-    color: $middle-color;
-    padding: 0.5em;
-    &:focus { color: $foreground-color; }
-}
-
-h1#title {
-    margin-top: 0;
-}
-
-p.date {
-    font-size: small;
-    font-weight: normal;
-    white-space: nowrap;
-
-    margin-top: -1em;
-    margin-left: 5em;
-    color: $middle-color;
 }
 
 table {
@@ -124,7 +91,7 @@ table {
     caption, td, th { padding: 0.2em; }
     td, th { border: thin solid gray; }
     td { text-align: center; }
-    .dark { background-color: silver; }
+    .dark { background-color: $middle-color; }
 }
 
 .code {
@@ -132,25 +99,7 @@ table {
 }
 
 pre, .code {
-    border: gray solid thin;
-    background-color: silver;
     padding: 1em;
-}
-
-div.content {
-    width: $main_width;
-}
-
-.lined {
-    margin-top: 2em;
-    border-top: thin solid;
-}
-
-hr {
-    border: 0;
-    background-color: $background-color;
-    height: 1px;
-    margin: 2em 0;
 }
 
 div.picture {
@@ -164,7 +113,6 @@ img {
     border: none;
     &.icon {
         display: inline;
-        border: none;
   }
 }
 
@@ -177,7 +125,6 @@ img.right {
 
 /* Don't display useless crap when printing */
 @media print {
-    body { border: none }
     nav, .noprint { display: none; }
     div.content { width: 100%; }
 }
