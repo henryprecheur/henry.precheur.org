@@ -86,8 +86,6 @@ for p in others:
 
 copy(pages, output())
 
-images = (path.join('images', x) for x in ('background.png',))
-copy(images, output('images'))
 copy('images/icons/search.png', output('images', 'icons'))
 
 copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
