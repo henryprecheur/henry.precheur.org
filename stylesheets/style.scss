@@ -7,15 +7,14 @@ $middle-color: #997;
 $main_width: 44em;
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article, footer, nav {
     display: block;
 }
 
 html, body, nav, input, select, textarea, button {
     font: {
         size: 100%;
-        family: serif;
+        family: sans-serif;
     }
     background-color: $background-color;
     color: $foreground-color;
@@ -50,15 +49,22 @@ h1 {
     padding: 1em;
     margin: 0;
 }
-h2 { font-size: large; }
+h2 {
+    font-size: large;
+    border-top: thin solid $middle-color;
+}
 h3 { font-size: normal; }
 h4 { font-size: normal; color: gray; }
 
 time { display: block; font-size: 70%; color: $middle-color; }
 
-nav {
-    border-top: thin solid #cca;
-    padding: 1em;
+nav ul { margin: 0; list-style-type: none; }
+
+#menu {
+    background-color: transparent;
+    position: fixed;
+    top: 1em;
+    left: 1em;
 
     input {
         border: thin solid $middle-color;
@@ -71,11 +77,9 @@ nav {
     }
 
     ul {
-        display: block;
-        list-style: none;
         padding: 0;
         & > li {
-            text-align: center;
+            // text-align: center;
         }
     }
 }

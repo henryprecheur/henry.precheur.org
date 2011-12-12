@@ -17,10 +17,12 @@
 </head>
 
 <body>
+<article>
 {% block content %}{% endblock %}
+</article>
 
 {% block menu %}
-<nav>
+<nav id='menu'>
     <form method='GET' action="http://www.google.com/search">
         <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
         <input type="hidden" name="sitesearch" value="henry.precheur.org">
