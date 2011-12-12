@@ -58,7 +58,8 @@ popular = ('python/copy_list.txt',
            'python/how_to_server_cgi.txt',
            'clan.cx/feedbackarmy.txt',
            'system/ssh-copy-id.txt',
-           'system/ipv6')
+           'system/ipv6',
+           'web/http_compression.txt')
 weblog.publish.index(output('index.html'), posts,
                      u'{} \u2014 {}'.format(TITLE, posts[0].title),
                      writer=w,
