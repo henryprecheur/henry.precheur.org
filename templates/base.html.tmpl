@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
 <title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html;charset=US-ASCII">
 <meta charset='ascii'>
@@ -14,7 +12,6 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% endblock %}
-</head>
 
 <body>
 
@@ -23,11 +20,13 @@
     <ul>
     <li>
         <form method='GET' action="http://www.google.com/search">
+        <div>
         <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
         <input type="hidden" name="sitesearch" value="henry.precheur.org">
+        </div>
         </form>
     </li>
-    <li><a href='{{ top_dir }}index.html'>Homepage</a></li>
+        <li><a href='{{ top_dir }}index.html'>Homepage</a></li>
     </ul>
 </nav>
 </header>
@@ -55,5 +54,4 @@
 </script>
 
 </body>
-</html>
 {# vim:set ft=htmljinja: #}
