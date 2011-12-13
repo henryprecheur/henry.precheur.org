@@ -3,6 +3,8 @@ html, input, select, textarea, button {
     color: #112; /* 1st color */
 }
 
+body { margin: 0.5em; }
+
 body > * {
     margin: 0.5em auto;
     width: 44em;
@@ -21,11 +23,11 @@ dt { font-weight: bold; }
 
 p, ul, ol { line-height: 150%; }
 
-h1, h2, h3, h4, time { text-align: center; }
+h1, h2, h3, h4 { text-align: center; }
 h1 { margin-top: 0; }
 h4 { color: gray; }
 
-time { display: block; font-size: small; color: #997 /* 2nd color */; }
+time { font-size: small; color: #997 /* 2nd color */; }
 
 input[type='search'] {
     border: thin solid #997 /* 2nd color */;
@@ -39,20 +41,19 @@ input[type='search'] {
 
 input[type='search']:focus { color: $foreground-color; }
 
-nav {
-    border-top: thin solid #997 /* 2nd color */;
-    padding: 1em;
+nav > ul {
+    padding: 0;
+    margin: 0;
 }
 
-nav input[type='search'], nav div {
-    display: block;
-    margin: 0 auto;
+header {
+    float: left;
     width: 20em;
+    margin: 0;
 }
 
 footer {
     text-align: center;
-    font-size: small;
 }
 
 table {
@@ -89,40 +90,6 @@ img.icon { display: inline; }
 img.right {
     float: right;
     margin: 1em;
-}
-
-#archives {
-    padding: 0;
-}
-
-#archives time, #archives a {
-    display: inline-block;
-
-    /* For IE7 */
-    zoom: 1;
-    *display: inline;
-}
-
-#archives time {
-    display: inline-block;
-    width: 35%;
-    text-align: right;
-    margin-right: 1em;
-
-    /* For IE7 */
-    zoom: 1;
-    *display: inline;
-}
-
-#archives > li.popular {
-            background-color: #ddb;
-}
-#archives > li.popular:after {
-    /* float: right; */
-    content: "Popular";
-    color: #997 /* 2nd color */;
-    font-size: smaller;
-    padding: 0 1em;
 }
 
 /* Don't display useless crap when printing */

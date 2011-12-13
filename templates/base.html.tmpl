@@ -10,25 +10,33 @@
 {% endblock %}
 {% block head %}
 <link rel='stylesheet' href='{{ top_dir }}style.css'>
-{% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+{% endblock %}
 </head>
 
 <body>
+
+<header>
+<nav>
+    <ul>
+    <li>
+        <form method='GET' action="http://www.google.com/search">
+        <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
+        <input type="hidden" name="sitesearch" value="henry.precheur.org">
+        </form>
+    </li>
+    <li><a href='{{ top_dir }}index.html'>Homepage</a></li>
+    </ul>
+</nav>
+</header>
+
 <article>
 {% block content %}{% endblock %}
 </article>
 
-<nav>
-{% block navigation %}
-    <form method='GET' action="http://www.google.com/search">
-        <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
-        <input type="hidden" name="sitesearch" value="henry.precheur.org">
-    </form>
-{% endblock %}
-</nav>
+{% block navigation %}{% endblock %}
 
 <footer>&copy; 2007-2011
 <a href='{{ top_dir }}about.html'>Henry Pr&ecirc;cheur</a></footer>

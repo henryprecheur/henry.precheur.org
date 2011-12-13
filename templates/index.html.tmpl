@@ -2,18 +2,17 @@
 
 {% block content %}
 {% set page = pages[0] %}
-<h1><a href='{{ page.url(url) }}'>{{ page.title|escape|decode }}</a></h1>
+<h1><a href='{{ page.url(url) }}' title='Direct link to this post'>{{ page.title|escape|decode }}</a></h1>
 {%- if page.date -%}
 <time date='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</time>
 {%- endif -%}
-<div class='content'>
+<div>
 {{ page.html(curdir='.')|decode }}</div>
 {% endblock %}
 
 {% block navigation %}
 {{ super() }}
-
-<h4>Older posts</h4>
+<h3>Older posts</h3>
 
 {% set pages = pages[1:] %}
 {% include 'pages_summary.html.tmpl' %}

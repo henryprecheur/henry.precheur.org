@@ -1,0 +1,30 @@
+#archives { padding: 0; }
+
+#archives > li > * {
+    vertical-align: top;
+}
+
+#archives time, #archives div {
+    display: inline-block;
+
+    /* For IE7 */
+    zoom: 1;
+    *display: inline;
+}
+
+#archives div { width: 65% }
+#archives time {
+    width: 30%;
+    text-align: right;
+    margin-right: 1em;
+}
+
+#archives > li.popular {
+            background-color: #ddb;
+}
+#archives > li.popular > time:before {
+    float: left;
+    content: "Popular";
+    margin-left: 1em;
+}
+
