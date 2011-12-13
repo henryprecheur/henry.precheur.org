@@ -25,7 +25,7 @@ STYLESHEETS = $(STYLE_DIR)/normalize.css \
 	      $(STYLE_DIR)/archives.css
 
 $(OUTPUT_DIR)/style.css: $(STYLESHEETS)
-	cat $> > $@
+	cat $(STYLESHEETS) > $@
 
 re: clean all
 
