@@ -82,8 +82,6 @@ for p in others:
 
 copy(pages, output())
 
-copy('images/icons/search.png', output('images', 'icons'))
-
 copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
 copy(sorted(iglob('vanpy/test/*')), output('vanpy', 'test'))
 
