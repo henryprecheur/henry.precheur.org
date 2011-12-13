@@ -1,0 +1,131 @@
+html, input, select, textarea, button {
+    background-color: #eed; /* 3rd color */
+    color: #112; /* 1st color */
+}
+
+body > * {
+    margin: 0.5em auto;
+    width: 44em;
+    max-width: 90%;
+}
+
+a {
+    color: #443;
+    text-decoration: none;
+    border-bottom: thin dotted;
+}
+a:hover { border-bottom: thin solid; }
+a:active, a:visited { color: #221; }
+
+dt { font-weight: bold; }
+
+p, ul, ol { line-height: 150%; }
+
+h1, h2, h3, h4, time { text-align: center; }
+h1 { margin-top: 0; }
+h4 { color: gray; }
+
+time { display: block; font-size: small; color: #997 /* 2nd color */; }
+
+input[type='search'] {
+    border: thin solid #997 /* 2nd color */;
+    /* background: #eed url(../images/icons/search.png) no-repeat 98% 50%; */
+    background-image: url(images/icons/search.png);
+    background-repeat: no-repeat;
+    background-position: 98% 50%;
+    color: #997 /* 2nd color */;
+    padding: 0.5em;
+}
+
+input[type='search']:focus { color: $foreground-color; }
+
+nav {
+    border-top: thin solid #997 /* 2nd color */;
+    padding: 1em;
+}
+
+nav input[type='search'], nav div {
+    display: block;
+    margin: 0 auto;
+    width: 20em;
+}
+
+footer {
+    text-align: center;
+    font-size: small;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption, td, th { padding: 0.2em; }
+td, th { border: thin solid gray; }
+td { text-align: center; }
+table.dark { background-color: #997 /* 2nd color */; }
+
+.code {
+    font-family: monospace;
+}
+
+pre, .code {
+    padding: 1em;
+}
+
+div.picture {
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+
+img.icon { display: inline; }
+
+img.right {
+    float: right;
+    margin: 1em;
+}
+
+#archives {
+    padding: 0;
+}
+
+#archives time, #archives a {
+    display: inline-block;
+
+    /* For IE7 */
+    zoom: 1;
+    *display: inline;
+}
+
+#archives time {
+    display: inline-block;
+    width: 35%;
+    text-align: right;
+    margin-right: 1em;
+
+    /* For IE7 */
+    zoom: 1;
+    *display: inline;
+}
+
+#archives > li.popular {
+            background-color: #ddb;
+}
+#archives > li.popular:after {
+    /* float: right; */
+    content: "Popular";
+    color: #997 /* 2nd color */;
+    font-size: smaller;
+    padding: 0 1em;
+}
+
+/* Don't display useless crap when printing */
+@media print {
+    nav, .noprint { display: none; }
+}

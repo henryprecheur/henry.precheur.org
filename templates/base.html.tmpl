@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
 {% endblock %}
 {% block head %}
-<link rel='stylesheet' href='{{ top_dir }}stylesheets/style.css'>
+<link rel='stylesheet' href='{{ top_dir }}style.css'>
 {% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,21 +21,17 @@
 {% block content %}{% endblock %}
 </article>
 
-{% block menu %}
-<nav id='menu'>
+<nav>
+{% block navigation %}
     <form method='GET' action="http://www.google.com/search">
         <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
         <input type="hidden" name="sitesearch" value="henry.precheur.org">
     </form>
-    <ul>
-        <li><a href='{{ top_dir }}index.html'>Home</a></li>
-        <li><a href='{{ top_dir }}about.html'>About</a></li>
-    </ul>
-</nav>
 {% endblock %}
+</nav>
 
 <footer>&copy; 2007-2011
-<a href='mailto:Henry Precheur <henry@precheur.org>'>Henry Pr&ecirc;cheur</a></footer>
+<a href='{{ top_dir }}about.html'>Henry Pr&ecirc;cheur</a></footer>
 
 <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -1,12 +1,13 @@
 {% extends 'base.html.tmpl' %}
 
 {% block content %}
-<article>
-<h1 id='title'>{{ title|escape|decode }}</h1>
+<h1>{{ title|escape|decode }}</h1>
+
 {%- if date -%}
 <time date='{{ date }}'>{{ date.strftime('%B %e %Y') }}</time>
 {%- endif -%}
-<div class='content'>
+
+<div>
 {{ content|decode }}
 </div>
 {% endblock %}
