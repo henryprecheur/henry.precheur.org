@@ -25,9 +25,8 @@ copy(iglob('weblog/doc/*'), output('weblog'))
 copy(iglob('weblog/files/*'), output('weblog'))
 
 def ignore(path):
-    for x in ('output', 'templates', 'robots.txt', 'weblog/doc',
-              'weblog/files', 'nginx', 'vanpy/test', '.hg/', '.env',
-              'IDEAS.txt'):
+    for x in ('.', 'output', 'templates', 'robots.txt', 'weblog/doc',
+              'weblog/files', 'nginx', 'vanpy/test', 'IDEAS.txt'):
         if path.startswith(x):
             return True
     return False
@@ -58,7 +57,7 @@ popular = ('python/copy_list.txt',
            'python/how_to_server_cgi.txt',
            'clan.cx/feedbackarmy.txt',
            'system/ssh-copy-id.txt',
-           'system/ipv6',
+           'system/ipv6.txt',
            'web/http_compression.txt')
 weblog.publish.index(output('index.html'), posts,
                      u'{} \u2014 {}'.format(TITLE, posts[0].title),
@@ -90,7 +89,7 @@ copy(pages, output())
 copy('images/icons/search.png', output('images', 'icons'))
 
 copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
-copy(iglob('vanpy/test/*'), output('vanpy', 'test'))
+copy(sorted(iglob('vanpy/test/*')), output('vanpy', 'test'))
 
 f = open(output('redirect.conf'), 'w')
 
