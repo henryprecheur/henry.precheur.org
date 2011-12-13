@@ -8,16 +8,24 @@ all: publish
 $(OUTPUT_DIR):
 	@mkdir -p $(OUTPUT_DIR)
 
-publish: css $(OUTPUT_DIR)
+publish: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	$(PYTHON) ./publish.py
+
+_weblog: $(OUTPUT_DIR)
+	@mkdir -p $(OUTPUT_DIR)/weblog
+	cp -R weblog/doc/* $(OUTPUT_DIR)/weblog
+	cp -R weblog/files/* $(OUTPUT_DIR)/weblog
 
 clean:
 	-rm -rf $(OUTPUT_DIR)
 
 STYLE_DIR = stylesheets
+STYLESHEETS = $(STYLE_DIR)/normalize.css \
+	      $(STYLE_DIR)/main.css \
+	      $(STYLE_DIR)/archives.css
 
-css: $(OUTPUT_DIR)
-	cat $(STYLE_DIR)/normalize.css $(STYLE_DIR)/main.css > $(OUTPUT_DIR)/style.css
+$(OUTPUT_DIR)/style.css: $(STYLESHEETS)
+	cat $> > $@
 
 re: clean all
 
