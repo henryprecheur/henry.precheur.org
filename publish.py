@@ -20,10 +20,6 @@ if not path.isdir(output()):
 
 copy = partial(weblog.copy, link=True)
 
-# Copy weblog/doc first
-copy(iglob('weblog/doc/*'), output('weblog'))
-copy(iglob('weblog/files/*'), output('weblog'))
-
 def ignore(path):
     for x in ('.', 'output', 'templates', 'robots.txt', 'weblog/doc',
               'weblog/files', 'nginx', 'vanpy/test', 'IDEAS.txt'):
