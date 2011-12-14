@@ -1,11 +1,14 @@
 #!/home/henry/weblog/env/bin/python
 
+import io
 import sys
 from functools import partial
 from datetime import date
-from os import path, mkdir
+from os import path, mkdir, makedirs
 from re import escape
 from glob import iglob
+
+from rewrite_url import rewrite_urls
 
 sys.path.append(path.expanduser('~/weblog'))
 
@@ -41,6 +44,20 @@ def cmp_page(self, other):
 
 posts.sort(reverse=True, cmp=cmp_page)
 
+class OutputFile(object):
+    def __init__(self, filename):
+        self.name = output(filename)
+
+        # Create directory if it doesn't exist
+        d = path.dirname(self.name)
+        if not path.isdir(d):
+            makedirs(d)
+
+        self._file = io.FileIO(self.name, 'w')
+
+    def write(self, text):
+        rewrite_urls(io.StringIO(text), self._file)
+
 w = weblog.template.Writer('./templates', encoding='utf8')
 
 weblog.publish.feed(output('feed.atom'), posts[:10], URL, TITLE, writer=w)
@@ -55,7 +72,7 @@ popular = ('python/copy_list.txt',
            'system/ssh-copy-id.txt',
            'system/ipv6.txt',
            'web/http_compression.txt')
-weblog.publish.index(output('index.html'), posts,
+weblog.publish.index(OutputFile('index.html'), posts,
                      u'{} \u2014 {}'.format(TITLE, posts[0].title),
                      writer=w,
                      popular=popular)
@@ -66,7 +83,7 @@ def top_dir(p):
 for p in posts:
     o = output(p.output_filename())
     if weblog.newer_than(p.filename, o):
-        w.write('post.html.tmpl', o,
+        w.write('post.html.tmpl', OutputFile(p.output_filename()),
                 title=p.title, date=p.date, content=p.html(),
                 top_dir=top_dir(p))
 
@@ -77,8 +94,8 @@ for p in others:
             t = '/'
         else:
             t = top_dir(p)
-        w.write('page.html.tmpl', o, title=p.title, content=p.html(),
-                top_dir=t)
+        w.write('page.html.tmpl', OutputFile(p.output_filename()),
+                title=p.title, content=p.html(), top_dir=t)
 
 copy(pages, output())
 
