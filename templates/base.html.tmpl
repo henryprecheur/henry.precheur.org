@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
-<meta http-equiv="Content-Type" content="text/html;charset=US-ASCII">
-<meta charset='ascii'>
-<meta name='generator' content='weblog'>
 {% block feed %}
 <link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
 {% endblock %}
