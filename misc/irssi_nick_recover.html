@@ -1,0 +1,25 @@
+title: Irssi: simple alias to recover nickname
+date: 2008-05-08 23:48:01
+
+<p>
+Simple alias to recover your nick on freenode with <a
+    href='http://www.irssi.org/'>Irssi</a>:
+</p>
+<div class='code'>
+<del>
+/alias nick_recover msg NickServ RECOVER $0 $1; wait 2000; msg NickServ RELEASE
+$0 $1; wait 2000; nick henry; wait 2000; msg NickServ IDENTIFY $1
+</del>
+</div>
+<p>
+To use it simply type:
+</p>
+<pre>/nick_recover nickname password</pre>
+<p>
+Update: Freenode just replaced the <code>recover</code> command by
+<code>ghost</code>, so now use:
+</p>
+<div class='code'>
+/alias nick_recover msg NickServ GHOST $0 $1; wait 2000; msg NickServ RELEASE
+$0 $1; wait 2000; nick henry; wait 2000; msg NickServ IDENTIFY $1
+</div>

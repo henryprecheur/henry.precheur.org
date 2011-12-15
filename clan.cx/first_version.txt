@@ -1,0 +1,82 @@
+title: First version of clan.cx online
+date: 2011-1-21
+
+I’ve put online an early version of [clan.cx][clan.cx]. It’s a site to host and
+manage StarCraft 2 clans.
+
+This version is not really intended to be used yet. It’s a first milestone, I
+wanted to have something online before the end of January. There’s a rudimentary
+forum and that’s it. It’s so basic that I don’t expect anybody could get
+anything out of it right now.
+
+In the coming weeks and months, I’ll add more features and polish it. There’s
+still a lot of work to do. I hope the service will be useful for people in a few
+months. My plan is to charge users directly if the service is successful, as I
+don’t believe in Ad-sponsored hosting.
+
+For those interested here is what I’ve used to build this first version:
+
+- [Python 2.6][py], Python is my favorite language. Version 2.7 was released
+  before I started working on [clan.cx][clan.cx], but I didn’t want to start
+  using a version of Python that wouldn’t be available on Ubuntu and OpenBSD
+  —the two operating system I use.
+- [Werkzeug][werkzeug], a WSGI utility library for Python.
+- [Jinja2][jinja], probably the best templating engine available for Python.
+- [Redis][redis], more about that later.
+- [Gunicorn][gunicorn]
+- [Nginx][nginx] as a reverse proxy in front of Gunicorn and to serve static
+  files.
+
+I’ve started working on it in September. First I used [SQLAlchemy][sa] and
+[PostgreSQL][postgres] to store objects. A few weeks later I started another
+version without SQLAlchemy, where I wrote the SQL myself. I like minimalism, and
+I was spending too much time learning SQLAlchemy. SQLAlchemy is powerful and
+well designed, but it’s also big and complex.
+
+In October I realized that SQLAlchemy wasn’t really the problem. I just wanted
+to ditch SQL with all its limitations and weirdness. Using SQL based databases
+is a frustrating exercise, and it was really time to get out of this hell. I
+knew about alternative “NoSQL” databases like [MongoDB][mongodb], [Tokyo & Kyoto
+cabinet][cabinet], and [CouchDB][couchdb] but none of them really clicked. The one I
+liked most was [Redis][redis], but at the time it didn’t guarantee persistence.
+If Redis crashed, you could lose data. When I checked again, Redis had a “Append
+Only File”, it’s a log that guarantees that data wont get lost.
+
+Redis is exactly the quite of software I like. Its scope is limited, it’s small,
+the design is simple, and it’s fast. Unfortunately I’ve spend far too much time
+building an ORM for Redis. Building the first version took almost 1 months, and
+delayed me significantly. That’s why being your own boss can be a trap, you can
+do “things right”, but having the pressure to get things done quickly has its
+advantages too. The ORM is not ready for public consumption yet, but it’s
+already usable for 90% of what you would want to do. I might start a small
+documentation later this year and release it.
+
+I’ve also built a small library to handle form. Other libraries like
+[Formencode][1], [WTForms][2], or [Fungiform][3] are a little too complex to use
+and yet they don’t do all I want. In retrospect I should have realized that form
+handling is hard! I shouldn’t have build yet another form library, it doesn’t
+solve the form problem very well and I have to maintain it. I might get rid of
+it and use something else later.
+
+I’ll try to have an update about the development of [clan.cx][clan.cx] every
+month or so.
+
+[clan.cx]: http://clan.cx/ "clan.cx — StarCraft II clan hosting"
+
+[py]: http://python.org/
+[werkzeug]: http://werkzeug.pocoo.org/
+[jinja]: http://jinja.pocoo.org/
+[redis]: http://code.google.com/p/redis/
+[gunicorn]: http://gunicorn.org/
+[nginx]: http://wiki.nginx.org/
+
+[mongodb]: http://www.mongodb.org/
+[cabinet]: http://fallabs.com/
+[couchdb]: http://couchdb.apache.org/
+
+[sa]: http://www.sqlalchemy.org/
+[postgres]: http://www.postgresql.org/
+
+[1]: http://formencode.org/
+[2]: http://wtforms.simplecodes.com/
+[3]: http://pypi.python.org/pypi/Fungiform/

@@ -1,0 +1,41 @@
+title: Weblog 2
+date: 2009-01-17 17:18:29
+
+Weblog 2.0 has been released! This release is not backward compatible with
+previous versions of Weblog. A migration script is present in
+`contrib/migrate.py` to make migrations smooth.
+
+Incompatible changes includes:
+
+- `weblog.ini` has been replaced by `config.py` a Python file; making
+  configuration more flexible.
+
+- URLs have changed. Spaces are replaced by underscores '_'. You can also choose the
+  filenames encoding, resulting in nicer URLs for language which use non-ascii
+  characters (pretty much any languages except english.)
+
+- Graphical customization is now done by modifying directly the templates.
+  Weblog has a nicer default look. `html_head`, `html_header`, and `html_footer`
+  are no longer supported.
+
+The release also comes with a couple a bugfixes and a slightly improved
+documentation. This release helped shrink Weblog by a ~50 lines of code, with
+only 1376 lines of Python!
+
+I would like to thank Shawn Medero, Jon Nicoll, and [Thiago
+Coutinho](http://thiago.bunghole.com.br/blog/) for helping making Weblog better
+with their suggestions and bug reports.
+
+Get it while it is fresh:
+
+    $ easy_install weblog
+
+Or on the [download page](install.html#download).
+
+Don't hesitate to ask questions / request support:
+
+[http://groups.google.com/group/weblog-users][] or
+[weblog-users@googlegroups.com][].
+
+[http://groups.google.com/group/weblog-users]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[weblog-users@googlegroups.com]: mailto:weblog-users@googlegroups.com

@@ -1,0 +1,171 @@
+title: Indenting Python with VIM
+date: 2008-04-18 00:24:24
+
+<p>
+<a href='http://www.vim.org'>Vim</a>’s default configuration for Python sucks!
+If you have used Vim to write Python code, you probably know this very well. It
+does not align to parentheses and braces.
+</p>
+<pre>
+dict(foo=bar&lt;return&gt;
+        _ &lt;= directly insert a 'tab'
+
+{'hello': 'world',&lt;return&gt;
+        _ &lt;= Same thing!
+</pre>
+<p>
+It doesn’t add indentation after Python keyword
+</p>
+<pre>
+if True:&lt;return&gt;
+_ &lt;= Come on! I don’t want to hit 'tab' every time I open a block!
+</pre>
+<p>
+Not even mentioning insanities like: insert tabs instead of spaces, or tab
+width is 8 spaces. One can say it is a matter of taste; but it is generally
+accepted that Python code should have a 4 spaces indentation, as stated by <a
+    href='http://www.python.org/dev/peps/pep-0008/'>PEP 8</a>.
+</p>
+
+<h3>Making Vim PEP-8 friendly</h3>
+
+<h4>Sane defaults</h4>
+<p>
+First I would like to point out something when writing a Vim configuration file.
+</p>
+<p>
+Generally don’t use the <a
+href='http://vimdoc.sourceforge.net/htmldoc/autocmd.html#%3Aautocmd'>autocmd</a>
+command to add hooks to a specific filename’s extension. <code>AutoCmd ... *.py
+    ...</code> might look like a good way of executing commands when opening a
+Python file; it’s not. Because all Python filenames do not necessarily
+end with <code>.py</code>; some executable scripts might not have extension for
+example.
+</p>
+
+<p>
+<code>autocmd FileType python</code> is better. But there is an even better way:
+<a
+    href='http://vimdoc.sourceforge.net/htmldoc/usr_41.html#ftplugin'>ftplugin</a>.
+For instance, instead of the following in your <code>vimrc</code>
+</p>
+<pre>
+AutoCmd BufNewFile,BufRead *.py
+    \ setlocal tabstop=4
+    \ setlocal softtabstop=4
+    \ setlocal shiftwidth=4
+    \ setlocal textwidth=80
+    \ setlocal smarttab
+    \ setlocal expandtab
+</pre>
+<p>
+Create the directory <code>~/.vim/ftplugin</code>; create a file named
+<code>~/.vim/ftplugin/python.vim</code> containing:
+</p>
+<pre>
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal textwidth=80
+setlocal smarttab
+setlocal expandtab
+</pre>
+<p>
+Now every files detected as Python files by Vim get the previous commands
+executed. Even those with filenames which do not end with <code>.py</code>.
+</p>
+
+<h4>Sexy edition</h4>
+<p>
+Now let’s tackle the edition problem. The solution lies in <a
+    href='http://www.vim.org/scripts/script.php?script_id=974'>this
+    script</a> written by Eric Mc Sween. Download it and drop it in the
+<code>~/.vim/indent</code> directory. You might have to rename the script to
+<code>python.vim</code>. Restart Vim and rejoice! This script intends to make
+Vim behave the right way when editing, and is largely successful. Editing Python
+code is now a real pleasure.
+</p>
+<p>
+It aligns the cursor to parentheses and braces. It indents just after if, for,
+while and so forth. Most problems with the default Vim indentation are solved.
+</p>
+
+<h4>An additional tip about comments</h4>
+<p>
+<del>
+The way comments are indented is still tedious; even when using the indent
+script.
+</del>
+</p>
+<pre>
+<del>def function(foo, bar):
+    if foo:
+# Some useful comment
+        if bar:
+            print 'foo bar'
+        else:
+# Another useful comment
+            print 'foo'</del>
+</pre>
+<p>
+<del>
+This looks more reasonable.
+</del>
+</p>
+<pre>
+<del>def function(foo, bar):
+    if foo:
+        # Some useful comment
+        if bar:
+            print 'foo bar'
+        else:
+            # Another useful comment
+            print 'foo'</del>
+</pre>
+
+<p>
+<del>
+To get this working properly, edit the indentation script
+<code>~/.vim/indent/python.vim</code>. And replace
+</del>
+<pre>
+<del>setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except</del>
+</pre>
+<p>
+<del>with</del>
+</p>
+<pre>
+<del>setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except<strong>,0#</strong></del>
+</pre>
+<p>
+<del>
+With this modification, when pressing the # key, comments are indented
+correctly.
+</del>
+</p>
+
+<p><strong>Update</strong>, Clay Gerrard noted that the solution previously
+described here doesn’t work on Vim 7. To get it to work, remove the
+<code>set smartindent</code> from your Vim configuration file, or better add
+<code>set nosmartindent</code> in your
+<code>~/.vim/ftplugin/python.vim</code>.</p>
+
+<h3>A final note</h3>
+<p>
+Make sure filetype plugin and indentation are enabled. It is deactivated by
+default on many operating systems.  Ubuntu and Debian deactivate indentation and
+OpenBSD deactivates both! To make sure everything is activated type
+<code>:filetype plugin indent on</code>.
+</p>
+<p>
+Don’t forget to put the following line in your <code>vimrc</code> to make
+sure file type plugin and indentation are enabled when you start Vim.
+</p>
+<pre>
+filetype plugin indent on
+</pre>
+<p>
+Update: the link to Eric’s script was broken, it is OK now. Many Thanks
+to Robert for pointing this out!
+</p>
+<!-- vim: set tw=80: -->

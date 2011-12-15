@@ -1,0 +1,38 @@
+title: Top books 2010
+date: 2011-1-17
+
+[Last year I read 12 books][books]. Two of them were particularly good:
+
+[books]: ../books#2010 "Books I have read"
+
+[The Innovator’s Dilemma][1]
+=============================
+
+This book taught me what marketing was really about. It coined the term
+[Disruptive technology][2]. It’s a great introduction to the world a business
+for science minded people and for business people wanting to understand how
+technological changes affect companies and markets. The [first chapter][3] is
+available on business week’s website; if you find it interesting, you should
+definitely get the book and read it, everything in it is worth reading.
+
+[1]: http://en.wikipedia.org/wiki/Special:BookSources/0060521996
+[2]: http://en.wikipedia.org/wiki/Disruptive_technology
+[3]: http://www.businessweek.com/chapter/christensen.htm
+
+[Good Calories, Bad Calories][4]
+================================
+
+A big fat book about nutrition. With all the ‘nutritional experts’ around
+contradicting each other, it’s hard to know who to trust. After reading this
+book, I’d trust its author, [Gary Taubes][5], more than anyone. Good Calories,
+Bad Calories is packed with facts, studies result, and studies critics. The
+author argues that carbohydrates are what make us fat, and he supports this
+remarkably well. The book is 640 pages long, but there’s nothing to remove,
+every sentence is necessary and informative. The writing style of Taubes turns
+what could be a dry reading into an entertaining one.
+
+If you don’t have time to read such a big volume, you can read [Why We Get Fat:
+And What to Do About It][5], a shorter version of Good Calories, Bad Calories.
+
+[4]: http://en.wikipedia.org/wiki/Special:BookSources/1400033462
+[5]: http://en.wikipedia.org/wiki/Special:BookSources/0307272702

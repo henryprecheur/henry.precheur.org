@@ -1,0 +1,19 @@
+title: A gentle introduction to media encoding
+date: 2009-01-15 23:42:24
+
+An easy way of looking smart is to repeat what smart people say. Internet made
+it even easier, post a link to an interesting page written by a guy like [Mark
+Pilgrim](http://diveintomark.org/about) and somehow it looks like you have
+contributed something.
+
+Example:
+
+> Mark Pilgrim just posted a series of article entitled “A gentle introduction to
+> video encoding”. I think video could be replaced by media, since this series
+> also covers audio, captioning, and all sorts of details.
+>
+> [A gentle introduction to video encoding](http://diveintomark.org/tag/give)
+
+This trick is especially handy when you haven’t posted anything for almost 2
+months. Looking productive without actually producing anything: I am a real
+blogger now!

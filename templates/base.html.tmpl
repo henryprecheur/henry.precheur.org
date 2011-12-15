@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html;charset=US-ASCII">
+<meta charset='ascii'>
+<meta name='generator' content='weblog'>
+{% block feed %}
+<link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
+{% endblock %}
+{% block head %}
+<link rel='stylesheet' type='text/css' href='{{ top_dir }}stylesheets/style.css'>
+{% endblock %}
+<!--[if lt IE 9]>
+<script src='{{ top_dir }}scripts/html5.js'></script>
+<![endif]-->
+</head>
+
+<body>
+{% block menu %}
+<nav>
+    <ul id='menu'>
+        <li><a href='{{ top_dir }}index.html'>Home</a></li>
+        <li><a href='{{ top_dir }}about'>About</a></li>
+    </ul>
+    <form method='GET' action="http://www.google.com/search">
+        <input id='search' type="search" placeholder='Search...' name="q" maxlength="255" value="">
+        <input type="hidden" name="sitesearch" value="henry.precheur.org">
+    </form>
+</nav>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+<footer><small>&copy; 2007-2011 Henry Pr&ecirc;cheur</small></footer>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20945988-1']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
+{# vim:set ft=htmljinja: #}

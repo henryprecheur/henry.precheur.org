@@ -1,0 +1,67 @@
+title: Using Feedback Army for clan.cx
+files: buttons.png
+date: 2011-2-23
+
+Since I started working on [clan.cx][clan.cx], I’ve been in a bubble. I didn’t
+show it to anyone and didn’t know how usable or broken it was. A month ago I
+decided to get input about it from others. I think asking friends or people I
+know is a bad idea. They can be biased because I talked about it or simply
+because as friend they don’t want to sound mean. Also most of the people I could
+ask for feedback are themselves developers. Today there are many services to get
+feedbacks quickly, and here nobody is afraid to hurt your feelings: they’re paid
+to do it.
+
+I tried [FeedBack Army][feedbackarmy], a few weeks ago. It’s a “Simple, Cheap
+Usability Testing for Your Website”. You submit questions, pay $15, and get 10
+answers.
+
+The submission process was quick and easy. The front page says “Start a
+usability test for your site in two minutes”. It really is that quick —excluding
+writing the questions. Answers come in quickly, within a few hours I had 10
+well-written answers from people who tried the site for 5 to 20 minutes.
+
+I wanted to check that creating and posting in the forum was straightforward. It
+turned out to be obvious for everybody, problems were elsewhere ... The
+reviewers wanted to be able to preview before posting. Originally the forum
+worked the way [Reddit][reddit]’s comments work: write something, post it, and
+edit it live. As obvious as it seems, I didn't consider adding previews before
+that.
+
+Posts are formatted using [Markdown][markdown], a [lightweight markup
+language][lml]. There was a table summarizing the syntax below the textbox, but
+people didn't seem to notice it. So I added a link “formatting help” beside the
+Post / Preview buttons:
+
+<img src='buttons.png' width='353' height='52' alt='Button bar screenshot'
+title='Adding a preview button and the formatting help link should help'/>
+
+This should draw people’s attention more than just a table at the bottom of the
+page.
+
+Most reviewers understood what the site was for, but found it empty. There was
+no about page, no help. This lack of information was noted in almost every
+answers. They didn’t request more features, but more “content”. At the time of
+this writing, the home page of clan.cx is just a big sign-up form with that on
+top:
+
+> clan.cx — Fast StarCraft II clan hosting
+> ========================================
+>
+> Clan.cx hosts your StarCraft clan. Communicate privately or publicly with your
+> clan mates.
+
+I knew more content was needed but it’s good to be confident that adding a
+description, screenshots, and help is what the site needs.
+
+I’m planning on using Feedback Army or maybe other similar services at least
+once a month. $15 is a cheap way to get invaluable information for a project
+online.
+
+I plan to advertise clan.cx in March. I’ll adapt depending on the response
+I get from potential users, and of course from Feedback Army.
+
+[clan.cx]: http://clan.cx/ "Fast StarCraft II clan hosting"
+[feedbackarmy]: http://feedbackarmy.com/ "Website Usability Testing Service"
+[reddit]: http://www.reddit.com/
+[markdown]: http://daringfireball.net/projects/markdown/
+[lml]: http://en.wikipedia.org/wiki/Lightweight_markup_language

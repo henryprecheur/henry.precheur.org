@@ -1,0 +1,50 @@
+title: Unicycle, a Vim plugin for typography junkies
+encoding: utf-8
+date: 2008-09-22 22:44:00
+
+I am not exactly a typography junky. But I read a fair number of books and I got
+used to good typography. But when it comes to good typographic practice, the web
+is quite poor. Even some well-known newspaper’s websites have a poor typography.
+
+Here is what I mean by good and bad typography.
+
+Bad:
+
+> "Hello -- my name is O'Brien ..."
+
+Good:
+
+> “Hello – my name is O’Brien …”
+
+Thanks to [Unicycle](http://www.vim.org/scripts/script.php?script_id=1384) –a
+Vim plugin– it is possible to get the right characters directly in Vim as long
+as your file is encoded in UTF-8.
+
+A quick tour
+============
+
+The installation is quite simple. Download
+[unicycle.vim](http://www.vim.org/scripts/download_script.php?src_id=4689), copy
+it to `~/.vim/plugin` and restart Vim.
+
+Open a file and type:
+
+    :UniCycleOn
+
+Get into insertion mode and type ', instead of the classic straight quote (')
+You get an opening curly quote (‘). If you really want a straight quote ('),
+type ' again and you get it. To get a curly closing quote (’), type ' three
+times.
+
+UniCycle has sensible defaults. If you type O'Brian, you won’t get O‘Brian, but
+O’Brian. And 'test' get turned automatically into ‘test’.
+
+It also works for:
+
+  - double quote: “Hello World”.
+  - dashes: type hyphen 2 times to get a en-dash (–), 3 to get a em-dash (—) and
+    4 to a hyphen again.
+  - ellipses: ‘...’ turns into ‘…’
+
+Thanks to the author [Jason Diamond](http://jason.diamond.name/) for this
+plugin, which I will use and abuse.

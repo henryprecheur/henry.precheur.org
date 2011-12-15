@@ -1,0 +1,18 @@
+title: License benchmark
+date: 2009-9-14
+files: license_benchmark.png
+
+There are endless discussions about which is the best free-software license.
+People debate about which one provides more freedom, more convenience, which one
+is fair, or which one is the most widely accepted. All that is subjective, and
+mostly irrational.
+
+What rational people do when they have to decide between A and B? They run a
+benchmark. Time is our most precious asset, reading a word takes time, therefor
+words are bad. The less words a license has, the better. Here is the definitive,
+100% objective, and highly relevant license benchmark:
+
+![License Benchmark, WTFPL ownz all other licenses](license_benchmark.png)
+
+I think this settle the matter, the [WTFPL](http://sam.zoy.org/wtfpl/) is the
+only reasonable choice for everybody.

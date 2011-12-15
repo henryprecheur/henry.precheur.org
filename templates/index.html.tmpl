@@ -1,0 +1,22 @@
+{% extends 'base.html.tmpl' %}
+
+{% block content %}
+{% set page = pages[0] %}
+<h1 id='title'><a href='{{ page.url(url) }}'>{{ page.title|escape|decode }}</a></h1>
+{%- if page.date -%}
+<p class='date' title='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</p>
+{%- endif -%}
+<div class='content'>
+{{ page.html(curdir='.')|decode }}</div>
+
+<div class='noprint'>
+    <h2 class='lined'>Older posts</h2>
+
+    {% set pages = pages[1:] %}
+    {% include 'pages_summary.html.tmpl' %}
+
+    <p><a href='archives'>More ...</a></p>
+</div>
+{% endblock %}
+
+{# vim:set ft=htmljinja: #}

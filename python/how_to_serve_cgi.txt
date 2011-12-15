@@ -1,0 +1,59 @@
+title: How to serve a WSGI application via CGI
+date: 2009-3-10 21:20:30
+
+CGI has a bad reputation. Its slow performance disqualify it for most demanding
+tasks; nobody would think of serving thousands of pages per seconds via CGI. But
+when performance doesn’t matter, it can still be useful.
+
+CGI is easy to deploy, most HTTP servers fully support it, and writing a minimal
+script only takes a few lines:
+
+    print 'Content-type: text/plain'
+    print
+    print 'Hello World!'
+
+But writing CGI scripts in Python can be difficult. Unlike PHP where most “web”
+features are embedded in the language. Python CGI scripts don’t handle query
+strings, path info, cookies, sessions, etc. out of the box. They usually rely on
+the [cgi][] module and some custom code to handle this.
+
+[WSGI][] also can provide those missing features. There are lots of existing
+middlewares and utilities for WSGI providing all kinds of services. Also the
+code developed for your CGI scripts can be reused in other applications, even
+those using SCGI or FastCGI. [wsgiref][] is shipped with CPython since version
+2.5, and a [CGI handler][] is included; no need to install extra packages to get
+it running.
+
+To run your WSGI application pass it to the `run` method of the `CGIHandler`:
+
+    #!/usr/bin/env python
+    import wsgiref.handlers
+
+    def application(environ, start_response):
+        start_response('200 OK', [('Content-Type', 'text/plain')])
+        return ['Hello World!\n']
+
+    if __name__ == '__main__':
+        wsgiref.handlers.CGIHandler().run(application)
+
+You might have to configure your HTTP server to serve CGI scripts. Setting it up
+is usually a lot simpler than FastCGI, SCGI, mod\_python, and mod\_wsgi:
+
+- [Configuring CGI with Apache][]
+- [Configuring CGI with Lighty or Lighttpd][]
+- [Configuring CGI with Nginx][]
+
+To deploy your scripts: copy them to the appropriate directory, that’s all, no
+need to restart a server. CGI is appealing for small scripts because of its easy
+deployment. Remember it next time you have to do “this simple script that
+shouldn’t take long to develop”, often deployment time accounts for more than
+development time.
+
+[Configuring CGI with Apache]: http://httpd.apache.org/docs/2.0/howto/cgi.html
+[Configuring CGI with Lighty or Lighttpd]: http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModCGI
+[Configuring CGI with Nginx]: http://wiki.codemongers.com/NginxSimpleCGI
+
+[cgi]: http://docs.python.org/library/cgi.html
+[WSGI]: http://www.wsgi.org/wsgi/What_is_WSGI
+[wsgiref]: http://docs.python.org/library/wsgiref.html
+[CGI Handler]: http://docs.python.org/library/wsgiref.html#module-wsgiref.handlers

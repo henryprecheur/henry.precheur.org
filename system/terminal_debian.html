@@ -1,0 +1,25 @@
+title: A Debian terminal problem
+date: 2008-07-14 22:33:42
+
+<p>
+When connecting from an OpenBSD box to a Debian / Ubuntu box via SSH, if
+<code>TERM</code> is set to <code>xterm-color</code>, backscape and Ctrl+H work
+incorrectly.
+</p>
+<p>
+Debian's terminfo for <code>xterm-color</code> seems to be broken. Since there
+are similar problems when using a real xterm with <code>TERM</code> set to
+<code>xterm-color</code> under a Debian based system.
+</p>
+<p>
+One solution is to set the <code>TERM</code> variable to
+<code>xterm-debian</code> on the Debian marchine:
+</p>
+<p>When using X11, edit the file <code>${HOME}/.Xdefaults</code>; add the following line.</p>
+<pre class='code'>
+XTerm*termName: xterm-debian
+</pre>
+<p>set the <code>TERM</code> variable when connection via SSH</p>
+<pre class='code'>
+$ env TERM=xterm-debian ssh debian-box
+</pre>

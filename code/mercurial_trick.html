@@ -1,0 +1,22 @@
+title: Mercurial trick: hooks
+date: 2008-07-27 16:13:45
+
+<p>
+It is possible to define <a href='http://hgbook.red-bean.com/hgbookch10.html'>
+    hooks</a> in mercurial. Useful for making basic sanity check before
+committing.
+</p>
+<p>
+I often forgot some debugging 'print' statements here and there in my Python
+code. To detect them I simply needed to add in .hg/hgrc:
+</p>
+<pre>
+[hooks]
+pretxncommit.check_no_print = ! hg tip -p | egrep '^[+-]\s*print\&gt;'
+</pre>
+<p>
+This will stop the commit if any line starting with 'print' is found in you patch.
+</p>
+<p>
+I guess there are lots of other useful things we can do with such mechanism! :)
+</p>

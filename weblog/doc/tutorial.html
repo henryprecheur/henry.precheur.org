@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; Weblog v2.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '2.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Weblog v2.5 documentation" href="index.html" />
+    <link rel="next" title="Weblog’s reference manual" href="reference.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="Weblog’s reference manual"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Weblog is a file system based Blog publisher. It works like a compiler. A
+compiler reads source files from the disk and produces an executable; Weblog
+reads structured text files and produces a Blog.</p>
+<p>Here is a quick overview of what is possible to do with Weblog.</p>
+<div class="section" id="create-a-blog">
+<h2>Create a Blog<a class="headerlink" href="#create-a-blog" title="Permalink to this headline">¶</a></h2>
+<p>Before writing your first blog post, you must setup Weblog.</p>
+<p>Create a new directory which will contains all the files related to your Blog.
+Let&#8217;s call it <tt class="docutils literal"><span class="pre">my_blog</span></tt>. Inside <tt class="docutils literal"><span class="pre">my_blog</span></tt> create a file <tt class="docutils literal"><span class="pre">config.py</span></tt>
+containing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">title</span> <span class="o">=</span> <span class="s">&#39;My Blog&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://my_blog.example.com/&#39;</span>
+</pre></div>
+</div>
+<p>Change the values of <tt class="docutils literal"><span class="pre">title</span></tt> and <tt class="docutils literal"><span class="pre">url</span></tt> to whatever you like.</p>
+<p>You can already run Weblog from your blog&#8217;s directory:</p>
+<div class="highlight-python"><pre>$ cd my_blog/
+$ weblog publish</pre>
+</div>
+<p>Alternatively you can specify your blog directory via the option <tt class="docutils literal"><span class="pre">-s</span></tt>, for
+example if the directory is in <tt class="docutils literal"><span class="pre">/path/to/</span></tt>:</p>
+<div class="highlight-python"><pre>$ weblog -s /path/to/my_blog/</pre>
+</div>
+<p>This will create a new directory <tt class="docutils literal"><span class="pre">output</span></tt> containing an empty blog. Preview it
+by opening the <tt class="docutils literal"><span class="pre">output/index.html</span></tt> with a browser.</p>
+<p>You can also specify the name and the location of the output directory via the
+<tt class="docutils literal"><span class="pre">-o</span></tt> option:</p>
+<div class="highlight-python"><pre>$ weblog -s /path/to/my_blog/ -o /tmp/weblog_output</pre>
+</div>
+</div>
+<div class="section" id="first-post">
+<h2>First post<a class="headerlink" href="#first-post" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s publish something now. Create a file named <tt class="docutils literal"><span class="pre">first_post.txt</span></tt> in your blog
+directory containing:</p>
+<div class="highlight-python"><pre>title: My first post
+
+This is my very first post using Weblog.</pre>
+</div>
+<p>Re-run Weblog. Now the <tt class="docutils literal"><span class="pre">output/index.html</span></tt> page contains your new entry. You
+will see the title <cite>My first post</cite>, and below it the publication date.</p>
+<div class="section" id="post-s-structure">
+<h3>Post&#8217;s structure<a class="headerlink" href="#post-s-structure" title="Permalink to this headline">¶</a></h3>
+<p>The post file starts with a list of parameters. All the parameters are
+optional, except <tt class="docutils literal"><span class="pre">title</span></tt>:</p>
+<div class="highlight-python"><pre>title: My first post</pre>
+</div>
+<p>You can also specify the author by adding an <tt class="docutils literal"><span class="pre">author</span></tt> parameter:</p>
+<div class="highlight-python"><pre>title: My first post
+author: Terry Scott</pre>
+</div>
+<p>You can add the author&#8217;s Email after the author&#8217;s name; it will automatically
+be recognised as an Email address, and the corresponding link will be added:</p>
+<div class="highlight-python"><pre>author: Terry Scott &lt;terry@scott.org&gt;</pre>
+</div>
+<p>After these parameters, there is a blank line, which separate the parameters
+from the content. Don&#8217;t forget it when composing!</p>
+</div>
+</div>
+<div class="section" id="formatting-post-content">
+<h2>Formatting post content<a class="headerlink" href="#formatting-post-content" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s add more content to the Blog. It is a little bit empty right now. Create a
+second file <tt class="docutils literal"><span class="pre">second_post.txt</span></tt>:</p>
+<div class="highlight-python"><pre>title: A richer post
+
+This second post demonstrate the possibilities offered by Markdown, the
+markup language used in Weblog.
+
+Here is a second paragraph. *Emphased words*, and **Strong words**.
+
+- A list element
+- Another list element
+
+You can also quote text:
+
+&gt; A silly quotation
+
+You can also have monospaced text, useful for code:
+
+    print "Hello World"</pre>
+</div>
+<p>Now you have a second entry in your blog. This entry has some fancy formatting
+because the text above is using the <a class="reference external" href="http://daringfireball.net/projects/markdown/syntax#overview">Markdown</a> syntax. <a class="reference external" href="http://daringfireball.net/projects/markdown/syntax#overview">Markdown</a> markup is
+automatically turned into HTML. This way you can write your blog posts without
+learning HTML.</p>
+<p>But you can also use HTML if you want to:</p>
+<div class="highlight-python"><pre>title: HTML is available too
+
+&lt;p&gt;A paragraph&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A list item&lt;/li&gt;
+  &lt;li&gt;Antoher list item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Emphased words&lt;/em&gt;, and &lt;strong&gt;Strong words&lt;/strong&gt;.&lt;/p&gt;</pre>
+</div>
+</div>
+<div class="section" id="adding-a-picture">
+<h2>Adding a picture<a class="headerlink" href="#adding-a-picture" title="Permalink to this headline">¶</a></h2>
+<p>Create a directory named <tt class="docutils literal"><span class="pre">images</span></tt> in your blog&#8217;s directory. That&#8217;s where the
+images will be stored. Copy a picture you would like to publish into
+<tt class="docutils literal"><span class="pre">images</span></tt>. Let&#8217;s call it <tt class="docutils literal"><span class="pre">weblog.png</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">post_image.txt</span></tt>:</p>
+<div class="highlight-python"><pre>title: Posting an image
+files: images/weblog.png
+
+![A random image](images/weblog.png)</pre>
+</div>
+<p>The <cite>files</cite> parameter tells Weblog to copy <cite>images/weblog.png</cite> into the output
+directory. Note that the path is preserved; the file is copied to
+<cite>output/images/weblog.png</cite>. You can copy all kinds of files, not just images.</p>
+</div>
+<div class="section" id="what-next">
+<h2>What next?<a class="headerlink" href="#what-next" title="Permalink to this headline">¶</a></h2>
+<p>To learn more about Weblog and how to use it check <a class="reference external" href="reference.html#reference-manual"><em>Weblog&#8217;s reference manual</em></a> and how
+to customize its appearance check <a class="reference external" href="reference.html#style"><em>Customizing Weblog&#8217;s appearance</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Tutorial</a><ul>
+<li><a class="reference external" href="#create-a-blog">Create a Blog</a></li>
+<li><a class="reference external" href="#first-post">First post</a><ul>
+<li><a class="reference external" href="#post-s-structure">Post&#8217;s structure</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#formatting-post-content">Formatting post content</a></li>
+<li><a class="reference external" href="#adding-a-picture">Adding a picture</a></li>
+<li><a class="reference external" href="#what-next">What next?</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="install.html"
+                                  title="previous chapter">Installation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="reference.html"
+                                  title="next chapter">Weblog&#8217;s reference manual</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/tutorial.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reference.html" title="Weblog’s reference manual"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2007-2009, Henry Prêcheur &lt;henry@precheur.org&gt;.
+      Last updated on Mar 15, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+title: The future crisis
+date: 2009-12-9
+
+> “A simple rule is that **if you want to know where the next crisis will be,
+> then look at where the leverage is being created today,**” says Martin Barnes
+> of Bank Credit Analyst, a research firm. “**The answer is in the
+> government.**”
+
+From [The repercussions of Dubai][], The Economist December 3rd 2009.
+
+I am glad to live in Canada, a country which started solving its fiscal problems
+during the past decade. Canadian politicians are aware of the problem that a
+mounting debt creates for the economy. Canada’s debt is raising again because of
+the financial crisis, but the outlook is better than all other G7 countries.
+There are plans to return to fiscal equilibrium in a few years.
+
+France’s fiscal outlook is grimmer. Its annual deficit will be 8.2% of GDP in
+2009, and 8.5% in 2010. The total deficit reaching more the 84% of GDP in 2010.
+Servicing such debt will impact negatively the economy, which in turn will make
+repaying the debt even harder.
+
+Government bonds are considered safe, but during the past decade real estate was
+considered safe too. Argentina defaulted on its public debt in late 2001. After
+this crisis its GDP was divided by 3, and in October 2002 nearly 60% of
+argentinians lived under the poverty line. It took 6 years for the country to
+recover.
+
+I have no idea how the world would react if a developed country defaulted. A
+crisis of confidence in government bonds could have dramatic effects on the
+world. Nobody can bail out the government.
+
+[The repercussions of Dubai]: http://www.economist.com/displaystory.cfm?story_id=15016168 "Dishdashed"

@@ -1,0 +1,30 @@
+title: Weblog 2.1
+date: 2009-03-19 21:51
+
+Weblog 2.1 is now available. This is a bug fix only release:
+
+- UTF-8 characters are now allowed in templates. There is currently no way to
+  specify another character encoding for templates.
+
+- Fixed crash when no author was specified in the post file and the
+  configuration file.
+
+Thanks to [Thiago Coutinho](http://thiago.bunghole.com.br/blog/) and Michael
+Lange for reporting these problems.
+
+Get it on the [download page](install.html#download).
+
+Moved to bitbucket.org
+======================
+
+Weblog’s repository is now [http://bitbucket.org/henry/weblog/][]. Bitbucket
+provides an [issue tracker][] where you can report bugs and request features.
+
+Don't hesitate to ask questions or request support in the [mailing list][]:
+
+>  [weblog-users@googlegroups.com][].
+
+[mailing list]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[weblog-users@googlegroups.com]: mailto:weblog-users@googlegroups.com
+[http://bitbucket.org/henry/weblog/]: http://bitbucket.org/henry/weblog/ "Weblog’s repository"
+[issue tracker]: http://bitbucket.org/henry/weblog/issues/ "Weblog’s issue tracker"

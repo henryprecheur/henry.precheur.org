@@ -1,0 +1,11 @@
+title: The minimal valid html page
+date: 2008-11-25
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+    <title></title>
+    <p>
+
+Nuff said.
+
+**Update**: Another article about that: [The smallest possible valid (X)HTML
+documents](http://mathiasbynens.be/notes/minimal-html)

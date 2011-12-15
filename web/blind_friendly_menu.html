@@ -1,0 +1,51 @@
+title: Blind friendly menu using CSS
+date: 2007-9-8
+
+<p>
+<a href='http://diveintoaccessibility.org/'>Dive Into Accessibility</a> is an
+excellent book, freely available online. It explains how to build a better web
+for people with disabilities.
+</p>
+
+<p>
+<q><a
+href='http://diveintoaccessibility.org/day_10_presenting_your_main_content_first.html'>Presenting
+your main content first</a></q> is one of the advise given. Therefore you
+should present your navigation links at the end the page. By doing so blind
+users will have direct access to the content. But you can still position
+graphically the navigation links wherever you want in the page.
+The author gives a trick to do it with table based layout. But no example is
+given for CSS. Since CSS based layout is much better than table based, I wanted
+to apply this to my little website.
+</p>
+
+<p>
+This few lines of CSS code do the job:
+</p>
+<blockquote>
+<pre>
+div#menu
+{
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+</pre>
+</blockquote>
+
+<p>
+Put this code just before your <tt>&lt;/body&gt;</tt> tag.
+<blockquote>
+<pre>
+&lt;div id='menu'&gt;
+&lt;p&gt;&lt;a href='items1.html'&gt;item1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href='items2.html'&gt;item2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href='items3.html'&gt;item3&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+</blockquote>
+<p>
+This method is quick, easy and works everywhere. Even on Internet Explorer 6
+&amp; 7. (Tested with <a href='http://ipinfo.info/netrenderer/'>NetRenderer</a>
+to avoid any loss of freedom ;)
+</p>

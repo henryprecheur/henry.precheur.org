@@ -1,0 +1,137 @@
+diff -r a2f37186527c -r 495f37e08def dwm.c
+--- a/dwm.c	Sat Aug 23 09:54:55 2008 +0100
++++ b/dwm.c	Mon Aug 25 21:13:18 2008 -0700
+@@ -29,6 +29,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <time.h>
+ #include <sys/select.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+@@ -200,7 +201,7 @@
+ static void zoom(const Arg *arg);
+ 
+ /* variables */
+-static char stext[256];
++static char status_text[256];
+ static int screen;
+ static int sx, sy, sw, sh; /* X display screen geometry x, y, width, height */ 
+ static int by, bh, blw;    /* bar geometry y, height and layout symbol width */
+@@ -315,7 +316,7 @@
+ 		}
+ 		else if(ev->x < x + blw)
+ 			click = ClkLtSymbol;
+-		else if(ev->x > wx + ww - TEXTW(stext))
++		else if(ev->x > wx + ww - TEXTW(status_text))
+ 			click = ClkStatusText;
+ 		else
+ 			click = ClkWinTitle;
+@@ -351,7 +352,6 @@
+ 	Arg a = {.ui = ~0};
+ 	Layout foo = { "", NULL };
+ 
+-	close(STDIN_FILENO);
+ 	view(&a);
+ 	lt[sellt] = &foo;
+ 	while(stack)
+@@ -525,13 +525,13 @@
+ 	}
+ 	else
+ 		x = dc.x;
+-	dc.w = TEXTW(stext);
++	dc.w = TEXTW(status_text);
+ 	dc.x = ww - dc.w;
+ 	if(dc.x < x) {
+ 		dc.x = x;
+ 		dc.w = ww - x;
+ 	}
+-	drawtext(stext, dc.norm, False);
++	drawtext(status_text, dc.norm, False);
+ 	if((dc.w = dc.x - x) > bh) {
+ 		dc.x = x;
+ 		if(sel) {
+@@ -1194,56 +1194,34 @@
+ 
+ void
+ run(void) {
+-	char *p;
+-	char sbuf[sizeof stext];
+-	fd_set rd;
+-	int r, xfd;
+-	unsigned int len, offset;
+-	XEvent ev;
++	int xfd = ConnectionNumber(dpy);
+ 
+-	/* main event loop, also reads status text from stdin */
++	/* main event loop, also sets status text from localtime */
+ 	XSync(dpy, False);
+-	xfd = ConnectionNumber(dpy);
+-	offset = 0;
+-	len = sizeof stext - 1;
+-	sbuf[len] = stext[len] = '\0'; /* 0-terminator is never touched */
+ 	while(running) {
+-		FD_ZERO(&rd);
+-		if(readin)
+-			FD_SET(STDIN_FILENO, &rd);
+-		FD_SET(xfd, &rd);
+-		if(select(xfd + 1, &rd, NULL, NULL, NULL) == -1) {
++		struct timeval timeout = {.tv_sec = 1, .tv_usec = 0};
++		fd_set readfds;
++
++		FD_ZERO(&readfds);
++		FD_SET(xfd, &readfds);
++		if(select(xfd + 1, &readfds, NULL, NULL, &timeout) == -1) {
+ 			if(errno == EINTR)
+ 				continue;
+ 			die("select failed\n");
+ 		}
+-		if(FD_ISSET(STDIN_FILENO, &rd)) {
+-			switch((r = read(STDIN_FILENO, sbuf + offset, len - offset))) {
+-			case -1:
+-				strncpy(stext, strerror(errno), len);
+-				readin = False;
+-				break;
+-			case 0:
+-				strncpy(stext, "EOF", 4);
+-				readin = False;
+-				break;
+-			default:
+-				for(p = sbuf + offset; r > 0; p++, r--, offset++)
+-					if(*p == '\n' || *p == '\0') {
+-						*p = '\0';
+-						strncpy(stext, sbuf, len);
+-						p += r - 1; /* p is sbuf + offset + r - 1 */
+-						for(r = 0; *(p - r) && *(p - r) != '\n'; r++);
+-						offset = r;
+-						if(r)
+-							memmove(sbuf, p - r + 1, r);
+-						break;
+-					}
+-				break;
+-			}
++		{
++			time_t  t;
++
++			t = time(NULL);
++			strftime(status_text, sizeof status_text - 1, "%c", localtime(&t));
++            /* Depending on the implementation of strftime, status_text might
++             * not be null terminated. */
++            status_text[sizeof status_text - 1] = '\0';
+ 			drawbar();
+ 		}
+ 		while(XPending(dpy)) {
++			XEvent ev;
++
+ 			XNextEvent(dpy, &ev);
+ 			if(handler[ev.type])
+ 				(handler[ev.type])(&ev); /* call handler */
+@@ -1371,7 +1349,7 @@
+ 			CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
+ 	XDefineCursor(dpy, barwin, cursor[CurNormal]);
+ 	XMapRaised(dpy, barwin);
+-	strcpy(stext, "dwm-"VERSION);
++	strcpy(status_text, "dwm-"VERSION);
+ 	drawbar();
+ 
+ 	/* EWMH support per view */

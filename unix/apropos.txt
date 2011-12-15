@@ -1,0 +1,15 @@
+title: apropos
+date: 2009-12-16
+
+I usually turn to Google to find information about a Unix command or function.
+But there’s a faster and easier way to find what you’re looking for:
+[`apropos(1)`](http://www.openbsd.org/cgi-bin/man.cgi?query=apropos).
+
+If you are looking for a way to turn a string into hexadecimal
+numbers:
+
+    $ apropos hex
+    ascii (7) - octal, hexadecimal and decimal ASCII character sets
+    hexdump (1) - ascii, decimal, hexadecimal, octal dump
+    od (1) - octal, decimal, hex, ascii dump
+    xxd (1) - make a hexdump or do the reverse.

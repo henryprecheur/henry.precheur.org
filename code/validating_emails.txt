@@ -1,0 +1,44 @@
+title: Validating Emails
+date: 2011-3-8
+
+Validating Email addresses is *hard*, I mean really really *hard*! If you wrote
+your own function without reading all the relevant RFCs, you got it wrong. If
+you copied a short function found on Internet, it’s wrong. If you’re relying on
+a regular expression to validate Emails, it’s probably wrong too.
+
+A validator should never rejects a valid Email address. It’s the [Robustness
+principle][1]: Be conservative in what you send; be liberal in what you accept.
+It's okay to accept invalid addresses, but rejecting a single valid one is
+wrong: it frustrates legitimate users.
+
+I tried to write an Email validator a few weeks ago. After 4 hours of fiddling
+with it, here’s what I have:
+
+    '@' in address[1:-1]
+
+It means that an Email address is valid if there’s an 'AT' character between the
+first and the last character. Everything else is either too restrictive or too
+complex. The equivalent regular expression would be:
+
+    ^..*@.*.$
+
+I don’t think I can have something even a little bit better without a lot more
+code. That’s because I tested my validation function against the test suite of
+[isemail][2]. The author read the RFCs, and implemented his own function. On
+March 7 2011, its tests contain 278 Email addresses, valid and invalid. It’s
+just one function, but the file weights 52KBytes and is almost 1200 lines longs.
+
+Did you know that those Emails were valid?
+
+    "first@last"@iana.org
+    "first\\last"@iana.org
+    ""@iana.org
+    (foo)cal(bar)@(baz)iamcal.com(quux)
+    first.last@[IPv6:a1:]
+    first(Welcome to&#x240D;&#x240A; the ("wonderful" (!)) world&#x240D;&#x240A; of email)@iana.org
+
+I’m pretty sure that most websites requiring an Email address reject those
+addresses. It’s sad.
+
+[1]: http://en.wikipedia.org/wiki/Robustness_principle
+[2]: http://www.dominicsayers.com/isemail/

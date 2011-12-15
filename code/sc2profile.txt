@@ -1,0 +1,20 @@
+title: sc2profile, a web scraper library for Battle.net
+date: 2011-2-12
+
+[sc2profile][1] fetches StarCraft II profile information from [Battle.net][2]. I
+wrote it for [clan.cx][clan.cx], but it turned out that scraping information off
+Battle.net is slow. It takes between 300ms and 1500ms to download a page from
+Battle.net. A profile needs to download at least 2 pages, most profiles need 4
+pages or more. Some profiles take more than 10 seconds to be scrapped, that’s
+too slow for clan.cx.
+
+I ended up using [sc2ranks.com][sc2ranks.com]’s API, which is fast enough.
+
+sc2profile can still be useful if you don’t want to rely on a service like
+sc2ranks. It uses [lxml][lxml] to parse & extract information.
+
+[1]: https://bitbucket.org/henry/sc2profile/ "sc2profile on BitBucket"
+[2]: http://battle.net/
+[clan.cx]: http://clan.cx/ "clan.cx — Fast StarCraft II clan hosting"
+[sc2ranks.com]: http://sc2ranks.com/
+[lxml]: http://codespeak.net/lxml/
