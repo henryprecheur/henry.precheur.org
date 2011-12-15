@@ -102,30 +102,33 @@ copy(pages, output())
 copy(['favicon.ico', 'robots.txt', 'sitemap.xml'], output())
 copy(sorted(iglob('vanpy/test/*')), output('vanpy', 'test'))
 
-f = open(output('redirect.conf'), 'w')
+def redirect(filename, posts):
+    f = open(output(filename), 'w')
 
-def r(old, new):
-    f.write('rewrite "^/%s$" /%s permanent;\n' % (old, new))
+    def r(old, new):
+        f.write('rewrite "^/%s$" /%s permanent;\n' % (old, new))
 
-for p in posts:
-    if p.date > date(2010, 3, 8):
-        continue
-    dirs = '/'.join((str(p.date.year), str(p.date.month), str(p.date.day)))
-    title = p.title.encode('ascii', 'replace')
-    old_old_url = escape(dirs + '/' + title + '.html')
-    for x in '/\\ ':
-        title = title.replace(x, '_')
-    old_url = escape(dirs + '/' + title + '.html')
-    r(old_url, p.url())
-    if p.date.year < 2009 and old_url != old_old_url:
-        r(old_old_url, p.url())
+    for p in posts:
+        if p.date > date(2010, 3, 8):
+            continue
+        dirs = '/'.join((str(p.date.year), str(p.date.month), str(p.date.day)))
+        title = p.title.encode('ascii', 'replace')
+        old_old_url = escape(dirs + '/' + title + '.html')
+        for x in '/\\ ':
+            title = title.replace(x, '_')
+        old_url = escape(dirs + '/' + title + '.html')
+        r(old_url, p.url())
+        if p.date.year < 2009 and old_url != old_old_url:
+            r(old_old_url, p.url())
 
-r('archives.html', '')
-r('archives', '')
-r('about.html', 'about')
-r('readings.html', 'books')
-r('rss.xml', 'feed.atom')
-r('python/projects/rfc3339.html', 'projects/rfc3339')
-r('vanpyz_test/.*', 'vanpy/test')
+    r('archives.html', '')
+    r('archives', '')
+    r('about.html', 'about')
+    r('readings.html', 'books')
+    r('rss.xml', 'feed.atom')
+    r('python/projects/rfc3339.html', 'projects/rfc3339')
+    r('vanpyz_test/.*', 'vanpy/test')
 
-f.close()
+    f.close()
+
+redirect('redirect.conf', posts)
