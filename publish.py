@@ -17,10 +17,6 @@ import weblog
 def output(*args):
     return path.join('./output', *args)
 
-if not path.isdir(output()):
-    mkdir(output())
-    mkdir(output('weblog'))
-
 copy = partial(weblog.copy, link=True)
 
 def ignore(path):
