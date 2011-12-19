@@ -1,13 +1,13 @@
 title: C, old friend
 date: 2011-12-05
 
-I've abandoned all the things I once used and liked. My editor, operating
-system, browser, database, API's, & development tools changed --often multiple
-times-- during the past 15 years.
+I’ve abandoned all the things I once used and liked. My editor, operating
+system, browser, database, API’s, &amp; development tools changed —often
+multiple times— during the past 15 years.
 
-I've left everything, except [C][C]. C was the first programming language I learned
+I’ve left everything, except [C][C]. C was the first programming language I learned
 and wrote real programs in. I though I would move to another, better language
-later. I didn't realize at the time how beautiful C was.
+later. I didn’t realize at the time how beautiful C was.
 
 After 15 years, C is still fun, it still challenges me, it still makes me happy.
 The older I get, the more I love it.

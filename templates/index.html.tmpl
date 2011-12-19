@@ -2,21 +2,20 @@
 
 {% block content %}
 {% set page = pages[0] %}
-<h1 id='title'><a href='{{ page.url(url) }}'>{{ page.title|escape|decode }}</a></h1>
+<h1><a href='{{ page.url(url) }}' title='Direct link to this post'>{{ page.title|escape|decode }}</a></h1>
 {%- if page.date -%}
-<p class='date' title='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</p>
+<time pubdate datetime='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</time>
 {%- endif -%}
-<div class='content'>
+<div>
 {{ page.html(curdir='.')|decode }}</div>
+{% endblock %}
 
-<div class='noprint'>
-    <h2 class='lined'>Older posts</h2>
+{% block navigation %}
+{{ super() }}
+<h3>Older posts</h3>
 
-    {% set pages = pages[1:] %}
-    {% include 'pages_summary.html.tmpl' %}
-
-    <p><a href='archives'>More ...</a></p>
-</div>
+{% set pages = pages[1:] %}
+{% include 'pages_summary.html.tmpl' %}
 {% endblock %}
 
 {# vim:set ft=htmljinja: #}

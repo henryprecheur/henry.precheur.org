@@ -1,26 +1,11 @@
-<div id='archives'>
-<ul class='years'>
-{% for year, pages in pages|groupby('date.year')|reverse %}
-    <li>
-    <div>{{ year }}</div>
-    <ul class='months'>
-{% for month, pages in pages|groupby('date.month')|reverse %}
-        <li>
-        <div>{{ pages[0].date.strftime('%B') }}</div>
-        <ul class='days'>
-{% for day, pages in pages|groupby('date.day')|reverse %}
-            <li>
-            <div>{{ day }}</div>
-            <ul class='pages'>
+<nav>
+<ul id='archives'>
 {% for page in pages %}
-                <li><a href='{{ page.url() }}'>{{ page.title|e|decode }}</a></li>
-{% endfor %}
-            </ul>
-{% endfor %}
-        </ul>
-{% endfor %}
-    </ul>
+    <li{% if page.filename in popular %} class='popular'{% endif %}>
+    <time datetime='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</time>
+    <div><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></div>
+    </li>
 {% endfor %}
 </ul>
-</div>
+</nav>
 {# vim:set ft=htmljinja: #}
