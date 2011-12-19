@@ -1,0 +1,94 @@
+html, input, select, textarea, button {
+    background-color: #ffe; /* 3rd color */
+    color: #112; /* 1st color */
+}
+
+body { margin: 0.5em; }
+
+body > * {
+    margin: 0.5em auto;
+    width: 44em;
+    max-width: 90%;
+}
+
+a {
+    color: #933;
+    text-decoration: none;
+}
+a:hover { border-bottom: thin solid; }
+a:active, a:visited { color: #C66; text-decoration: underline; }
+
+dt { font-weight: bold; }
+
+p, ul, ol { line-height: 150%; }
+
+h1, h2, h3, h4 { text-align: center; }
+h1 { margin-top: 0; }
+h4 { color: gray; }
+
+time { font-size: small; color: #997 /* 2nd color */; }
+
+input[type='search'] {
+    border: thin solid #997 /* 2nd color */;
+    color: #997 /* 2nd color */;
+    padding: 0.5em;
+}
+
+input[type='search']:focus { color: #112; /* 1st color */ }
+
+nav > ul {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    float: left;
+    width: auto;
+    margin: 0;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption, td, th { padding: 0.2em; }
+td, th { border: thin solid gray; }
+td { text-align: center; }
+table.dark { background-color: #997 /* 2nd color */; }
+
+.code {
+    font-family: monospace;
+}
+
+pre, .code {
+    padding: 1em;
+}
+
+div.picture {
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+
+img.icon { display: inline; }
+
+img.right {
+    float: right;
+    margin: 1em;
+}
+
+/* Don't display useless crap when printing */
+@media print {
+    nav, .noprint { display: none; }
+}
