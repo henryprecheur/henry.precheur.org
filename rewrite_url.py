@@ -1,5 +1,4 @@
 import io
-import re
 import xml.etree
 import html5lib
 
@@ -48,9 +47,7 @@ def rewrite_urls(input, output):
 __all__ = ('rewrite_urls',)
 
 if __name__ == '__main__':
-    from sys import argv
+    # from sys import argv
+    from sys import stdin, stdout
 
-    for filename in argv[1:]:
-        input = io.open(filename)
-        output = io.open(filename + '.NEW', 'w')
-        rewrite_urls(input, output)
+    rewrite_urls(stdin, stdout)
