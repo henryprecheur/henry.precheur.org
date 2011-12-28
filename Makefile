@@ -1,15 +1,25 @@
 OUTPUT_DIR=./output
 RSYNC=rsync -vz --checksum --recursive
 HOST=henry@bitoku.koalabs.org
-PYTHON=$(HOME)/weblog/.env/bin/python
+PYTHON=$(HOME)/henry.precheur.org/.env/bin/python
 
-all: publish
+all: render _copy
 
 $(OUTPUT_DIR):
 	@mkdir -p $(OUTPUT_DIR)
 
-publish: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
+_copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
+	for i in favicon.ico robots.txt sitemap.xml redirect.conf; do \
+		ln -f $${i} $(OUTPUT_DIR); \
+	done
+	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
+	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
+
+render:
 	$(PYTHON) ./publish.py
+
+render-final:
+	$(PYTHON) ./publish.py rewrite
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
@@ -29,8 +39,11 @@ $(OUTPUT_DIR)/style.css: $(STYLESHEETS)
 
 re: clean all
 
-upload: clean all
-	$(RSYNC) $(OUTPUT_DIR) $(HOST):/var/www/henry.precheur.org/
+upload: clean render-final _copy
+	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry.precheur.org/
+
+upload-test: clean render-final _copy
+	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry2.precheur.org/
 
 dry-upload:
 	$(RSYNC) --dry-run $(OUTPUT_DIR) $(HOST):/var/www/henry.precheur.org/
