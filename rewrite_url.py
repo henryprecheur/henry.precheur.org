@@ -1,4 +1,5 @@
 import io
+import re
 import xml.etree
 import html5lib
 
@@ -13,7 +14,7 @@ def absolute(url):
     >>> absolute('://bar') # Invalid
     False
     '''
-    return bool(re.match(r'(?i)^([a-z]+:)?//', url))
+    return url.startswith('http://')
 
 def rewrite_urls(input, output):
     '''
@@ -25,15 +26,15 @@ def rewrite_urls(input, output):
 
     for attr in ('href', 'src', 'data', 'codebase'):
         for x in doc.iterfind('.//*[@{}]'.format(attr)):
-            url = x.attrib[attr]
+            url = x.attrib[attr].strip()
 
             if absolute(url):
                 continue
 
-            if re.search(r'\bindex\.html\s*$', url):
+            if url.endswith('index.html'):
                 u = url[:-len('index.html')]
                 x.attrib[attr] = u if u else '/'
-            elif re.search(r'\b\.html\s*$', url):
+            elif url.endswith('.html'):
                 x.attrib[attr] = url[:-len('.html')]
 
     walker = html5lib.treewalkers.getTreeWalker('etree', xml.etree.ElementTree)
