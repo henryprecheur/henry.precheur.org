@@ -3,19 +3,6 @@ import re
 import xml.etree
 import html5lib
 
-def absolute(url):
-    '''
-    >>> absolute('foo')
-    False
-    >>> absolute('http://foo')
-    True
-    >>> absolute('//bar')
-    True
-    >>> absolute('://bar') # Invalid
-    False
-    '''
-    return url.startswith('http://')
-
 def rewrite_urls(input, output):
     '''
     `input` & `output` are 2 file like objects.
@@ -28,7 +15,7 @@ def rewrite_urls(input, output):
         for x in doc.iterfind('.//*[@{}]'.format(attr)):
             url = x.attrib[attr].strip()
 
-            if absolute(url):
+            if url.startswith('http://'):
                 continue
 
             if url.endswith('index.html'):
