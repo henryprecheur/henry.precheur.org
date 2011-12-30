@@ -8,6 +8,17 @@ all: render _copy
 $(OUTPUT_DIR):
 	@mkdir -p $(OUTPUT_DIR)
 
+.PHONY: _copy rmenv reenv clean
+
+.env:
+	curl https://raw.github.com/pypa/virtualenv/develop/virtualenv.py | python2.7 - $@
+	$@/bin/pip install hg+https://bitbucket.org/henry/weblog
+
+rmenv:
+	rm -rf .env
+
+reenv: rmenv .env
+
 _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	for i in favicon.ico robots.txt sitemap.xml redirect.conf; do \
 		ln -f $${i} $(OUTPUT_DIR); \
@@ -15,11 +26,11 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
 
-render:
-	$(PYTHON) ./publish.py
+render: .env
+	$(PYTHON) ./publish.py $(OUTPUT_DIR)
 
-render-final:
-	$(PYTHON) ./publish.py rewrite
+render-final: .env
+	$(PYTHON) ./publish.py rewrite $(OUTPUT_DIR)
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
