@@ -97,7 +97,5 @@ if __name__ == '__main__':
     parser.add_argument('output_dirs', nargs='+')
     args = parser.parse_args()
 
-    print repr(args.output_dirs)
     for d in args.output_dirs:
-        print 'Doing', d
         publish(d, args.rewrite)
