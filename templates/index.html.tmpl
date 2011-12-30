@@ -7,7 +7,7 @@
 <time pubdate datetime='{{ page.date }}'>{{ page.date.strftime('%B %e %Y') }}</time>
 {%- endif -%}
 <div>
-{{ page.html(curdir='.')|decode }}</div>
+{{ page.html()|decode }}</div>
 {% endblock %}
 
 {% block navigation %}
