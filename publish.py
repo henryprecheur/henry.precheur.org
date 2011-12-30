@@ -3,19 +3,16 @@
 import io
 import sys
 from functools import partial
-from datetime import date
 from os import path, mkdir, makedirs
-from re import escape
-from glob import iglob
+from argparse import ArgumentParser
 
 from rewrite_url import rewrite_urls
 
-sys.path.append(path.expanduser('~/code/weblog'))
+weblog_dev = path.expanduser('~/code/weblog')
+if path.isdir(weblog_dev):
+    sys.path.insert(0, weblog_dev)
 
 import weblog
-
-def output(*args):
-    return path.join('./output', *args)
 
 copy = partial(weblog.copy, link=True)
 
@@ -26,7 +23,10 @@ def ignore(path):
             return True
     return False
 
-def publish(rewrite):
+def publish(output_dir, rewrite):
+    def output(*args):
+        return path.join(output_dir, *args)
+
     files = weblog.list_files('.', ignore=ignore)
     pages = list(weblog.Page(f, encoding='utf8') for f in files)
 
@@ -42,23 +42,15 @@ def publish(rewrite):
     posts.sort(reverse=True, cmp=cmp_page)
 
     if rewrite:
-        class OutputFile(object):
-            def __init__(self, filename):
-                self.name = output(filename)
+        class Writer(weblog.template.Writer):
+            def render(self, *args, **kwargs):
+                x = super(Writer, self).render(*args, **kwargs)
+                return rewrite_url(x)
 
-                # Create directory if it doesn't exist
-                d = path.dirname(self.name)
-                if not path.isdir(d):
-                    makedirs(d)
-
-                self._file = io.FileIO(self.name, 'w')
-
-            def write(self, text):
-                rewrite_urls(io.StringIO(text), self._file)
     else:
-        OutputFile = lambda x: io.FileIO(output(x), 'w')
+        Writer = weblog.template.Writer
 
-    w = weblog.template.Writer('./templates', encoding='utf8')
+    w = Writer('./templates', encoding='utf8')
 
     weblog.publish.feed(output('feed.atom'), posts[:10], URL, TITLE, writer=w)
 
@@ -72,7 +64,7 @@ def publish(rewrite):
                'system/ssh-copy-id.txt',
                'system/ipv6.txt',
                'web/http_compression.txt')
-    weblog.publish.index(OutputFile('index.html'), posts,
+    weblog.publish.index(output('index.html'), posts,
                          u'{} \u2014 {}'.format(TITLE, posts[0].title),
                          writer=w,
                          popular=popular)
@@ -83,7 +75,7 @@ def publish(rewrite):
     for p in posts:
         o = output(p.output_filename())
         if weblog.newer_than(p.filename, o):
-            w.write('post.html.tmpl', OutputFile(p.output_filename()),
+            w.write('post.html.tmpl', output(p.output_filename()),
                     title=p.title, date=p.date, content=p.html(),
                     top_dir=top_dir(p))
 
@@ -94,10 +86,18 @@ def publish(rewrite):
                 t = '/'
             else:
                 t = top_dir(p)
-            w.write('page.html.tmpl', OutputFile(p.output_filename()),
+            w.write('page.html.tmpl', o,
                     title=p.title, content=p.html(), top_dir=t)
 
     copy(pages, output())
 
 if __name__ == '__main__':
-    publish('rewrite' in sys.argv)
+    parser = ArgumentParser()
+    parser.add_argument('--rewrite', action='store_true')
+    parser.add_argument('output_dirs', nargs='+')
+    args = parser.parse_args()
+
+    print repr(args.output_dirs)
+    for d in args.output_dirs:
+        print 'Doing', d
+        publish(d, args.rewrite)
