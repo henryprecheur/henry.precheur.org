@@ -15,8 +15,8 @@ a {
     color: #933;
     text-decoration: none;
 }
-a:hover { border-bottom: thin solid; }
-a:active, a:visited { color: #C66; text-decoration: underline; }
+a:hover, a:focus { text-decoration: underline; }
+a:active, a:visited { color: #C66; }
 
 dt { font-weight: bold; }
 
