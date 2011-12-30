@@ -3,10 +3,7 @@ import re
 import xml.etree
 import html5lib
 
-def rewrite_urls(input, output):
-    '''
-    `input` & `output` are 2 file like objects.
-    '''
+def rewrite_urls(input, output=None):
     doc = html5lib.parse(input,
                          treebuilder='etree',
                          namespaceHTMLElements=False)
@@ -27,10 +24,14 @@ def rewrite_urls(input, output):
     walker = html5lib.treewalkers.getTreeWalker('etree', xml.etree.ElementTree)
     s = html5lib.serializer.HTMLSerializer()
 
-    # html5lib doesn't serialize the doctype ...
-    output.write(u'<!DOCTYPE html>\n')
-    for text in s.serialize(walker(doc), encoding='utf-8'):
-        output.write(text)
+    stream = s.serialize(walker(doc), encoding='utf-8')
+    if output:
+        # html5lib doesn't serialize the doctype ...
+        output.write(u'<!DOCTYPE html>\n')
+        for text in stream:
+            output.write(text)
+    else:
+        return u'!<!DOCTYPE html>\n' + u''.join(stream)
 
 __all__ = ('rewrite_urls',)
 
