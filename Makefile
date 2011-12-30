@@ -30,7 +30,7 @@ render: .env
 	$(PYTHON) ./publish.py $(OUTPUT_DIR)
 
 render-final: .env
-	$(PYTHON) ./publish.py rewrite $(OUTPUT_DIR)
+	$(PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
