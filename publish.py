@@ -45,7 +45,7 @@ def publish(output_dir, rewrite):
         class Writer(weblog.template.Writer):
             def render(self, *args, **kwargs):
                 x = super(Writer, self).render(*args, **kwargs)
-                return rewrite_url(x)
+                return rewrite_urls(x)
 
     else:
         Writer = weblog.template.Writer
