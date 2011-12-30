@@ -1,7 +1,8 @@
 OUTPUT_DIR=./output
 RSYNC=rsync -vz --checksum --recursive
 HOST=henry@bitoku.koalabs.org
-PYTHON=$(HOME)/henry.precheur.org/.env/bin/python
+VIRTUAL_ENV=.env
+PYTHON=$(VIRTUAL_ENV)/bin/python
 
 all: render _copy
 
@@ -10,14 +11,15 @@ $(OUTPUT_DIR):
 
 .PHONY: _copy rmenv reenv clean
 
-.env:
-	curl https://raw.github.com/pypa/virtualenv/develop/virtualenv.py | python2.7 - $@
+_url=https://raw.github.com/pypa/virtualenv/develop/virtualenv.py
+$(VIRTUAL_ENV):
+	curl --silent $(_url) | python2.7 - $@
 	$@/bin/pip install hg+https://bitbucket.org/henry/weblog
 
 rmenv:
-	rm -rf .env
+	rm -rf $(VIRTUAL_ENV)
 
-reenv: rmenv .env
+reenv: rmenv $(VIRTUAL_ENV)
 
 _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	for i in favicon.ico robots.txt sitemap.xml redirect.conf; do \
@@ -26,10 +28,10 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
 
-render: .env
+render: $(VIRTUAL_ENV)
 	$(PYTHON) ./publish.py $(OUTPUT_DIR)
 
-render-final: .env
+render-final: $(VIRTUAL_ENV)
 	$(PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
 
 _weblog: $(OUTPUT_DIR)
