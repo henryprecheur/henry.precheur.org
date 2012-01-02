@@ -1,27 +1,34 @@
 import io
 import re
-import xml.etree
+try:
+    from elementtree import ElementTree
+except ImportError:
+    from xml.etree import ElementTree
 import html5lib
 
 def rewrite_urls(input, output=None):
-    doc = html5lib.parse(input,
-                         treebuilder='etree',
-                         namespaceHTMLElements=False)
+    treebuilder = html5lib.treebuilders.getTreeBuilder('etree',
+                                                       ElementTree)
+    parser = html5lib.HTMLParser(tree=treebuilder, namespaceHTMLElements=False)
+    doc = parser.parse(input, encoding='UTF8')
 
-    for attr in ('href', 'src', 'data', 'codebase'):
-        for x in doc.iterfind('.//*[@{}]'.format(attr)):
-            url = x.attrib[attr].strip()
+    for tag in doc.getiterator():
+        for a in ('href', 'src', 'data', 'codebase'):
+            if a not in tag.attrib:
+                continue
+
+            url = tag.attrib[a]
 
             if url.startswith('http://'):
                 continue
 
-            if url.endswith('index.html'):
+            if url.endswith('/index.html'):
                 u = url[:-len('index.html')]
-                x.attrib[attr] = u if u else '/'
+                tag.attrib[a] = u if u else u'/'
             elif url.endswith('.html'):
-                x.attrib[attr] = url[:-len('.html')]
+                tag.attrib[a] = url[:-len('.html')]
 
-    walker = html5lib.treewalkers.getTreeWalker('etree', xml.etree.ElementTree)
+    walker = html5lib.treewalkers.getTreeWalker('etree', ElementTree)
     s = html5lib.serializer.HTMLSerializer()
 
     stream = s.serialize(walker(doc), encoding='utf-8')
@@ -31,7 +38,8 @@ def rewrite_urls(input, output=None):
         for text in stream:
             output.write(text)
     else:
-        return u'!<!DOCTYPE html>\n' + u''.join(stream)
+        return (u'<!DOCTYPE html>\n' +
+                u''.join(unicode(x, encoding='utf8') for x in stream))
 
 __all__ = ('rewrite_urls',)
 
