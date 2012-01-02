@@ -22,7 +22,7 @@ def rewrite_urls(input, output=None):
             if url.startswith('http://'):
                 continue
 
-            if url.endswith('/index.html'):
+            if url.endswith('index.html'):
                 u = url[:-len('index.html')]
                 tag.attrib[a] = u if u else u'/'
             elif url.endswith('.html'):
