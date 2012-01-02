@@ -65,7 +65,7 @@ def publish(output_dir, rewrite):
                'system/ipv6.txt',
                'web/http_compression.txt')
     weblog.publish.index(output('index.html'), posts,
-                         u'{} \u2014 {}'.format(TITLE, posts[0].title),
+                         u'{0} \u2014 {1}'.format(TITLE, posts[0].title),
                          writer=w,
                          popular=popular)
 
