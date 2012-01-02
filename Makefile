@@ -2,9 +2,11 @@ OUTPUT_DIR=./output
 RSYNC=rsync -vz --checksum --recursive
 HOST=henry@bitoku.koalabs.org
 VIRTUAL_ENV=.env
-PYTHON=$(VIRTUAL_ENV)/bin/python
+VIRTUAL_ENV_PYTHON=$(VIRTUAL_ENV)/bin/python
+PYTHON=python2.7
 
 all: render _copy
+final: render-final _copy
 
 $(OUTPUT_DIR):
 	@mkdir -p $(OUTPUT_DIR)
@@ -13,7 +15,7 @@ $(OUTPUT_DIR):
 
 _url=https://raw.github.com/pypa/virtualenv/develop/virtualenv.py
 $(VIRTUAL_ENV):
-	curl --silent $(_url) | python2.7 - $@
+	curl --silent $(_url) | $(PYTHON) - $@
 	$@/bin/pip install hg+https://bitbucket.org/henry/weblog
 
 rmenv:
@@ -29,10 +31,10 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
 
 render: $(VIRTUAL_ENV)
-	$(PYTHON) ./publish.py $(OUTPUT_DIR)
+	$(VIRTUAL_ENV_PYTHON) ./publish.py $(OUTPUT_DIR)
 
 render-final: $(VIRTUAL_ENV)
-	$(PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
+	$(VIRTUAL_ENV_PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
