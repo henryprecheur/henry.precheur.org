@@ -55,10 +55,10 @@ $(OUTPUT_DIR)/style.css: $(STYLESHEETS)
 re: clean all
 
 upload: clean render-final _copy
-	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry.precheur.org/
+	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry.precheur.org
 
 upload-test: clean render-final _copy
-	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry2.precheur.org/
+	$(RSYNC) $(OUTPUT_DIR)/ $(HOST):/var/www/henry2.precheur.org
 
-dry-upload:
-	$(RSYNC) --dry-run $(OUTPUT_DIR) $(HOST):/var/www/henry.precheur.org/
+dry-upload: clean render-final _copy
+	$(RSYNC) --dry-run $(OUTPUT_DIR)/ $(HOST):/var/www/henry.precheur.org
