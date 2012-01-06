@@ -43,16 +43,22 @@ def publish(output_dir, rewrite):
 
     if rewrite:
         class Writer(weblog.template.Writer):
-            def render(self, *args, **kwargs):
-                x = super(Writer, self).render(*args, **kwargs)
-                return rewrite_urls(x)
+            def render(self, template, *args, **kwargs):
+                x = super(Writer, self).render(template, *args, **kwargs)
+                if '.html' in template:
+                    return rewrite_urls(x)
+                else:
+                    return x
 
     else:
         Writer = weblog.template.Writer
 
     w = Writer('./templates', encoding='utf8')
 
-    weblog.publish.feed(output('feed.atom'), posts[:10], URL, TITLE, writer=w)
+    weblog.publish.feed(output('feed.atom'), posts[:10], URL, TITLE,
+                        author=dict(name=u'Henry Pr\u00EAcheur',
+                                    email='henry@precheur.org'),
+                        writer=w)
 
     popular = ('python/copy_list.txt',
                'vim/python.html',
