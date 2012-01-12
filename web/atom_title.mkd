@@ -1,0 +1,36 @@
+title: An unfortunate design decision in Atom
+date: 2012-1-11
+
+> [Atom][1] is an XML-based document format that describes lists of related
+> information known as "feeds"
+
+I use Atom for my Blog. Overall I’m pretty happy with it, the specification is
+clear and complete. There’s no weird edge cases like with RSS.
+
+I’m working on a virtual scratch pad/notebook. It’s a mix between a Blog &amp;
+Twitter: Just text with links, and no artificial limitation like 140 characters.
+I want it to be minimal, just text and links, no more.
+
+Atom requires every entry of a feed to [have a title][2]:
+
+> atom:entry elements MUST contain exactly one atom:title element.
+
+That’s an unfortunate design choice: many things don’t have a title or a name.
+We give title to images, essays, &amp; songs, but they don’t really need it,
+it’s for our own convenience. Requiring everything to have a name can be
+inconvenient. Every Email must have a subject, which reduces the value of *real*
+subjects. Because instead of a relevant information we sometime get unhelpful
+stuff like “Re”, “Re: mail”, or “Re: your mail”. If Emails that don’t need a
+subject didn’t have one, Emails might be slightly easier to sort and search.
+
+Another example: In Twitter’s Atom feed every entry contains the complete tweet
+in the content element, and in the title element. This is misleading because
+tweets don’t have titles, tweets are not titles.
+
+Small decisions like that can have all short of unintended consequences. What
+should I put as a title when there’s really no proper title? It will most likely
+be a duplicate of information already present in the feed. Unfortunate, but I
+can live with it.
+
+[1]: http://tools.ietf.org/html/rfc4287 "The Atom Syndication Format"
+[2]: http://tools.ietf.org/html/rfc4287#section-4.1.2
