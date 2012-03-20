@@ -1,4 +1,5 @@
 title: Scratchpad
+date: 2012-03-19
 
 [Scratchpad][1] is where I write about stuff. It's full of random ramblings,
 incomplete essays, spelling and grammar errors.
