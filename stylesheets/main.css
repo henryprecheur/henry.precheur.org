@@ -1,6 +1,7 @@
+/* colors are based on solarized colors */
 html, input, select, textarea, button {
-    background-color: #ffe; /* 3rd color */
-    color: #112; /* 1st color */
+    background-color: #fdf6e3; /* base3 */
+    color: #657b83; /* base00 */
 }
 
 body { margin: 0.5em; }
@@ -12,11 +13,11 @@ body > * {
 }
 
 a {
-    color: #933;
+    color: #859900; /* green */
     text-decoration: none;
 }
 a:hover, a:focus { text-decoration: underline; }
-a:active, a:visited { color: #C66; }
+a:active, a:visited { color: #859900; /* green */ }
 
 dt { font-weight: bold; }
 
@@ -26,15 +27,15 @@ h1, h2, h3, h4 { text-align: center; }
 h1 { margin-top: 0; }
 h4 { color: gray; }
 
-time { font-size: small; color: #997 /* 2nd color */; }
+time { font-size: small; color: #586e75; /* base01 */ }
 
 input[type='search'] {
-    border: thin solid #997 /* 2nd color */;
-    color: #997 /* 2nd color */;
+    border: thin solid #586e75; /* base01 */
+    color: #586e75; /* base01 */
     padding: 0.5em;
 }
 
-input[type='search']:focus { color: #112; /* 1st color */ }
+input[type='search']:focus { color: #657b83; /* base00 */ }
 
 nav > ul {
     padding: 0;
@@ -59,7 +60,7 @@ table {
 caption, td, th { padding: 0.2em; }
 td, th { border: thin solid gray; }
 td { text-align: center; }
-table.dark { background-color: #997 /* 2nd color */; }
+table.dark { background-color: #586e75; /* base01 */ }
 
 .code {
     font-family: monospace;
