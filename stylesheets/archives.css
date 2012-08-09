@@ -20,7 +20,7 @@
 }
 
 #archives > li.popular {
-            background-color: #ddb;
+            background-color: #eee8d5; /* base2 */
 }
 #archives > li.popular > time:before {
     float: left;
