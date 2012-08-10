@@ -7,4 +7,4 @@ incomplete essays, spelling and grammar errors.
 I’ll use this blog for longer and more polished articles, while Scratchpad
 will be my sandbox.
 
-[1]: http://henry.precheur.org/scratchpad
+[1]: http://henry.precheur.org/scratchpad/
