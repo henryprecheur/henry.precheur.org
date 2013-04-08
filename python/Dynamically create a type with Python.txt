@@ -39,7 +39,7 @@ option, it is simpler to use and faster to execute: no need to parse a string.
 
     new_class = type('Cat', (object,), {'meow': remote_call('meow'),
                                         'eat': remote_call('eat'),
-                                        'sleep': remove_call('sleep')})
+                                        'sleep': remote_call('sleep')})
 
 `new_class` is a regular class:
 
