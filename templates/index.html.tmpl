@@ -1,13 +1,20 @@
 {% extends 'base.html.tmpl' %}
 
 {% block content %}
-{% set page = pages[0] %}
-<h1><a href='{{ page.url(url) }}' title='Direct link to this post'>{{ page.title|escape|decode }}</a></h1>
-{%- if page.date -%}
-<time pubdate datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time>
-{%- endif -%}
-<div>
-{{ page.html()|decode }}</div>
+<h1>Hi I'm <a href='/about'>Henry</a></h1>
+
+<div id=posts>
+{% for page in pages %}
+    <div {% if page.filename in popular %} class='popular'{% endif %}>
+    <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time
+    ><span><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></span>
+    </div>
+{% endfor %}
+</div>
+
+</nav>
+
+
 {% endblock %}
 
 {% block navigation %}

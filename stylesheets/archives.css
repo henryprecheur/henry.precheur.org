@@ -1,10 +1,12 @@
-#archives { padding: 0; }
+#posts > div {
+        padding: 0.5em 0;
+}
 
-#archives > li > * {
+#posts * {
     vertical-align: top;
 }
 
-#archives time, #archives div {
+#posts > div > * {
     display: inline-block;
 
     /* For IE7 */
@@ -12,19 +14,24 @@
     *display: inline;
 }
 
-#archives div { width: 65% }
-#archives time {
-    width: 30%;
+#posts time {
+    width: 35%;
     text-align: right;
-    margin-right: 1em;
 }
 
-#archives > li.popular {
-            background-color: #eee8d5; /* base2 */
+#posts > div.popular {
+        background-color: #f5f5f5;
 }
-#archives > li.popular > time:before {
+#posts > div.popular > time:before {
     float: left;
     content: "Popular";
-    margin-left: 1em;
+    font-size: 80%;
+    color: silver;
+    padding-left: 0.8em;
 }
 
+#posts > div > span {
+        box-sizing: border-box;
+        width: 65%;
+        padding-left: 1.5em;
+}
