@@ -114,27 +114,6 @@ nav > a:first-child:hover {
     background-color: none;
 }
 
-/*
-nav {
-        position: fixed;
-        top: 1em;
-        left: 1em;
-        -webkit-transition: opacity 0.2s linear;
-        -moz-transition: opacity 0.2s linear;
-        -ms-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear;
-        opacity: 0.2;
-}
-nav:hover {
-        opacity: 1;
-}
-nav > a, nav > a:hover {
-        // display: block;
-        text-align: center;
-        border: none;
-        padding: 1em;
-}
-*/
 article, footer {
         width: 36em;
         margin: 0 auto;
