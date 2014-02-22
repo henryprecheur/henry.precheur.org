@@ -1,41 +1,32 @@
 <!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
 <title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
 {% block feed %}
-<link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="{{ top_dir }}feed.atom">
+<link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="/feed.atom">
 {% endblock %}
 {% block head %}
-<link rel='stylesheet' href='{{ top_dir }}style.css'>
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<link rel='stylesheet' href='/style.css'>
+<link rel='stylesheet'
+      href='http://fonts.googleapis.com/css?family=PT+Mono'>
 {% endblock %}
-
+</head>
 <body>
 
-<header>
 <nav>
-    <ul>
-    <li>
-        <form method='GET' action="http://www.google.com/search">
-        <div>
-        <input type="search" placeholder='Search...' name="q" maxlength="255" value="">
-        <input type="hidden" name="sitesearch" value="henry.precheur.org">
-        </div>
-        </form>
-    </li>
-        <li><a href='{{ top_dir }}index.html'>Homepage</a></li>
-    </ul>
+    <a id='logo' href='/'><img src='/images/logo.png' width=32 height=32 alt=Logo title='henry.precheur.org'></a>
+    <a href=/>Home</a>
+    <a href=/about>About</a>
 </nav>
-</header>
 
 <article>
 {% block content %}{% endblock %}
 </article>
 
-{% block navigation %}{% endblock %}
-
-<footer>&copy; 2007-2011
-<a href='{{ top_dir }}about.html'>Henry Pr&ecirc;cheur</a></footer>
+<footer>
+    &copy; 2007&ndash;2014 <a href='/about'>Henry Pr&ecirc;cheur</a>
+</footer>
 
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -51,4 +42,5 @@
 </script>
 
 </body>
+</html>
 {# vim:set ft=htmljinja: #}

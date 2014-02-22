@@ -15,7 +15,7 @@ $(OUTPUT_DIR):
 
 _url=https://raw.github.com/pypa/virtualenv/develop/virtualenv.py
 $(VIRTUAL_ENV):
-	curl --silent $(_url) | $(PYTHON) - $@
+	virtualenv $@
 	$@/bin/pip install hg+https://bitbucket.org/henry/weblog
 
 rmenv:
@@ -27,6 +27,9 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	for i in favicon.ico robots.txt sitemap.xml redirect.conf; do \
 		ln -f $${i} $(OUTPUT_DIR); \
 	done
+	mkdir -p $(OUTPUT_DIR)/images
+	cp images/logo.png $(OUTPUT_DIR)/images
+	cp -r charter output
 	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
 
@@ -48,6 +51,9 @@ STYLE_DIR = stylesheets
 STYLESHEETS = $(STYLE_DIR)/normalize.css \
 	      $(STYLE_DIR)/main.css \
 	      $(STYLE_DIR)/archives.css
+
+$(STYLE_DIR)/normalize.css:
+	curl http://necolas.github.io/normalize.css/3.0.0/normalize.css > $@
 
 $(OUTPUT_DIR)/style.css: $(STYLESHEETS)
 	cat $(STYLESHEETS) > $@
