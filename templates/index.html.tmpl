@@ -1,7 +1,14 @@
 {% extends 'base.html.tmpl' %}
 
 {% block content %}
-<h1>Hi I'm <a href='/about'>Henry</a></h1>
+<p>
+Hi I’m <a href='/about'>Henry</a>, I’m a programmer who writes mostly about
+programming &amp; engineering. I have another &mdash;less polished&mdash; <a
+href='http://henry.precheur.org/scratchpad/'>journal</a> about random
+topics.
+</p>
+
+<h1>Weblog</h1>
 
 <div id=posts>
 {% for page in pages %}
@@ -13,16 +20,6 @@
 </div>
 
 </nav>
-
-
-{% endblock %}
-
-{% block navigation %}
-{{ super() }}
-<h3>Older posts</h3>
-
-{% set pages = pages[1:] %}
-{% include 'pages_summary.html.tmpl' %}
 {% endblock %}
 
 {# vim:set ft=htmljinja: #}
