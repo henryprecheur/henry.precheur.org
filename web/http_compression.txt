@@ -58,11 +58,11 @@ class='dark'>Median</th><th>Bytes</th><th>KBytes</th></tr>
 </tr>
 </table>
 
-> ### Notes ###
->
-> The total time includes decompression time on rather slow computers
-> (AMD Geode 266MHz and VIA C7 2GHz). Each test was repeated 100 times. The
-> standard deviation was *low*, and times were stable.
+<aside>
+The total time includes decompression time on rather slow computers
+(AMD Geode 266MHz and VIA C7 2GHz). Each test was repeated 100 times. The
+standard deviation was low, and times were stable.
+</aside>
 
 First Let’s calculate the *real download rate*. It’s not the number of bytes
 transfered divided by the total time. The total time includes the connection
@@ -144,15 +144,15 @@ This is probably one of the worst case:
 </tr>
 </table>
 
-> ### Notes ###
->
-> The size of the page can vary by a few bytes between each request. But it’s not
-> significant.
->
-> It looks like Google is compressing its home page *on the fly*, because of the
-> delay of a few milliseconds in the pre-transfer time when using GZIP encoding.
-> Caching the gzipp'ed page would save processing power, and on Google’s scale
-> that’s probably a few millions dollars saved each years.
+<aside>
+The size of the page can vary by a few bytes between each request. But it’s not
+significant.
+
+It looks like Google is compressing its home page on the fly, because of the
+delay of a few milliseconds in the pre-transfer time when using GZIP encoding.
+Caching the gzipp'ed page would save processing power, and on Google’s scale
+that’s probably a few millions dollars saved each years.
+</aside>
 
 The gain is lower than before, but still significant at 15%.
 
