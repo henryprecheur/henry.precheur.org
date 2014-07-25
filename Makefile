@@ -29,7 +29,7 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	done
 	mkdir -p $(OUTPUT_DIR)/images
 	cp images/logo.png $(OUTPUT_DIR)/images
-	cp -r charter output
+	cp -r font output
 	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
 
@@ -38,6 +38,9 @@ render: $(VIRTUAL_ENV)
 
 render-final: $(VIRTUAL_ENV)
 	$(VIRTUAL_ENV_PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
+
+serve:
+	$(VIRTUAL_ENV) -m SimpleHTTPServer
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
@@ -50,7 +53,8 @@ clean:
 STYLE_DIR = stylesheets
 STYLESHEETS = $(STYLE_DIR)/normalize.css \
 	      $(STYLE_DIR)/main.css \
-	      $(STYLE_DIR)/archives.css
+	      $(STYLE_DIR)/archives.css \
+	      $(STYLE_DIR)/fonts.css \
 
 $(STYLE_DIR)/normalize.css:
 	curl http://necolas.github.io/normalize.css/3.0.0/normalize.css > $@
