@@ -1,0 +1,15 @@
+{% extends 'base.html.tmpl' %}
+
+{% block content %}
+<h1>{{ title|escape|decode }}</h1>
+
+{%- if date -%}
+<time pubdate datetime='{{ date|rfc3339 }}'>{{ date.strftime('%B %e %Y') }}</time>
+{%- endif -%}
+
+<div>
+{{ content|decode }}
+</div>
+{% endblock %}
+
+{# vim:set ft=htmljinja: #}

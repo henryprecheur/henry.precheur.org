@@ -1,0 +1,96 @@
+title: Will IPv6 ever be a reality?
+date: 2010-2-19
+
+**Update**: 6:40am pst Feb. 3, 2011 — [The central pool of IPv4 addresses is
+depleted!](http://www.tndh.net/~tony/ietf/ipv4-pool.htm) We’re not really out
+of addresses though, not all IPv4 are used, but we’re getting close.
+
+----
+
+I’ve recently re-read [The IPv6 mess][ipv6mess] by [D. J. Bernstein][DJB]. The
+essay was probably written in 2002 or 2003. It predicted remarkably well the
+current state of IPv6. IPv6 can’t access an IPv4 network. Because all the good
+stuffs are on IPv4, nobody uses IPv6 and everybody sticks to the old protocol.
+There are tunnel mechanisms to bridge the two, but they are extensions; not part
+of the core protocol.
+
+The pool of available IPv4 addresses is shrinking and will probably be exhausted
+by 2012. Without any IPv4 addresses left will the world starts using IPv6? I
+suspect this will not happen. The problem with IPv4 is the exhaustion of *public
+addresses*, but most people don’t need a public address. They are using Internet
+to read their mails and surf on the web. They don’t want to have their own
+server at home.
+
+Consider the following scenario: Late 2012, the pool of IPv4 addresses was
+exhausted a few weeks ago. You’re an Internet Service Provider (ISP) and
+Internet is still mostly IPv4. New clients want to have access to Internet, all
+of it; not just the part that was migrated to IPv6.
+
+You could get more IPv4 addresses nonetheless. It would be relatively simple to
+do: pay more. When demand for a resource is high and supply is short, prices go
+up. In 2010, hosting providers charge around $1 per month for an additional IPv4
+address. Assuming it’s about the same price for an ISP; $1 when clients are
+paying $20 or more each month is reasonable. But as Internet keeps growing, the
+price will be driven further up and eventually we’ll have to find another
+solution.
+
+IPv6 proponents argue that it will be the time when the new protocol will take
+off, and all our problems will be solved. But IPv6 is not an easy or cheap
+solution. You need to change or update network gear, older software might not be
+compatible. And many people will have to be re-trained.
+
+Oh no! NAT to the rescue!
+=========================
+
+[NAT][] used at a large scale would be cheaper and easier. Instead of giving all
+clients a public address, multiple clients share one public address.
+
+Suppose an ISP is charging $20 per month, and the price of an IPv4 address went
+up to $5 per month. If it uses 1 address for 10 clients That’s a saving of $45
+over a revenue of $200 each month: almost a quarter of it.
+
+NAT is not free, routers will have to be beefed up and reconfigured. But overall
+it is cheaper and easier than IPv6:
+
+- You don’t need to upgrade all you infrastructure. You can gradually switch
+  your clients to NAT; freeing up IPv4 addresses for new clients. The cost can
+  be spread over a long period of time and the benefit is immediate. With IPv6
+  you have to pay the full price upfront for a distant benefit.
+
+- NAT is already widely used. Almost all system administrators had to setup a
+  NAT at some point. The cost of re-training them will be lower.
+
+I’m not arguing that using NAT is better than switching to IPv6. NAT is not a
+good solution, it’s a bad short-term solution aggravating the problem in the
+long run. NAT is like the fast food restaurant around the corner and IPv6 is
+the healthy meal you cook at home. You know you should go for the healthy meal,
+but you’ll go to the fast food, because it’s cheap and easy. You’ll feel bad,
+but forget about it quickly, because it doesn’t have immediate consequences.
+
+Like the [OSI model][OSI], IPv6’s technical brilliance wont make it successful.
+Regular Internet users want to surf the web and read emails. They don’t care
+about how things work, as long as it works. If IPv6 could communicate natively
+with IPv4, it would have been widely deployed and used today.
+
+In the future we will drive IPv6 connected flying cars on Mars
+==============================================================
+
+That’s what —I think— will happen:
+
+- 2012 or later, no more IPv4 address left
+- ISP’s start using NAT for their cheaper plan
+- After a while they supply clients who need a public address —typically
+  [BitTorrent][BT] users— with IPv6 addresses, but keep using NAT for regular v4
+  access
+- IPv6 gains momentum in some area, like gaming or file-sharing. But other
+  domains like the web —HTTP— or email —SMTP, POP, and IMAP— stick to the old IP
+  protocol because it’s *good enough*
+
+I don’t know if there will be a complete switch to IPv6 one day but I am sure
+nobody will switch overnight just because there is no IPv4 addresses left.
+
+[ipv6mess]: http://cr.yp.to/djbdns/ipv6mess.html "The IPv6 mess"
+[DJB]: http://cr.yp.to/djb.html "D. J. Bernstein"
+[NAT]: http://en.wikipedia.org/wiki/Network_address_translation "Network address translation - Wikipedia"
+[OSI]: http://en.wikipedia.org/wiki/OSI_model "OSI model - Wikipedia"
+[BT]: http://asert.arbornetworks.com/2009/09/who-put-the-ipv6-in-my-internet/

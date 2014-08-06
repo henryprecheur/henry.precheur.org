@@ -1,0 +1,16 @@
+title: RFC 3339 Python module version 4
+date: 2011-1-4
+
+I’ve just released the 4th version of RFC 3339. A small python module to format
+dates and timestamps as specified by [RFC 3339][1]. This version fixes [a
+problem with dates before 1970 & 1900][2]. The Python standard library doesn’t
+support it, but I was able to make it more or less work. Dates before 1970 might
+have inaccurate timezone information, but there’s no way to fix that: most
+system don’t have timezone information before 1970.
+
+You can get it at [BitBucket][3] or [PyPi][4].
+
+[1]: http://www.ietf.org/rfc/rfc3339.txt
+[2]: https://bitbucket.org/henry/rfc3339/issue/1/valueerror-on-dates-before-1900
+[3]: https://bitbucket.org/henry/rfc3339
+[4]: http://pypi.python.org/pypi/rfc3339

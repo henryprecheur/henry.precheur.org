@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /files/
+Disallow: /images/
+Disallow: /stats/
+Disallow: /index.php
+Disallow: /rss.php
+Disallow: /weblog/*.tar.gz
+Disallow: /cgi-bin/
+Sitemap: http://henry.precheur.org/sitemap.xml

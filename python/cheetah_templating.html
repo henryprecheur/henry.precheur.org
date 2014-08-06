@@ -1,0 +1,214 @@
+title: Templating avec Cheetah
+date: 2007-02-13
+
+<p><a href="http://www.cheetahtemplate.org/">Cheetah</a> est un moteur de
+<em>Templating</em> &eacute;crit en Python. Il est simple d'utilisation et
+rapide. Je l'utilise notamment pour cr&eacute;er des pages HTML. Des nombreux
+framework <em>web</em> l'utilisent dont notamment l'excellent <a href=
+    "http://www.webpy.org">web.py</a>, qui permet de rendre les templates
+directement pour peu que Cheetah soit install&eacute;.</p>
+
+<p>Je ne vais pas m'&eacute;tendre sur les fonctionnalit&eacute; basiques de
+Cheetah, vous trouverez de tr&egrave;s bonnes introductions sur le sujet sur <a
+    href= "http://www.cheetahtemplate.org/docs/learn.html">cette page</a>. Ici
+on va plut&ocirc;t aborder des techniques un peu <em>avanc&eacute;es</em> pour
+les probl&eacute;matiques li&eacute;es aux pages HTML.</p>
+
+<p>La probl&eacute;matique principale du <em>Templating</em> HTML c'est qu'il
+faut permettre de g&eacute;n&eacute;rer dynamiquement les pages sans avoir
+&agrave; chaque fois &agrave; recopier tout le design.</p>
+
+<p>Une premi&egrave;re approche consiste &agrave; cr&eacute;er 2 fichiers :</p>
+
+<p><code>header</code></p>
+
+<blockquote><pre>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;titre&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;</pre></blockquote>
+
+<p><code>footer</code></p>
+
+<blockquote><pre>&lt;/body&gt;
+&lt;/html&gt;</pre></blockquote>
+
+<p>Puis on cr&eacute;e le fichier contenant le corps de notre page</p>
+
+<p><code>page.tmpl</code></p>
+
+<blockquote><pre>#include "header"
+tada!
+#include "footer"</pre></blockquote>
+
+    <p>Et enfin pour finir on appelle Cheetah pour rendre la page :
+    <code>PYTHONPATH=. cheetah fill page.tmpl</code> (le
+    <code>PYTHONPATH</code> permet de dire &agrave; Cheetah ou il
+    doit aller chercher ses fichiers templates). Cela produit un
+    fichier <code>page.html</code> qui contient :</p>
+
+    <blockquote>
+      <pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;titre&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+tada!
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </blockquote>
+
+    <p>Cette approche a l'avantage d'&ecirc;tre tr&egrave;s simple
+    &agrave; mettre en oeuvre. Apparemment elle est utilis&eacute;e
+    dans pas mal de cas. Toutefois elle n'est pas tr&egrave;s
+    puissante. Les possibilit&eacute;s offertes sont plus que
+    limit&eacute;es. Par exemple si l'on souhaite avoir une page de
+    base puis rajouter des menus sur certaines cat&eacute;gories de
+    pages, on est oblig&eacute; d'inclure &agrave; la main les
+    menus dans chaque pages.</p>
+
+    <p>Heureusement Cheetah g&egrave;re l'h&eacute;ritage entre
+    templates. Voici comment &ccedil;a se passe. Soit le fichier
+    suivant :</p>
+
+    <p><code>base.tmpl</code></p>
+
+    <blockquote>
+      <pre>
+#def title: mon titre a moi
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;$title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+$content
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </blockquote>
+
+    <p>Dans ce cas, on a un template de base qui a 2
+    param&egrave;tres : <code>$title</code> et
+    <code>$content</code>. <code>$title</code> &eacute;tant
+    d&eacute;j&agrave; d&eacute;fini dans <code>base.tmpl</code> il
+    n'est pas obligatoire de le red&eacute;finir dans les templates
+    <em>fils</em>. En revanche <code>$content</code> doit
+    &ecirc;tre d&eacute;fini dans chacun des templates qui
+    &eacute;tendent <code>base.tmpl</code>. Par exemple :</p>
+
+    <p><code>page1.tmpl</code></p>
+
+    <blockquote>
+      <pre>
+#extends base
+#block content
+Ca rox cheetah!
+&lt;a href='/'&gt;test&lt;/a&gt;
+#end block
+</pre>
+    </blockquote>
+
+    <p>Ici on d&eacute;finit le bloque <em>content</em>, qui
+    remplacera <code>$content</code> dans <code>base.tmpl</code>.
+    On lance donc <code>PYTHONPATH=. cheetah fill -p
+    page1.tmpl</code> et on obtient :</p>
+
+    <blockquote>
+      <pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;mon titre a moi&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Ca rox cheetah!
+&lt;a href='/'&gt;test&lt;/a&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </blockquote>
+
+    <p>Ensuite si l'on souhaite cr&eacute;er une autre page qui va
+    elle red&eacute;finir le titre c'est tr&egrave;s simple :</p>
+
+    <p><code>page2.tmpl</code></p>
+
+    <blockquote>
+      <pre>
+#extends base
+#def title: un autre titre
+#block content
+Ca rox cheetah!
+&lt;a href='/'&gt;test&lt;/a&gt;
+#end block
+</pre>
+    </blockquote>
+
+    <p>Notez bien qu'ici <code>def</code> et <code>block</code>
+    sont utilis&eacute; pour faire la m&ecirc;me chose. Ces deux
+    syntaxes sont &eacute;quivalentes (voir la documentation de
+    Cheetah pour plus d'informations).</p>
+
+    <p>Et maintenant on se heurte &agrave; un petit
+    probl&egrave;me, si l'on souhait rajouter un menu &agrave; la
+    page, il va falloir utiliser la variable <code>$content</code>,
+    et du coup on ne peut plus utiliser cette variable dans les
+    pages qui descendent ce template avec un menu ...</p>
+
+    <p>Pour &eacute;viter ce genre de probl&egrave;me on peut
+    d&eacute;finir des bloques autour des zones qui sont
+    susceptibles d'&ecirc;tre modifi&eacute;es par d'autres
+    templates. Ainsi on modifie <code>base.tmpl</code> comme ceci
+    :</p>
+
+    <blockquote>
+      <pre>
+#def title: mon titre a moi
+&lt;html&gt;
+&lt;head&gt;
+#block head
+&lt;title&gt;$title&lt;/title&gt;
+#end block head
+&lt;/head&gt;
+&lt;body&gt;
+#block body
+$content
+#end block body
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </blockquote>
+
+    <p>Ainsi, quand vous souhaitez red&eacute;finir certaines
+    parties de votre page, il suffit d'utiliser les bloques que
+    vous avez d&eacute;finis avant. Ainsi les <em>anciens</em>
+    bloques seront remplac&eacute;s.</p>
+
+    <p>Par exemple, si on souhaitait rajouter un menu dans la page
+    pr&eacute;c&eacute;dente il suffirait de faire :</p>
+
+    <p><code>menu.tmpl</code></p>
+
+    <blockquote>
+      <pre>
+#extends base
+#block body
+&lt;body&gt;
+&lt;div class='menu'&gt;
+&lt;ul&gt;
+&lt;li&gt;menu1&lt;/li&gt;
+&lt;li&gt;menu2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+$content#slurp
+&lt;/body&gt;
+#end block
+</pre>
+    </blockquote>
+
+    <p>Et hop! maintenant toutes les pages qui descendent de
+    <code>menu.tmpl</code> contiendront le menu. Ce n'est pas
+    r&eacute;volutionnaire dans le concept. Mais c'est bien
+    sympathique quand m&ecirc;me!</p>

@@ -1,0 +1,29 @@
+title: ssh-copy-id
+date: 2008-11-03 22:02:54
+
+`ssh-copy-id` is a small script which copy your ssh public-key to a remote host;
+appending it to your remote `authorized_keys`.
+
+    $ ssh-copy-id root@192.168.1.1
+    root@192.168.1.1's password:
+    Now try logging into the machine, with "ssh 'root@192.168.1.1'", and check in:
+
+      .ssh/authorized_keys
+
+    to make sure we haven't added extra keys that you weren't expecting.
+
+    $ ssh root@192.168.1.1
+    Last login: Mon Nov  3 18:46:32 2008 from 192.168.1.32
+    OpenBSD 4.4 (GENERIC) #1021: Tue Aug 12 17:16:55 MDT 2008
+
+    Welcome to OpenBSD: The proactively secure Unix-like operating system.
+    # cat .ssh/authorized_keys
+    ssh-dss [removed] /home/henry/.ssh/id_dsa
+
+This script is not shipped with OpenBSD. But it’s part of the [Portable
+OpenSSH](http://www.openssh.com/portable.html). It is self-contained, you just
+need to download and drop it in your `~/bin` directory.
+
+Download it from [mindrot.org][mindrot.org].
+
+[mindrot.org]: http://cvsweb.mindrot.org/index.cgi/~checkout~/openssh/contrib/ssh-copy-id?rev=1.6;content-type=text%2Fplain "ssh-copy-id from mindrot's cvsweb"

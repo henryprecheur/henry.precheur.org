@@ -1,0 +1,64 @@
+title: Trick with the "for" statement in Python
+date: 2008-3-26
+
+<p>
+Python's <em>for</em> statement has an useful feature. When iterating over a
+sequence using <em>for</em>, the variables declared in the statement's
+<em>target list</em> are still defined after the loop.
+</p>
+<pre>
+&gt;&gt;&gt; for i in xrange(1, 10):
+...     if i % 2 == 0 and i % 3 == 0:
+...         break
+...
+&gt;&gt;&gt; i
+6
+</pre>
+<p>
+The infamous compiler Visual C++ 6 has a similar feature. But this feature is
+a non-standard C++ extension. Lots of programs wrote using Visual C++ 6 can not
+be compiled directly under others C++ compilers because of this. But since it
+is a standard Python feature there is no reason to avoid it in Python!
+</p>
+<p>
+For example you can replace the following code
+</p>
+<pre>
+found_line_number = 0
+# find the first line which contains non-ASCII character
+for line_number, line in enumerate(my_file):
+  try:
+    line.decode('ascii')
+  except UnicodeDecodeError, e:
+    found_line_number = line_number
+    break
+
+print 'line %d contains non-ascii characters' % found_line_number
+</pre>
+<p>
+with
+</p>
+<pre>
+# find the first line which contains non-ASCII character
+for line_number, line in enumerate(my_file):
+  try:
+    line.decode('ascii')
+  except UnicodeDecodeError, e:
+    break
+
+print 'line %d contains non-ascii characters' % line_number
+</pre>
+<p>
+(This example assumes there is at least one line which contains a non-ASCII
+character)
+</p>
+<p>
+The code is shorter and clearer. When using this construct, the code wont always
+be shorter, but it will certainly be clearer and easier to understand. Even to
+those who don't know the trick, since it is easily understandable.
+</p>
+<p>
+Don't wait for an occasion to use this shortcut. Review your code immediately
+and remove all those variables you used just to find the first <em>whatever you
+were looking for</em> in a for loop!
+</p>

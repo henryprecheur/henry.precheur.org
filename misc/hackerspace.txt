@@ -1,0 +1,32 @@
+title: Hackerspace in Vancouver
+date: 2009-8-21
+files: vhs.jpg
+
+The [Vancouver Python User Group](http://vanpyz.org/) (VanPyZ) lost its meeting
+space. [Workspace](http://www.abetterplacetowork.com/) hosted most of our
+2008/2009 meetings. It is closing on Friday August 21st. Looking for another
+place, someone on the VanPyZ [mailling
+list](http://lists.livingcode.org/listinfo.cgi/vanpyz-livingcode.org/) suggested
+to contact the Vancouver Hackerspace (VHS). After looking at the
+[website](http://vancouver.hackspace.ca/), I went to see what it was.
+
+VHS is a room managed by a group of hackers in a democratic way. This community
+consists of software & hardware hackers. You pay a small membership fee to
+access the place: $25 for a *basic* one, or $50 for a full time access with a
+key. It’s a place where you can work on your hobby projects and socialize with
+other like-minded hackers.
+
+<img class='right' with='250' height='180' src='vhs.jpg'>
+
+I attended the chat/talk on Git Thursday evening. People were easy going and
+knew their subject. I was sceptic when I first heard of ‘Hacker spaces’, it
+sounded like an utopian idea; nice in theory but not manageable in practice.
+After of few hours in this microcosm, I changed my mind. Hacker space is not
+just a neat idea, it works. Staying at home working on own project alone is not
+the best way to go. Hacker spaces provide a social environment where you can
+take you’re creativity to another level. People exchange ideas, help each
+other, or spread the latest tech gossips. There are tutorials, where you can
+learn by doing; and more classic talks.
+
+VHS is worth checking if you’re living in Vancouver. If not for the space, at
+least for the people.

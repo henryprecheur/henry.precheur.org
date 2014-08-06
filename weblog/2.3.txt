@@ -1,0 +1,17 @@
+title: Weblog 2.3
+date: 2009-11-20
+
+Version 2.3 adds documentation for the [slug][] field, this feature was present
+since 2.1 but wasn’t documented.
+
+It also fixes 4 bugs reported by [John Lenton](http://pyvore.com/). Many thanks
+to him.
+
+Get it on the [download page](install.html#download).
+
+Don’t hesitate to ask questions or request support in the [mailing list][].
+Report any bugs and problems on the [bugs & issues tracker][].
+
+[slug]: reference.html#post-s-url "Slug"
+[mailing list]: http://groups.google.com/group/weblog-users "Weblog’s Google groups"
+[bugs & issues tracker]: http://bitbucket.org/henry/weblog/issues/ "Weblog’s issue tracker"

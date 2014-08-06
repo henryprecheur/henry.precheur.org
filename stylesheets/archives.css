@@ -1,0 +1,37 @@
+#posts > div {
+        padding: 0.5em 0;
+}
+
+#posts * {
+    vertical-align: top;
+}
+
+#posts > div > * {
+    display: inline-block;
+
+    /* For IE7 */
+    zoom: 1;
+    *display: inline;
+}
+
+#posts time {
+    width: 35%;
+    text-align: right;
+}
+
+#posts > div.popular {
+        background-color: #f5f5f5;
+}
+#posts > div.popular > time:before {
+    float: left;
+    content: "Popular";
+    font-size: 80%;
+    color: silver;
+    padding-left: 0.8em;
+}
+
+#posts > div > span {
+        box-sizing: border-box;
+        width: 65%;
+        padding-left: 1.5em;
+}

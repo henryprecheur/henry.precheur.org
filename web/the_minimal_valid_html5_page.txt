@@ -1,0 +1,15 @@
+title: The minimal valid HTML5 page
+date: 2009-03-27 18:50
+
+Like [HTML 4](2008/11/25/The_minimal_valid_html_page.html), but now it’s [HTML
+5](http://dev.w3.org/html5/spec/Overview.html).
+
+    <!DOCTYPE html>
+    <title></title>
+    <p>
+
+[validator.nu](http://validator.nu/) validates it elegantly, it is much
+better than the w3 validator.
+
+**Update**: Another article about that: [The smallest possible valid (X)HTML
+documents](http://mathiasbynens.be/notes/minimal-html)

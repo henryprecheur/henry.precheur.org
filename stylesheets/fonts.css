@@ -1,0 +1,52 @@
+/*
+ * Equity Grade A
+ */
+@font-face {
+    font-family: 'Equity Text';
+    src: url('font/equity/text_a.woff');
+}
+@font-face {
+    font-family: 'Equity Text';
+    src: url('font/equity/text_a_bold.woff');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Equity Text';
+    src: url('font/equity/text_a_bold_italic.woff');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Equity Text';
+    src: url('font/equity/text_a_italic.woff');
+    font-style: italic;
+}
+
+/*
+ * Concourse
+ */
+@font-face {
+    font-family: 'Concourse';
+    src: url('font/concourse/t7.woff');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Concourse';
+    src: url('font/concourse/t3.woff');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Concourse';
+    src: url('font/concourse/t3_bold.woff');
+    font-weight: 600;
+}
+
+/*
+ * M+ font
+ */
+@font-face {
+        font-family: 'mplus-2m';
+        src: url('font/mplus/2m_regular.woff') format('woff');
+        font-weight: 400;
+}
