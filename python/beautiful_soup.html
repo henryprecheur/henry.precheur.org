@@ -19,13 +19,16 @@ That's a problem when working with HTML 4.01 Strict documents where
 So I hacked BeautifulSoup.py to add an htmlDialect parameter to the
 'rendering' methods:
 </p>
-<div class='code'>
-    &gt;&gt;&gt; BeautifulSoup.BeautifulSoup(&quot;&lt;br&gt;").__str__(htmlDialect=True)<br>
-    '&lt;br&gt;'<br>
-    &gt;&gt;&gt; BeautifulSoup.BeautifulSoup("&lt;br&gt;").renderContents(htmlDialect=True)<br>
-    '&lt;br&gt;'<br>
-    &gt;&gt;&gt; BeautifulSoup.BeautifulSoup("&lt;br&gt;").prettify(htmlDialect=True)<br>
-    '&lt;br&gt;\n'<br>
+
+<pre>
+    &gt;&gt;&gt; tag = BeautifulSoup.BeautifulSoup(&quot;&lt;br&gt;&quot;)
+    &gt;&gt;&gt; tag.__str__(htmlDialect=True)
+    '&lt;br&gt;'
+    &gt;&gt;&gt; tag.renderContents(htmlDialect=True)
+    '&lt;br&gt;'
+    &gt;&gt;&gt; tag.prettify(htmlDialect=True)
+    '&lt;br&gt;\n'
+    </code>
 </div>
 <p>
 I sent the patch twice to the author of Beautiful Soup and I did not get any
