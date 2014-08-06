@@ -35,7 +35,6 @@ Did you know that those Emails were valid?
     ""@iana.org
     (foo)cal(bar)@(baz)iamcal.com(quux)
     first.last@[IPv6:a1:]
-    first(Welcome to&#x240D;&#x240A; the ("wonderful" (!)) world&#x240D;&#x240A; of email)@iana.org
 
 I’m pretty sure that most websites requiring an Email address reject those
 addresses. It’s sad.

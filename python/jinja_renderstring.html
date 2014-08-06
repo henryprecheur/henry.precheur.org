@@ -4,6 +4,7 @@ date: 2008-4-5
 <p>
 I wrote this filter for <a href='weblog/index.html'>Weblog</a>:
 </p>
+<small>
 <pre>
 def do_renderstring():
     def wrapped(env, context, value):
@@ -24,6 +25,7 @@ def do_renderstring():
     return wrapped
 env.filters['renderstring'] = do_renderstring
 </pre>
+</small>
 <p>
 Where <code>env</code> is a Jinja <code>Environment</code> object.
 </p>

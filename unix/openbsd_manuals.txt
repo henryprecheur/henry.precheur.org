@@ -34,8 +34,8 @@ documentation](http://msdn.microsoft.com/en-us/library/kk6xf663(VS.80\).aspx) is
 not very helpful, there are a few code listings without much explanations. And
 this warning:
 
-    These functions are deprecated because more secure versions are available;
-    see strcpy_s, wcscpy_s, _mbscpy_s.
+> These functions are deprecated because more secure versions are available; see
+> strcpy_s, wcscpy_s, _mbscpy_s.
 
 Why are they insecure? What should I do if I really have to use `strncpy`
 because I need portable code? Microsoft a multi-billion dollars company doesn’t
@@ -51,10 +51,10 @@ edited.
 
 There’s also a notice about security:
 
-    If the destination string of a strcpy() is not large enough  (that  is, if
-    the  programmer  was  stupid  or lazy, and failed to check the size before
-    copying) then anything might happen.  Overflowing  fixed  length strings is
-    a favorite cracker technique.
+> If the destination string of a strcpy() is not large enough  (that  is, if the
+> programmer  was  stupid  or lazy, and failed to check the size before copying)
+> then anything might happen.  Overflowing  fixed  length strings is a favorite
+> cracker technique.
 
 If somebody was stupid and lazy, that’s not “the programmer” but the author of
 the manual who is unhelpful and insulting. What about treating readers as
@@ -62,7 +62,6 @@ adults? What about explaining the problem? And what about suggesting solutions?
 
 This was removed in newer version of the manual, but it was there for years
 before somebody bothered removing it.
-
 
 Good documentation is a clear sign of quality. When you have to decide between
 multiple software, read the documentation. It will give you more insight about

@@ -4,6 +4,8 @@ date: 2008-11-03 22:02:54
 `ssh-copy-id` is a small script which copy your ssh public-key to a remote host;
 appending it to your remote `authorized_keys`.
 
+<small>
+
     $ ssh-copy-id root@192.168.1.1
     root@192.168.1.1's password:
     Now try logging into the machine, with "ssh 'root@192.168.1.1'", and check in:
@@ -19,6 +21,8 @@ appending it to your remote `authorized_keys`.
     Welcome to OpenBSD: The proactively secure Unix-like operating system.
     # cat .ssh/authorized_keys
     ssh-dss [removed] /home/henry/.ssh/id_dsa
+
+</small>
 
 This script is not shipped with OpenBSD. But it’s part of the [Portable
 OpenSSH](http://www.openssh.com/portable.html). It is self-contained, you just

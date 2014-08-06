@@ -4,6 +4,8 @@ date: 2011-3-17
 I've just release an initial version of [Reform][1], a Python library to
 validate and use HTML forms. Here's a short example of how it works:
 
+<small>
+
     from reform import Form, field
 
     class LoginForm(Form):
@@ -16,6 +18,8 @@ validate and use HTML forms. Here's a short example of how it works:
         print 'Valid form'
     else:
         print 'Invalid form'
+
+</small>
 
 I'm using it for [clan.cx, my StarCraft 2 clan site builder][clan.cx]. I plan to
 add more features and documentation within the next few months.
