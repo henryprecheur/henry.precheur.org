@@ -16,7 +16,7 @@ $(OUTPUT_DIR):
 _url=https://raw.github.com/pypa/virtualenv/develop/virtualenv.py
 $(VIRTUAL_ENV):
 	virtualenv $@
-	$@/bin/pip install hg+https://bitbucket.org/henry/weblog
+	$@/bin/pip install hg+https://bitbucket.org/henry/weblog pyScss
 
 rmenv:
 	rm -rf $(VIRTUAL_ENV)
@@ -40,7 +40,7 @@ render-final: $(VIRTUAL_ENV)
 	$(VIRTUAL_ENV_PYTHON) ./publish.py --rewrite $(OUTPUT_DIR)
 
 serve:
-	$(VIRTUAL_ENV) -m SimpleHTTPServer
+	(cd $(OUTPUT_DIR); ../$(VIRTUAL_ENV_PYTHON) -m SimpleHTTPServer)
 
 _weblog: $(OUTPUT_DIR)
 	@mkdir -p $(OUTPUT_DIR)/weblog
@@ -52,15 +52,14 @@ clean:
 
 STYLE_DIR = stylesheets
 STYLESHEETS = $(STYLE_DIR)/normalize.css \
-	      $(STYLE_DIR)/main.css \
 	      $(STYLE_DIR)/archives.css \
 	      $(STYLE_DIR)/fonts.css \
 
 $(STYLE_DIR)/normalize.css:
 	curl http://necolas.github.io/normalize.css/3.0.0/normalize.css > $@
 
-$(OUTPUT_DIR)/style.css: $(STYLESHEETS)
-	cat $(STYLESHEETS) > $@
+$(OUTPUT_DIR)/style.css: $(STYLESHEETS) $(STYLE_DIR)/style.scss
+	$(VIRTUAL_ENV)/bin/pyscss  $(STYLESHEETS) $(STYLE_DIR)/style.scss > $@
 
 re: clean all
 
