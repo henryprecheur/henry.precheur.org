@@ -35,3 +35,13 @@
         width: 65%;
         padding-left: 1.5em;
 }
+
+.archive > * {
+        display: inline-block;
+}
+
+.archive > time {
+        width: 10em;
+        text-align: right;
+        margin-right: 2em;
+}
