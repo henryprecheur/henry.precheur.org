@@ -38,10 +38,15 @@
 
 .archive > * {
         display: inline-block;
+        margin: 0.5em 0;
 }
 
 .archive > time {
-        width: 10em;
+        width: 30%;
         text-align: right;
-        margin-right: 2em;
+        padding: 0 2em 0 0;
+}
+
+.archive > div {
+        width: 70%;
 }
