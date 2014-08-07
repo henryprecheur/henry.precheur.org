@@ -12,11 +12,9 @@
 </head>
 <body>
 
-<nav><a href='/'>&#8592; Home</a></nav>
+{% block navigation %}<nav><a href='/'>&#8592; Home</a></nav>{% endblock %}
 
-<article>
 {% block content %}{% endblock %}
-</article>
 
 <footer>
     &copy; 2007&ndash;2014 <a href='/about'>Henry Pr&ecirc;cheur</a>

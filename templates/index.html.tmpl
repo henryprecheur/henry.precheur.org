@@ -8,16 +8,22 @@ href='http://henry.precheur.org/scratchpad/'>journal</a> about random
 topics.
 </p>
 
-<h1>Weblog</h1>
-
-<div id=posts>
-{% for page in pages %}
-    <div {% if page.filename in popular %} class='popular'{% endif %}>
+<h1>Popular articles</h1>
+{% for page in pages %}{% if page.filename in popular %}
+<div class='archive popular'>
     <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time
     ><span><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></span>
+</div>
+{% endif %}{% endfor %}
+
+<h1>Archives</h1>
+
+{% for page in pages %}
+    <div class='archive'>
+    <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time
+    ><div><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></div>
     </div>
 {% endfor %}
-</div>
 
 </nav>
 {% endblock %}
