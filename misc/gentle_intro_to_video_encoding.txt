@@ -12,8 +12,13 @@ Example:
 > video encoding”. I think video could be replaced by media, since this series
 > also covers audio, captioning, and all sorts of details.
 >
-> [A gentle introduction to video encoding](http://diveintomark.org/tag/give)
+> [A gentle introduction to video encoding][0]
 
 This trick is especially handy when you haven’t posted anything for almost 2
 months. Looking productive without actually producing anything: I am a real
 blogger now!
+
+**Note**: Mark Pilgrim's website is no longer available, I updated the link to
+point to the archive.org
+
+[0]: http://web.archive.org/web/20100615062249/http://diveintomark.org/tag/give)
