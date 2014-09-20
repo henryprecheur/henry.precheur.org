@@ -21,12 +21,12 @@ body {
     max-width: 41em;
     padding: 0.5em;
     font-family: 'Equity Text', serif;
-}
-body > article {
-    max-width: 28em;
-    margin: 0 auto;
-    padding: 2rem 0;
-    line-height: 1.35;
+    > article, > section {
+            max-width: 28em;
+            margin: 0 auto;
+            padding: 2rem 0;
+            line-height: 1.35;
+    }
 }
 h1, h2, h3 {
     font-family: 'Concourse', sans-serif;
@@ -146,8 +146,10 @@ nav {
 }
 
 @media (min-width: 41em) {
-    body > article {
-        margin: 0 0 0 11rem;
+    body {
+            > article, > section {
+                    margin: 0 0 0 11rem;
+            }
     }
     nav {
         margin-top: 3rem;
