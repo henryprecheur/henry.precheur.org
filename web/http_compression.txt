@@ -64,17 +64,17 @@ The total time includes decompression time on rather slow computers
 standard deviation was low, and times were stable.
 </aside>
 
-First Let’s calculate the *real download rate*. It’s not the number of bytes
+First Let’s calculate the real download rate. It’s not the number of bytes
 transfered divided by the total time. The total time includes the connection
 time and the server’s processing time. Those are not strictly download. The
-*real download rate* is calculated this way:
+real download rate is calculated this way:
 
     size / (total_time - pre-transfer_time)
 
 This formula is not 100% accurate, since it doesn’t take into account network
 latency and includes decompression time. But it’s close enough.
 
-On my Canadian connection, the *real download rate* is about 310 KB/sec for the
+On my Canadian connection, the real download rate is about 310 KB/sec for the
 uncompressed page and 255 KB/sec for the compressed one. From France: 91 KB/sec
 uncompressed and 61 KB/sec compressed.
 
@@ -121,8 +121,10 @@ This is probably one of the worst case:
     download time. But it also means the TCP connection will take a significant
     amount of time compared to the download time.
   - The page has a high
-    [entropy](http://en.wikipedia.org/wiki/Entropy_(Information_theory\)), therefor
+    [entropy][], therefor
     its compression ratio is low.
+
+[entropy]: http://en.wikipedia.org/wiki/Entropy_(Information_theory)
 
 <table>
 <caption>Test from Canada (www.google.ca, ping 12ms)</caption>
