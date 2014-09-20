@@ -1,0 +1,85 @@
+diff -ur BeautifulSoup-3.0.6/BeautifulSoup.py BeautifulSoup/BeautifulSoup.py
+--- BeautifulSoup-3.0.6/BeautifulSoup.py	2008-04-26 16:03:53.000000000 -0700
++++ BeautifulSoup/BeautifulSoup.py	2008-05-12 18:30:59.000000000 -0700
+@@ -606,7 +606,7 @@
+         return "&" + self.XML_SPECIAL_CHARS_TO_ENTITIES[x.group(0)[0]] + ";"
+ 
+     def __str__(self, encoding=DEFAULT_OUTPUT_ENCODING,
+-                prettyPrint=False, indentLevel=0):
++                prettyPrint=False, indentLevel=0, htmlDialect=False):
+         """Returns a string or Unicode representation of this tag and
+         its contents. To get Unicode, pass None for encoding.
+ 
+@@ -656,7 +656,7 @@
+                                     self.toEncoding(val, encoding)))
+         close = ''
+         closeTag = ''
+-        if self.isSelfClosing:
++        if self.isSelfClosing and not htmlDialect:
+             close = ' /'
+         else:
+             closeTag = '</%s>' % encodedName
+@@ -666,7 +666,8 @@
+             indentTag = indentLevel
+             space = (' ' * (indentTag-1))
+             indentContents = indentTag + 1
+-        contents = self.renderContents(encoding, prettyPrint, indentContents)
++        contents = self.renderContents(encoding, prettyPrint, indentContents,
++                                       htmlDialect)
+         if self.hidden:
+             s = contents
+         else:
+@@ -700,11 +701,11 @@
+                 i.extract()
+         self.extract()
+ 
+-    def prettify(self, encoding=DEFAULT_OUTPUT_ENCODING):
+-        return self.__str__(encoding, True)
++    def prettify(self, encoding=DEFAULT_OUTPUT_ENCODING, htmlDialect=False):
++        return self.__str__(encoding, True, htmlDialect=htmlDialect)
+ 
+     def renderContents(self, encoding=DEFAULT_OUTPUT_ENCODING,
+-                       prettyPrint=False, indentLevel=0):
++                       prettyPrint=False, indentLevel=0, htmlDialect=False):
+         """Renders the contents of this tag as a string in the given
+         encoding. If encoding is None, returns a Unicode string.."""
+         s=[]
+@@ -713,7 +714,8 @@
+             if isinstance(c, NavigableString):
+                 text = c.__str__(encoding)
+             elif isinstance(c, Tag):
+-                s.append(c.__str__(encoding, prettyPrint, indentLevel))
++                s.append(c.__str__(encoding, prettyPrint,
++                                   indentLevel, htmlDialect))
+             if text and prettyPrint:
+                 text = text.strip()
+             if text:
+diff -ur BeautifulSoup-3.0.6/BeautifulSoupTests.py BeautifulSoup/BeautifulSoupTests.py
+--- BeautifulSoup-3.0.6/BeautifulSoupTests.py	2008-04-26 15:29:15.000000000 -0700
++++ BeautifulSoup/BeautifulSoupTests.py	2008-05-12 18:31:37.000000000 -0700
+@@ -524,6 +524,25 @@
+         self.assertEqual(str(soup),
+                          '<p>test1<selfclosing />test2</p>')
+ 
++    def testSelfClosingtagHtml(self):
++        soup_html = BeautifulSoup('<br>')
++        self.assertEqual(soup_html.renderContents(htmlDialect=False),
++                         '<br />')
++        self.assertEqual(soup_html.renderContents(htmlDialect=True),
++                         '<br>')
++        self.assertEqual(soup_html.prettify(htmlDialect=False),
++                         '<br />\n')
++        self.assertEqual(soup_html.prettify(htmlDialect=True),
++                         '<br>\n')
++        soup_xml = BeautifulSoup('<br />')
++        self.assertEqual(soup_xml.renderContents(htmlDialect=True),
++                         '<br>')
++        self.assertEqual(soup_xml.prettify(htmlDialect=True),
++                         '<br>\n')
++        soup = BeautifulSoup('<html><p><br /><tt><br/><br  /></tt><br></html>')
++        self.assertEqual(soup.renderContents(htmlDialect=True),
++                         '<html><p><br><tt><br><br></tt><br></p></html>')
++
+     def testSelfClosingTagOrNot(self):
+         text = "<item><link>http://foo.com/</link></item>"
+         self.assertEqual(BeautifulStoneSoup(text).renderContents(), text)

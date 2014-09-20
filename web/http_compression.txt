@@ -1,0 +1,169 @@
+title: GZIP encoding = happier users?
+date: 2009-4-23 10:32
+files: http_compression.tar.gz
+
+[Make your site faster and cheaper to operate in one easy
+step](http://paulbuchheit.blogspot.com/2009/04/make-your-site-faster-and-cheaper-to.html)
+by Paul Buchheit recommends to turn on HTTP gzip compression on your site, and
+makes a cost / benefit analysis. The advantages on the *server side* are clear,
+but what about the clients? What are the benefits of gzip encoding for them? I
+ran a series of tests using [curl](http://curl.haxx.se/) to see exactly how much
+time is saved on the client side. I ran the test on
+[friendfeed.com](http://friendfeed.com/).
+
+Results
+=======
+
+<table>
+<caption>Test from Canada (ping 26ms)</caption>
+<tr><th rowspan='2'>File</th><th colspan='2' class='dark'>Connect time</th><th
+colspan='2'>Pre-transfer time</th><th colspan='2' class='dark'>Total time</th><th
+colspan='2'>Transfert size</th></tr>
+<tr><th class='dark'>Mean</th><th
+class='dark'>Median</th><th>Mean</th><th>Median</th><th class='dark'>Mean</th><th
+class='dark'>Median</th><th>Bytes</th><th>KBytes</th></tr>
+<tr>
+<th>no gzip</th>
+<td class='dark'>41</td><td class='dark'>41</td>
+<td>155</td><td>144</td>
+<td class='dark'>292</td><td class='dark'>282</td>
+<td>42531</td><td>41.53</td>
+</tr>
+<tr>
+<th>gzip</th>
+<td class='dark'>40</td><td class='dark'>41</td>
+<td>148</td><td>144</td>
+<td class='dark'>186</td><td class='dark'>182</td>
+<td>9639</td><td>9.41</td>
+</tr>
+</table>
+
+<table>
+<caption>Test from <a href='http://koalabs.org/'>France</a> (ping 155ms)</caption>
+<tr><th rowspan='2'>File</th><th colspan='2' class='dark'>Connect time</th><th colspan='2'>Pre-transfer time</th><th colspan='2' class='dark'>Total time</th><th colspan='2'>Transfert size</th></tr>
+<tr><th class='dark'>Mean</th><th class='dark'>Median</th><th>Mean</th><th>Median</th><th class='dark'>Mean</th><th class='dark'>Median</th><th>Bytes</th><th>KBytes</th></tr>
+<tr>
+<th>no gzip</th>
+<td class='dark'>160</td><td class='dark'>157</td>
+<td>393</td><td>384</td>
+<td class='dark'>861</td><td class='dark'>853</td>
+<td>42531</td><td>41.53</td>
+</tr>
+<tr>
+<th>gzip</th>
+<td class='dark'>157</td><td class='dark'>158</td>
+<td>392</td><td>388</td>
+<td class='dark'>548</td><td class='dark'>544</td>
+<td>9639</td><td>9.41</td>
+</tr>
+</table>
+
+<aside>
+The total time includes decompression time on rather slow computers
+(AMD Geode 266MHz and VIA C7 2GHz). Each test was repeated 100 times. The
+standard deviation was low, and times were stable.
+</aside>
+
+First Let’s calculate the *real download rate*. It’s not the number of bytes
+transfered divided by the total time. The total time includes the connection
+time and the server’s processing time. Those are not strictly download. The
+*real download rate* is calculated this way:
+
+    size / (total_time - pre-transfer_time)
+
+This formula is not 100% accurate, since it doesn’t take into account network
+latency and includes decompression time. But it’s close enough.
+
+On my Canadian connection, the *real download rate* is about 310 KB/sec for the
+uncompressed page and 255 KB/sec for the compressed one. From France: 91 KB/sec
+uncompressed and 61 KB/sec compressed.
+
+Bigger downloads tend to have a better rate. The compression is partially offset
+by the lower download rate. It’s not because gzip divides the size by
+4 or 5 that you will get the page 4 or 5 times faster.
+
+The download rate is not the only important factor. Connection & processing take
+time too, more than half of it if you have a fast connection.
+
+When you have a rate over 200 K/sec the size of the page is not as important as
+it used to be. Faster broadband access means shorter connection time and even
+shorter download time. It also means that **the server’s response time matters
+more and more**. It takes at least 110ms after the connection is established
+before the first byte reach the client. That’s between 36% and 58% of the total
+time. It might account for even more in a few years.
+
+**GZIP encoding helps to reduce the total time significantly: around 35%-36%.**
+
+In theory compressing the page should do wonders with slower download rate. The
+server’s response time is just 26% - 42% of the total time. Download rate being
+lower, one would except GZIP encoding to reduce the total time by more than 36%.
+Surprisingly that’s not the case. The gain is unchanged at 36%.
+
+That was a surprise for me. It turns out that **GZIP encoding didn’t reduce the
+total latency by much more than 36%**, because of the long connection time.
+
+The results might have been better with bigger transfer, but 40K is already big
+for a HTML file. My data set was limited, so other tests with a greater set of
+connection types and different speeds might yield different results and would
+help determining how efficient GZIP encoding is in different situations.
+
+Can GZIP encoding hurt performance?
+===================================
+
+Is there any case where you should avoid compressing your pages? Let’s run the
+test on www.google.ca.
+
+This is probably one of the worst case:
+
+  - Big downloads benefit most from compression and Google’s main page is small:
+    less than 7K
+  - Google servers are very fast, this means reduced processing time and
+    download time. But it also means the TCP connection will take a significant
+    amount of time compared to the download time.
+  - The page has a high
+    [entropy](http://en.wikipedia.org/wiki/Entropy_(Information_theory\)), therefor
+    its compression ratio is low.
+
+<table>
+<caption>Test from Canada (www.google.ca, ping 12ms)</caption>
+<tr><th rowspan='2'>File</th><th colspan='2' class='dark'>Connect time</th><th colspan='2'>Pre-transfer time</th><th colspan='2' class='dark'>Total time</th><th colspan='2'>Transfert size</th></tr>
+<tr><th class='dark'>Mean</th><th class='dark'>Median</th><th>Mean</th><th>Median</th><th class='dark'>Mean</th><th class='dark'>Median</th><th>Bytes</th><th>KBytes</th></tr>
+<tr>
+<th>no gzip</th>
+<td class='dark'>29</td><td class='dark'>28</td>
+<td>56</td><td>52</td>
+<td class='dark'>74</td><td class='dark'>73</td>
+<td>6838</td><td>6.68</td>
+</tr>
+<tr>
+<th>gzip</th>
+<td class='dark'>29</td><td class='dark'>27</td>
+<td>58</td><td>57</td>
+<td class='dark'>63</td><td class='dark'>62</td>
+<td>2897</td><td>2.83</td>
+</tr>
+</table>
+
+<aside>
+The size of the page can vary by a few bytes between each request. But it’s not
+significant.
+
+It looks like Google is compressing its home page on the fly, because of the
+delay of a few milliseconds in the pre-transfer time when using GZIP encoding.
+Caching the gzipp'ed page would save processing power, and on Google’s scale
+that’s probably a few millions dollars saved each years.
+</aside>
+
+The gain is lower than before, but still significant at 15%.
+
+I guess there are very few cases where you shouldn’t use gzip your content. If
+your typical page is less than 100 bytes then gzipping it could hurt the
+client’s and the server’s performance. But no website —except maybe a few
+web-services— serves pages with a typical size of 100 bytes or less. So there’s
+no excuse for serving uncompressed HTML.
+
+Want to test your own site?
+---------------------------
+
+[Download the scripts](http_compression.tar.gz). You’ll need curl to run
+the test and Python to create the report. The code is in the Public domain.

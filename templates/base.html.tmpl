@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>{% block title %}{{ title|escape|decode }}{% endblock %}</title>
+{% block feed %}
+<link rel="alternate" type="application/atom+xml" title="{{ title|escape|decode }} - Feed" href="/feed.atom">
+{% endblock %}
+{% block head %}
+<link rel='stylesheet' href='/style.css'>
+{% endblock %}
+</head>
+<body>
+
+{% block navigation %}<nav><a href='/'>&#8592; Home</a></nav>{% endblock %}
+
+{% block content %}{% endblock %}
+
+<footer>
+    &copy; 2007&ndash;2014 <a href='/about'>Henry Pr&ecirc;cheur</a>
+</footer>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20945988-1']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
+{# vim:set ft=htmljinja: #}

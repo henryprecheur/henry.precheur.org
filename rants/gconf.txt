@@ -1,0 +1,19 @@
+title: The GConf plague
+date: 2010-1-18
+
+Last week I tested [Chromium] [0]. The Unix version of Google’s browser uses
+[GConf] [1]. I prefer Chromium to Firefox, but I wont switch until GConf becomes
+an optional dependency or is completely removed. What’s the problem?
+
+Without GConf:
+
+> Configuration file &rarr; Application
+
+With GConf:
+
+> Configuration file &rarr; GConf &rarr; DBus &rarr; Application
+
+I hate software that adds complexity for no real benefit.
+
+[0]: http://www.chromium.org/Home
+[1]: http://projects.gnome.org/gconf/ "GConf configuration system"

@@ -1,0 +1,13 @@
+title: rfc3339 on PyPi and BitBucket
+date: 2010-8-31
+
+I’ve added [rfc3339] [1] on [PyPi] [pypi]. You can now install it via `pip
+install rfc3339` or `easy_install rfc3339`.
+
+I also created a [repository on BitBucket] [2].
+
+That is all.
+
+[pypi]: http://pypi.python.org/pypi/rfc3339
+[1]: ../projects/rfc3339
+[2]: http://bitbucket.org/henry/rfc3339

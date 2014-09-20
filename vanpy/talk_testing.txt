@@ -1,0 +1,11 @@
+title: VanPyZ talk about testing
+date: 2009-2-4
+
+I gave a talk on Tuesday February 3 about testing at the [Vancouver Python User
+Group](http://www.vanpyz.org). You can find the slides
+[here](http://henry.precheur.org/vanpy/test). It was the first time I gave
+talk since I graduated, I was a bit anxious about it; but it went pretty well.
+
+If your are living in the Vancouver Area and a Python enthusiast, don’t hesitate
+to assist to some the [VanPyZ
+talks](http://wiki.python.org/moin/VanPyZ#Nexttalk)!

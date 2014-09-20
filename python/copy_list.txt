@@ -1,0 +1,127 @@
+title: Python: copying a list the right way
+files: list1.png list2.png
+date: 2009-2-11
+
+    new = old[:]
+
+Those proficient in Python know what the previous line do. It copies the list
+`old` into `new`. This is confusing for beginners and should be avoided. Sadly
+the `[:]` notation is widely used, probably because most Python programmers
+don’t know a better way of copying lists.
+
+A little bit of pythonic theory
+===============================
+
+First we need to understand how Python manages objects & variables. Python
+doesn’t have variables like C. In C a variable is not just a name, it is a set
+of bits; a variable exists somewhere in memory. In Python *variables* are just
+tags attached to objects.
+
+Consider the following statement:
+
+    a = [1, 2, 3]
+
+It means that `a` points to the list `[1, 2, 3]` we just created, but `a` is not
+the list. If we do:
+
+    b = a
+
+We didn’t copy the list referenced by `a`. We just created a new tag `b` and
+attached it to the list pointed by `a`. Like in the picture below:
+
+![a and b reference the same list](list1.png)
+
+If you modify `a`, you also modify `b`, since they point to the same list:
+
+    >>> a.append(4)
+
+    >>> print a
+    [1, 2, 3, 4]
+
+    >>> print b
+    [1, 2, 3, 4]
+
+The built-in function `id()` helps keeping track of all this. It returns the
+object’s unique id. This id is the object’s memory address.
+
+    >>> id(a)
+    3080501452L
+
+    >>> id(b)
+    3080501452L
+
+    >>> c = []  # Create a new list
+    >>> id(c)
+    3080609228L
+
+`a` and `b` really do point to the same memory address. `c` points to a new
+empty list, different from the one referenced by `a` and `b`.
+
+Back to our list
+================
+
+Now we want to copy the list referenced by `a`. We need to create a new list to
+attach `b` to it.
+
+![a and b reference different lists](list2.png)
+
+That bring use back to `new = old[:]`. The operator `[:]` returns a
+[slice](http://docs.python.org/glossary.html#term-slice) of a sequence. Slicing
+a portion of a list: create a new list, and copy the portion of the original
+list into this new list.
+
+    >>> a = [1, 2, 3, 4]
+    >>> a[1:3]
+    [2, 3]
+
+    >>> id(a)
+    3080104140L
+
+    >>> id(a[1:3])
+    3080513612L
+
+If you omit the first index, the slice starts at the beginning of the list; omit
+the second index, it stops at the end of the list.
+
+    >>> a[:3]
+    [1, 2, 3]
+
+    >>> a[1:]
+    [2, 3, 4]
+
+By calling `a[:]`, you get a slice of `a` starting from the beginning and
+finishing at the end. That’s a full copy of `a`. But **it’s not the only way of
+copying lists**. What about this one?
+
+    >>> b = list(a)
+
+    >>> id(a)
+    3080104140L
+
+    >>> id(b)
+    3080520556L
+
+Isn’t it better, less cryptic, and more pythonic? `a[:]` feels a bit too much
+like Perl. Unlike with the slicing notation, those who don’t know Python will
+understand that `b` contains a list.
+
+`list()` is the `list` constructor. It will construct a new list based of the
+passed sequence. The sequence doesn’t necessarily need to be a list, it can be
+any kind of sequence.
+
+    >>> my_tuple = (1, 2, 3)
+    >>> my_list = list(my_tuple)
+    >>> print my_list
+    [1, 2, 3]
+
+And it works with generators. `[:]` doesn’t work on generators since they are
+unsubscriptable —you can’t do generator[0], for example.
+
+    >>> generator = (x * 3 for x in range(4))
+    >>> list(generator)
+    [0, 3, 6, 9]
+
+90% of the time `[:]` could be replaced by `list()`. Of course it won’t work for
+everything since the two are not strictly equivalent, but it is worth trying.
+Next time you see a `[:]` try to replace it with `list`, your code should be
+more readable. Do it, the devil is in the details.

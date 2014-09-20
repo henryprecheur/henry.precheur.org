@@ -1,0 +1,80 @@
+title: libbase32
+date: 2009-9-10
+
+[libbase32](projects/libbase32.tar.gz) is a C library to encode and decode
+integers using Douglas Crockford's [Base 32
+Encoding](http://www.crockford.com/wrmg/base32.html).
+
+Synopsis
+--------
+
+    #include "base32.h"
+
+    int
+    base32_decode(const char* string);
+
+    const char*
+    base32_encode(int x);
+
+    char*
+    base32_encode_r(int x, char* dst);
+
+    BASE32_STRING_SIZE(x);
+
+How it works
+------------
+
+`base32_decode` decodes a string encoded in base 32 and returns the
+corresponding integer:
+
+    int x = base32_decode("1A");
+
+`base32_encode` ignores the character `'-'`, so `"1-A"` is the same as `"1A"`.
+If there is any invalid character in the string, it returns -1. Otherwise
+`base32_decode` only returns positive integer, the call `base32_decode("-2")`
+will return 2 and not -2 since `'-'` characters are ignored.
+
+`base32_encode` encodes an integer into a string.
+
+    char* s = base32_encode(42);
+
+`base32_encode` returns a pointer to a string containing `"1A"`. The string will
+be modified by subsequent calls to `base32_encode`. If you want to keep the
+result you must copy it. `base32_encode` is not thread-safe, but
+`base32_encode_r` is.
+
+`base32_encode_r` encodes an integer and store the result into the passed
+string.
+
+    char  buffer[BASE32_STRING_SIZE(int)];
+
+    base32_encode_r(42, buffer);
+
+`base32_encode_r` returns a pointer to `buffer` which contains `"1A"`. You can
+use `base32_encode_r` in an expression, since it returns a pointer to the
+modified string:
+
+    char  buffer[BASE32_STRING_SIZE(int)];
+
+    printf("result: %s\n", base32_encode_r(42, buffer));
+
+The macro `BASE32_STRING_SIZE` returns the number of bytes needed to store a
+variable or a type.
+
+    void function(int x) {
+        char  buffer[BASE32_STRING_SIZE(x)];
+
+        printf("result: %s\n", base32_encode_r(42, buffer);
+    }
+
+How to use libbase32
+--------------------
+
+[libbase32](projects/libbase32.tar.gz) can be used like a regular library. It
+can also be embedded into a C/C++ project. Copy base32.c and base32.h into the
+source directory, and add the files to the build system. libbase32 is small and
+shouldn't impact the size of the project too much.
+
+libbase32 is licensed under the [ISC
+license](https://www.isc.org/software/license), a simple, permissive, BSD-like
+license.

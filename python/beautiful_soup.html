@@ -1,0 +1,40 @@
+title: Empty tag in Beautiful Soup
+files: BeautifulSoup_htmlDialect.diff
+date: 2008-06-06 20:07:55
+
+<p>
+<a href='http://crummy.com/software/BeautifulSoup'>Beautiful Soup</a> is a HTML
+parser written in Python, robust and well designed. I am using it for this
+website and it helps a lot. But it has a limitation: it only outputs XML
+<q>empty element</q>. If you feed <code>'&lt;br&gt;'</code> to Beautiful Soup;
+it will output <code>'&lt;br /&gt;'</code>.
+</p>
+<p>
+That's a problem when working with HTML 4.01 Strict documents where
+<code>'&lt;br&gt;'</code> is preferable. See <a
+    href='http://www.cs.tut.fi/~jkorpela/html/empty.html'>Empty elements in
+    SGML, HTML, XML, and XHTML</a> for more details.
+</p>
+<p>
+So I hacked BeautifulSoup.py to add an htmlDialect parameter to the
+'rendering' methods:
+</p>
+
+<pre>
+    &gt;&gt;&gt; tag = BeautifulSoup.BeautifulSoup(&quot;&lt;br&gt;&quot;)
+    &gt;&gt;&gt; tag.__str__(htmlDialect=True)
+    '&lt;br&gt;'
+    &gt;&gt;&gt; tag.renderContents(htmlDialect=True)
+    '&lt;br&gt;'
+    &gt;&gt;&gt; tag.prettify(htmlDialect=True)
+    '&lt;br&gt;\n'
+    </code>
+</div>
+<p>
+I sent the patch twice to the author of Beautiful Soup and I did not get any
+reply. So I am posting it here; maybe it will be useful to others.
+</p>
+<p>
+<a href='BeautifulSoup_htmlDialect.diff'>The patch</a> to apply against
+version 3.0.6.
+</p>

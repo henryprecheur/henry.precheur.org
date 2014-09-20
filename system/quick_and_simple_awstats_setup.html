@@ -1,0 +1,85 @@
+title: Quick and simple AWStats setup
+date: 2008-1-2
+
+<p>
+How to setup <a href='http://awstats.sourceforge.net/'>AWStats</a> as a
+non-admin user on Debian GNU/Linux. The process is not very complicated, but
+some important points are undocumented, that's why this short <em>how to</em>
+was written.
+</p>
+<p>
+This tutorial assumes that AWStats is already installed (if not <tt>apt-get
+install awstats</tt> as root). It can be easily adapted to a local AWStats
+installation.
+</p>
+<ul>
+<li>The website url is <tt>http://my.domain/~user/</tt></li>
+<li>The log file is <tt>/var/log/httpd/access.log</tt>.<br></li>
+<li>The public html directory is <tt>/home/user/public_html</tt>.<br></li>
+</ul>
+<p>
+First create a <tt>stats</tt> directory in <tt>/home/user/public_html</tt> and
+make sure it is readable by <tt>www-data</tt>.
+</p>
+
+<pre>
+$ mkdir -m 755 /home/user/public_html/stats/
+</pre>
+
+<p>
+Create the configuration file <tt>awstats.my.domain.conf</tt> in this directory:
+</p>
+
+<pre>
+Include "/etc/awstats/awstats.conf"
+LogFile = "/var/log/httpd/access.log"
+SiteDomain = "my.domain"
+OnlyFiles = "REGEX[^\/~user]"
+DirIcons = "icon"
+DirData = "/home/user/public_html/stats"
+</pre>
+
+<p>
+If you want to monitor everything in the domain, remove the <tt>OnlyFiles</tt>
+directive. Also you should create a symbolic link to the AWStats icon
+directory: <tt>ln -s /usr/share/awstats/icon/</tt> (or copy it if it does not
+work.)
+</p>
+
+<p>
+First AWStats must analyze the log file. This will create a bunch of data files to keep track of the site statistics:
+</p>
+
+<pre>
+$ env AWSTATS_ENABLE_CONFIG_DIR=1 \
+      perl /usr/lib/cgi-bin/awstats.pl \
+      -configdir=${stats_dir} \
+      -config=henry.precheur.org \
+      -dir=${stats_dir} \
+      -update
+</pre>
+
+<p>
+The tricky part was the environment variable
+<tt>AWSTATS_ENABLE_CONFIG_DIR</tt>. If you do not set it, AWStats will look for
+the configuration file in <tt>/etc/awstats</tt>.
+</p>
+
+<p>
+Run the following command to generate report files:
+</p>
+
+<pre>
+$ env AWSTATS_ENABLE_CONFIG_DIR=1 \
+      perl /usr/share/doc/awstats/examples/awstats_buildstaticpages.pl \
+      -configdir=/home/user/public_html/stats \
+      -config=my.domain \
+      -dir=/home/user/public_html/stats \
+      -awstatsprog=/usr/lib/cgi-bin/awstats.pl
+</pre>
+
+<p>
+To look at the statistics of your website, just open the file
+<tt>awstats.my.domain.html</tt>. Or use the url
+<tt>http://my.domain/~user/stats/awstats.my.domain.html</tt>.
+</p>

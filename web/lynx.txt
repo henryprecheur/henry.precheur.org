@@ -1,0 +1,32 @@
+title: Text only web
+date: 2010-5-7
+
+I increasingly rely on [Lynx] [1] to surf the web. Lynx is a text web browser,
+no graphic, just text. I also uses [Readability] [2], a Firefox extension that
+removes all the useless junk around content. But I might stop using it soon.
+Lynx seems to be better in most cases.
+
+Because Lynx is just text: I see the work I care about, the work of the writer.
+When I read an article, the only thing I care about is the article. Not the
+stupid logo, not the obnoxious ads, not the ridiculous “web-design” that gets in
+my way.
+
+Because I use Lynx: I don’t have to endure the obnoxious design choice made by
+people who don’t have a clue. I don’t need to suffer debilitating typographical
+choices: The [number 1 usability problem] [3] in 2005 was unreadable fonts. This
+is still true in 2010. And it will get worst, because HTML 5 allows morons to
+use custom fonts in their already ugly pages.
+
+Because lynx just displays text, most of these problems are solved. No pictures,
+no tables, and no CSS. Lynx uses the terminal font, it’s always the font I’ve
+chosen. This isn’t perfect, monospaced fonts aren’t ideal to read prose. But at
+least I can read it.
+
+Using Lynx has nice side effect: It’s harder to surf with it. With Firefox I
+tend to open pages in a new tab every time I see something that might be
+interesting. Because there's no tab with Lynx, I don’t do that. I stay focussed
+on the subject at hand.
+
+[1]: http://lynx.isc.org/
+[2]: http://lab.arc90.com/experiments/readability/
+[3]: http://www.useit.com/alertbox/designmistakes.html

@@ -1,0 +1,34 @@
+title: A simple Jinja filter: renderstring
+date: 2008-4-5
+
+<p>
+I wrote this filter for <a href='weblog/index.html'>Weblog</a>:
+</p>
+<small>
+<pre>
+def do_renderstring():
+    def wrapped(env, context, value):
+        '''
+        Render the passed string. It is similar to the tag rendertemplate,
+        except it uses the passed string as the template.
+
+        Example:
+        The template 'Hello {{ string_template|renderstring }}!';
+        Called with the following context:
+            dict(string_template='{{ foo }} world',
+                 foo='crazy')
+        Renders to:
+        'Hello crazy world!'
+        '''
+        if value:
+            return env.from_string(value).render(context.to_dict())
+    return wrapped
+env.filters['renderstring'] = do_renderstring
+</pre>
+</small>
+<p>
+Where <code>env</code> is a Jinja <code>Environment</code> object.
+</p>
+<p>
+The code is in the public domain ;-)
+</p>

@@ -1,0 +1,11 @@
+<nav>
+<ul id='archives'>
+{% for page in pages %}
+    <li{% if page.filename in popular %} class='popular'{% endif %}>
+    <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time>
+    <div><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></div>
+    </li>
+{% endfor %}
+</ul>
+</nav>
+{# vim:set ft=htmljinja: #}

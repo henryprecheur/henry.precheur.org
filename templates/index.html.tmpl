@@ -1,0 +1,36 @@
+{% extends 'base.html.tmpl' %}
+
+{% block navigation %}{% endblock %}
+
+{% block content %}
+<p>
+Hi, I’m <a href='/about'>Henry</a> a software developer living in Vancouver BC Canada.
+I write about programming &amp; engineering.
+</p>
+
+<p>
+I have another &mdash;less polished&mdash; <a
+href='http://henry.precheur.org/scratchpad/'>journal</a>.
+</p>
+
+<h1>Popular articles</h1>
+{% for page in pages %}{% if page.filename in popular %}
+<div class='archive popular'>
+    <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time
+    ><div><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></div>
+</div>
+{% endif %}{% endfor %}
+
+<h1>Archives</h1>
+
+{% for page in pages %}
+    <div class='archive'>
+    <time datetime='{{ page.date|rfc3339 }}'>{{ page.date.strftime('%B %e %Y') }}</time
+    ><div><a href='{{ page.url() }}'>{{ page.title|escape|decode }}</a></div>
+    </div>
+{% endfor %}
+
+</nav>
+{% endblock %}
+
+{# vim:set ft=htmljinja: #}

@@ -1,0 +1,71 @@
+title: Health care cost
+date: 2010-3-8
+
+2 years ago, I felt on my chin and got stitches. I paid $265 for a 20 minutes
+visit, and a 10 minutes visit to remove the stitches a week later. Lately I had
+to do a medical check to become a permanent resident of Canada. I paid $120 for
+a bit of paperwork filling by a clerk, and for a —less than 3 minutes long—
+medical examination. I guess that most of the money was for the physician.
+
+Last December I twisted my ankle and had 4 sessions of physiotherapy. Each
+session was between 30 and 50 minutes long. During those sessions, 15 to 30
+minutes were with the physiotherapist. Each session costed $55. Totaling $220
+for 2 hours and 30 minutes of therapy, including 1 hour and 15 minutes with the
+physiotherapist.
+
+Physiotherapists aren’t necessarily as qualified as doctors. They’re nonetheless
+skilled professionals. According to [Wikipedia][physio]:
+
+> In Canada, entry-level physiotherapy education is offered at 13 universities.
+> Some of these university programs are at the Master's level, meaning that
+> applicants must have already completed an undergraduate degree prior to
+> applying; all of them are slated to be at the Master's level by 2010.
+
+Both professions require many years of training. So why was the physician so
+much more expensive on an hourly basis than the physiotherapist?
+
+<blockquote>
+  <dl>
+    <dt>Physician</dt><dd>$265 × 30 minutes = $530 / hour</dd>
+    <dt>Physiotherapist</dt><dd>$55 × 20 minutes = $165 / hour</dd>
+  </dl>
+</blockquote>
+
+The Canadian and French health care systems are similar: they are publicly
+funded, and the service is mostly provided by the private sector. A simple visit
+to a physician in Paris costs 40 euro —less than $60. In Vancouver it’s twice
+as much: $120. Why such difference? One reason is the lack of physicians. Canada
+has one of the [lowest rate of physician per capita] [physician_per_capita] of
+the OCED. It wasn’t always like that. In the early 90’s there were *too many
+physicians* in Canada. Provincial governments set limits on the number of new
+physicians to save money. In 1993 the number of physicians peaked. As population
+grew and health care demand increased, the surplus of physicians turned into a
+shortage.
+
+This situation shows the main limit of publicly health care. Fixed policies
+aren’t able to adapt to the changing reality. Without proper competition, and
+price signal it’s hard to get everything right. It looks that France managed its
+supply of physicians better, but it could very well experiences similar
+problems. A bad political decision regarding health care can have decades long
+consequences.
+
+Health care costs for 2009 were between 8% and 11% in most developer countries
+—with the notable exception of the US at 16%. No country can afford to have one
+tenth of its economy running inefficiently. It’s important to have the right set
+of rules. Rules that give us a good health care at the right price.
+
+I recommend 2 articles from the New Yorker, and one from the Economist on the
+subject:
+
+- [The Cost Conundrum][], What a Texas town can teach us about health care.
+- [Testing, Testing][], The health-care bill has no master plan for curbing
+  costs. Is that a bad thing?
+- [Clear diagnosis, uncertain remedy][], Governments are increasingly turning to
+  private insurance in order to widen access to health care and make it more
+  efficient. Are they expecting too much?
+
+[physio]: http://en.wikipedia.org/wiki/List_of_physical_therapy_training#Canada
+[physician_per_capita]: http://en.wikipedia.org/wiki/Health_care_in_Canada#Comparison_to_other_countries
+[The Cost Conundrum]: http://www.newyorker.com/reporting/2009/06/01/090601fa_fact_gawande?printable=true
+[Testing, Testing]: http://www.newyorker.com/reporting/2009/12/14/091214fa_fact_gawande?printable=true
+[Clear diagnosis, uncertain remedy]: http://www.economist.com/displaystory.cfm?story_id=15545834

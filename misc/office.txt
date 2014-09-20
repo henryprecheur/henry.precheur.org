@@ -1,0 +1,31 @@
+title: The fancy office of death
+date: 2010-1-13
+
+If the place where you work is nice, you may be out of touch.
+
+From the book [Parkinson’s law, and other studies in administration] [PL]:
+
+> During a time of exiting discovery or progress there is no time to plan the
+> perfect headquarters. The time for that comes later, when all the important
+> work has been done. Perfection we know is finality, and finality is death.
+
+Recently in [The Economist] [0]:
+
+> As a rule in the European Union, the grandeur of somebody’s office is
+> inversely related to the sexiness of their work.
+
+This seems to be true in the world of business too. Andrew Warner wrote how a
+new office in Manhattan cost him [millions for almost nothing] [1], and Steve
+Blank explained how a new building wasn’t only a waste of money but also impeded
+the [company’s productivity and destroyed its culture] [2].
+
+In 2005, I was interviewed by Altran, a consulting firm, in a gorgeous building
+on the bank of the Seine river. The firm was famous for its excesses during the
+Internet bubble of the 90’s. They spent lavishly on office space in the most
+expensive parts of Paris. When I was interviewed in 2005 Altran was the only big
+French consulting company to lose money.
+
+[PL]: http://en.wikipedia.org/wiki/Parkinson%27s_Law "Wikipedia: Parkinson’s Law"
+[0]: http://www.economist.com/world/europe/displaystory.cfm?story_id=15127624 "Too many cooks"
+[1]: http://mixergy.com/how-i-spent-a-million-bucks-and-ended-up-with-these-two-chairs/ "How I Spent A Million Bucks And Ended Up With These Two Chairs."
+[2]: http://steveblank.com/2009/05/15/supermac-war-story-11-the-curse-of-a-new-building/ "The Curse of a New Building"

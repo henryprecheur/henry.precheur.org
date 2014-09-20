@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Weblog v2.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '2.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Weblog v2.5 documentation" href="index.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Weblog’s documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Weblog’s documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python 2.5+</li>
+<li><a class="reference external" href="http://jinja.pocoo.org/2/documentation/intro#installation">Jinja 2.0+</a></li>
+</ul>
+<p>Optionally to use the <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown syntax</a>, install <a class="reference external" href="http://pypi.python.org/pypi/markdown2/">markdown2</a>, or for <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, install <a class="reference external" href="http://pypi.python.org/pypi/docutils">docutils</a>.</p>
+</div>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://henry.precheur.org/weblog/weblog-2.5.tar.gz">Download Weblog 2.5</a></p>
+<p>A standalone version of Weblog which includes Jinja2 and markdown2 is also
+available:</p>
+<p><a class="reference external" href="http://henry.precheur.org/weblog/weblog+jinja2+markdown2-2.5.tar.gz">Download Weblog 2.5 standalone version</a></p>
+<p>You can also get it from Weblog&#8217;s page on the <a class="reference external" href="http://pypi.python.org/pypi/weblog/">Python package Index</a>.</p>
+<p>You can get the development version of Weblog using the <a class="reference external" href="http://www.selenic.com/mercurial/">Mercurial</a> repository
+<a class="reference external" href="http://bitbucket.org/henry/weblog/">http://bitbucket.org/henry/weblog/</a>:</p>
+<div class="highlight-python"><pre>$ hg clone http://bitbucket.org/henry/weblog/</pre>
+</div>
+</div>
+<div class="section" id="how-to-install">
+<h2>How to install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<p>Download Weblog&#8217;s tarball and extract it:</p>
+<div class="highlight-python"><pre>tar zxf weblog-&lt;version&gt;.tar.gz</pre>
+</div>
+<p>It can be used right away using the helper script <tt class="docutils literal"><span class="pre">weblog_run.py</span></tt>.</p>
+<p>Or install it using the supplied <cite>setup.py</cite> script. Run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span>
+<span class="pre">--help</span></tt> to learn how to use it.</p>
+<p>You can also use <cite>easy_install</cite> or <cite>pip</cite>, <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">weblog</span></tt> will install
+Weblog and all its dependencies.</p>
+<p>Optionally you can install markdown2 and docutils to use the Markdown and
+reStructuredText syntaxes: <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">markdown2</span> <span class="pre">docutils</span></tt>.</p>
+</div>
+<div class="section" id="hacking-weblog">
+<h2>Hacking Weblog<a class="headerlink" href="#hacking-weblog" title="Permalink to this headline">¶</a></h2>
+<p>Weblog comes with tests, you can run them from the root of the source
+directory:</p>
+<div class="highlight-python"><pre>python test.py</pre>
+</div>
+<p>If you plan to modify Weblog, I recommend to install <a class="reference external" href="http://somethingaboutorange.com/mrl/projects/nose/">nose</a> a test runner and
+<a class="reference external" href="http://nedbatchelder.com/code/coverage/">coverage</a> a tool for measuring code coverage of Python programs. Like Weblog,
+you can install them with <cite>pip</cite> or <cite>easy_install</cite>:</p>
+<div class="highlight-python"><pre>pip install nose coverage</pre>
+</div>
+<p>To run the tests:</p>
+<div class="highlight-python"><pre>nosetests --with-doctest --with-coverage --cover-package=weblog</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Installation</a><ul>
+<li><a class="reference external" href="#requirements">Requirements</a></li>
+<li><a class="reference external" href="#download">Download</a></li>
+<li><a class="reference external" href="#how-to-install">How to install</a></li>
+<li><a class="reference external" href="#hacking-weblog">Hacking Weblog</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Weblog&#8217;s documentation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tutorial.html"
+                                  title="next chapter">Tutorial</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/install.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Weblog’s documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">Weblog v2.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2007-2009, Henry Prêcheur &lt;henry@precheur.org&gt;.
+      Last updated on Mar 15, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>
