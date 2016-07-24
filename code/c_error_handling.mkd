@@ -1,0 +1,136 @@
+title: Handling errors in C
+date: 2016-07-24
+
+I write a lot of C for work, I read quite a bit about how to handle the
+language’s pitfall safely. I changed my mind about error handling a few years
+ago when I read the CERT secure coding guideline, it recommends to [avoid in
+band error indicators][0].
+
+[0]: https://www.securecoding.cert.org/confluence/display/seccode/ERR02-C.+Avoid+in-band+error+indicators
+
+This means every function must return an error code that needs to be explicitly
+checked. Most of libc doesn’t follow this recommendation.
+
+The printf functions —like printf, sprintf, fprintf, etc— return the number of
+bytes written, or a negative number if there’s an error. So in theory every call
+to a printf-like function should have an if block right under it to check its
+return value and handle potential errors. It never happens because in practice
+printf almost never fails, so it’s easy to disregard. How many legitimate printf
+errors are ignored in the wild? Probably millions.
+
+Not all function can fail, of those that can returning an error code may seem
+overkill. In the libc many functions that return a pointer type return null to
+indicate an error, like malloc or strdup. That seemed reasonable to me, until I
+realized how important proper error handling is. Using the same value to return
+a result and indicate error is too easy to misuse.
+
+I once worked with a library following the CERN’s guideline. Its API looked
+something like this:
+
+    typedef mylib_error int;
+
+    /* Error checking functions */
+    int mylib_ok(mylib_error err);
+    int mylib_fail(mylib_error err);
+
+    mylib_error mylib_init(...);
+    mylib_error mylib_deinit(...);
+    mylib_error mylib_something(...);
+    mylib_error mylib_something_else(...);
+    mylib_error mylib_even_more(...);
+    ...
+
+Back then I didn’t like the idea of wasting return values on error codes when
+there was often no need. For example consider this code:
+
+    mylib_error mylib_new_object(mylib_object** p);
+
+    ...
+
+    mylib_object* obj;
+
+    if (mylib_fail( mylib_new_object(&obj) )) {
+        error("Can't allocate new object");
+    }
+
+One could say the return value is wasted since `mylib_new_object` could just
+return NULL when there’s an error, like this:
+
+    mylib_object* mylib_new_object();  /* returns null if it fails */
+
+    ...
+
+    mylib_object* obj;
+
+    if ((obj = mylib_new_object() )) {
+        error("Can't allocate new object");
+    }
+
+But what if there’s more than one reason for `mylib_new_object` to fail? I’d
+probably need the reason for failure to do any kind of recovery. If the function
+can fail because there’s not enough memory, but it can also fail because the
+network connection is lost, or some parameters are invalid? Returning an error
+code everywhere makes sense if you want an library that’s easy to use correctly
+and consistently.
+
+With prototypes defined above we can do stuff like this:
+
+    /* pass-through non-fatal error */
+    if (mylib_fail(mylib_new_object(&object)) {
+        fprintf(stderr,
+                "No new object today... :(\n"
+                "It's not too bad let's continue\n"
+        );
+    }
+
+    mylib_error err = mylib_new_object(&object);
+
+    /* assert is easy */
+    assert(mylib_ok(err));
+
+    /*
+     * The error code is handy to pass the hot potato
+     * up and down the chain.
+     */
+    int i;
+    mylib_error err;
+    mylib_object objects[1000];
+
+    for (i = 0; i < 1000; i++) {
+        err = mylib_new_object(&object[i]);
+        if (!mlib_ok(err)) {
+            break;
+        }
+    }
+
+    if (!mlib_ok(err)) {
+        for (; i > 0; --i) {
+            mylib_destroy_object(&object[i]);
+        }
+        return err;
+    }
+
+It also gives more flexibility when reporting errors:
+
+    const char*   mylib_strerror(mylib_error error);
+
+    mylib_error err = mylib_function(...);
+
+    if (mylib_fail(err)) {
+        fprintf(
+            stderr,
+            "Error calling mylib_function: %s\n",
+            mylib_strerror(err)
+        );
+        return 1;
+    }
+
+Returning the error code every time makes the library more consistent and
+straightforward to use. It will take more code to achieve the same result, but
+the code is easier to read and to write. A big part of our job as programmers is
+to make sure that when something goes wrong, the whole thing doesn’t blow up: if
+it takes more code to get it right, then we must write it. Go works this way, I
+really like the consistency it gives. Error handling becomes more idiomatic.
+Read more about how Go handle errors in [error are values][1].
+
+[1]: http://blog.golang.org/errors-are-values
