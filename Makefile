@@ -51,9 +51,9 @@ clean:
 	-rm -rf $(OUTPUT_DIR)
 
 STYLE_DIR = stylesheets
-STYLESHEETS = $(STYLE_DIR)/normalize.css \
-	      $(STYLE_DIR)/archives.css \
-	      $(STYLE_DIR)/fonts.css \
+STYLESHEETS = $(STYLE_DIR)/fonts.css \
+	      $(STYLE_DIR)/normalize.css \
+	      $(STYLE_DIR)/archives.css
 
 $(STYLE_DIR)/normalize.css:
 	curl http://necolas.github.io/normalize.css/3.0.0/normalize.css > $@

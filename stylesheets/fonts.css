@@ -41,12 +41,3 @@
     src: url('font/concourse/t3_bold.woff');
     font-weight: 600;
 }
-
-/*
- * M+ font
- */
-@font-face {
-        font-family: 'mplus-2m';
-        src: url('font/mplus/2m_regular.woff') format('woff');
-        font-weight: 400;
-}
