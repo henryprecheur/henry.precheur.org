@@ -10,6 +10,13 @@ If you like the articles in here, you can also read my programming <a
 href='http://henry.precheur.org/scratchpad/'>diary</a>.
 </section>
 
+<h1>Newest post</h1>
+
+    <div class='archive'>
+    <time datetime='{{ pages[0].date|rfc3339 }}'>{{ pages[0].date.strftime('%B %e %Y') }}</time
+    ><div><a href='{{ pages[0].url() }}'>{{ pages[0].title|escape|decode }}</a></div>
+    </div>
+
 <h1>Popular articles</h1>
 {% for page in pages %}{% if page.filename in popular %}
 <div class='archive popular'>
