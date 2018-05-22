@@ -29,6 +29,7 @@ _copy: _weblog $(OUTPUT_DIR) $(OUTPUT_DIR)/style.css
 	done
 	mkdir -p $(OUTPUT_DIR)/images
 	cp images/logo.png $(OUTPUT_DIR)/images
+	cp images/Henry100.jpg $(OUTPUT_DIR)/images
 	cp -r font output
 	test -d $(OUTPUT_DIR)/vanpy || mkdir $(OUTPUT_DIR)/vanpy
 	cp -r vanpy/test $(OUTPUT_DIR)/vanpy
